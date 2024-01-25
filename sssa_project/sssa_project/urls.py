@@ -16,7 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.urls import re_path as url
+
+from sssa_app.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    url(r'^$', home, name='sssa_home')
 ]
