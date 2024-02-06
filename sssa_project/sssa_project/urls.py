@@ -15,12 +15,14 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from django.urls import re_path as url
-
 from sssa_app.views import *
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url(r'^$', home, name='sssa_home')
+    url(r'^$', home, name='sssa_home'),
+    path('members/', include('django.contrib.auth.urls')),
+    path('members/', include('members.urls')),
 ]
