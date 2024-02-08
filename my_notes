@@ -1,0 +1,12 @@
+1. Install a Virtual Environment using Venv:
+ - pip3 install virtualenv
+ - python3 -m venv venv_sssa
+ - source venv_sssa/bin/activate
+   - pip3 install django
+
+ 2. Create the Project:
+ - django-admin startproject sssa_project
+ - python3 manage.py migrate
+ - python3 manage.py runserver
+ - python3 manage.py startapp sssa_app
+ - python3 manage.py createsuperuser
