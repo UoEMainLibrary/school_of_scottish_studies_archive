@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import os, inspect
+import django_dyn_dt
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -39,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'sssa_app',
     'members',
+    'django_dyn_dt',
 
 ]
 
@@ -53,11 +56,12 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'sssa_project.urls'
+TEMPLATE_DIR_DATATB = os.path.join(BASE_DIR, "django_dyn_dt/templates")
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [TEMPLATE_DIR_DATATB],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -119,8 +123,18 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
+DYN_DB_PKG_ROOT = os.path.dirname( inspect.getfile( django_dyn_dt ) )
+
+STATICFILES_DIRS = (
+    os.path.join(DYN_DB_PKG_ROOT, "templates/static"),
+)
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+DYNAMIC_DATATB = {
+    # SLUG -> Import_PATH
+    'books'  : "sssa_app.models.Book",
+}

@@ -25,4 +25,5 @@ urlpatterns = [
     url(r'^$', home, name='sssa_home'),
     path('members/', include('django.contrib.auth.urls')),
     path('members/', include('members.urls')),
+    path('', include('django_dyn_dt.urls')),
 ]
