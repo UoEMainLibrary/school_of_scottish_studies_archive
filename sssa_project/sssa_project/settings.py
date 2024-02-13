@@ -137,5 +137,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 DYNAMIC_DATATB = {
     # SLUG -> Import_PATH
-    'alst'  : "sssa_app.models.Alst",
+    'alst'  : "sssa_app.models.Alst", # http://localhost:8001/datatb/alst/
 }
