@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'sssa_app',
     'members',
     'django_dyn_dt',
+    'import_export',
 
 ]
 
@@ -136,5 +137,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 DYNAMIC_DATATB = {
     # SLUG -> Import_PATH
-    'books'  : "sssa_app.models.Book",
+    'alst'  : "sssa_app.models.Alst",
 }
