@@ -41,8 +41,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'sssa_app',
     'members',
+    'django_tables2',
     'django_dyn_dt',
     'import_export',
+
+
 
 ]
 

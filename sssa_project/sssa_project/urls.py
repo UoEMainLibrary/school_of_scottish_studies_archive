@@ -28,4 +28,5 @@ urlpatterns = [
     path('members/', include('django.contrib.auth.urls')),
     path('members/', include('members.urls')),
     path('', include('django_dyn_dt.urls')),
+    path('alst_table/', alst_table, name='alst_table'),
 ]

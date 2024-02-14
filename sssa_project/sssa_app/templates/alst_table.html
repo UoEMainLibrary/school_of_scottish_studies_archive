@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>table </title>
+</head>
+<body>
+
+
+
+
+<table>
+    <tr>
+        <th scope="col" style="font-size: 18px; vertical-align: middle;">id</th>
+        <th scope="col" style="font-size: 18px; vertical-align: middle;">catalogue_number</th>
+        <th scope="col" style="font-size: 18px; vertical-align: middle;">catalogue_name</th>
+    </tr>
+
+{% for table in tables %}
+    <tbody>
+    <tr>
+
+    <th style="vertical-align: middle; border-top: 1px solid black;text-align: center; font-size:11px">{{ table.id }}</th>
+    <th style="vertical-align: middle; border-top: 1px solid black;text-align: center; font-size:11px">{{ table.catalogue_number }}</th>
+    <th style="vertical-align: middle; border-top: 1px solid black;text-align: center; font-size:11px">{{ table.catalogue_name }}</th>
+    </tr>
+
+    </tbody>
+    {% endfor %}
+
+
+
+</table>
+</body>
+</html>

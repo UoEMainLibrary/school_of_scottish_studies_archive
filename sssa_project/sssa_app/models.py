@@ -1,5 +1,7 @@
 from django.db import models
 import os
+import django_tables2 as tables
+
 
 # Create your models here.
 
@@ -24,3 +26,9 @@ class Alst(models.Model):
 
     def __str__(self):
         return self.catalogue_number
+
+
+
+class AlstTable(tables.Table):
+    class Meta:
+        model: Alst
