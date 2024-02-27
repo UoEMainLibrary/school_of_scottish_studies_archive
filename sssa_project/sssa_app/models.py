@@ -23,6 +23,8 @@ class NodeFieldData(models.Model):
         unique_together = (('nid', 'langcode'),)
         db_table_comment = 'The data table for node entities.'
 
+    def __str__(self):
+        return self.nid
 
 class NodeFieldDate(models.Model):
     bundle = models.CharField(max_length=128, db_collation='ascii_general_ci', db_comment='The field instance bundle to which this row belongs, used when deleting a field instance')
