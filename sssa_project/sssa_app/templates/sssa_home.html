@@ -7,6 +7,180 @@
 <body>
 <h4>This is home Page</h4>
 
+<!--
+<div>
+    <h2>Table from Field Data model</h2>
+    <table style="width:100%; border:1px solid black;">
+        <tr style="background-color: black">
+            <th style="color: white">Title</th>
+            <th style="color: white">NID</th>
+        </tr>
+        {% for fielddata in fielddatas %}
+        <tr style="font-size: 14px">
+            <td style="text-align: center">{{ fielddata.title }}</td>
+            <td style="text-align: center">{{ fielddata.nid }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+-->
+
+<div>
+    <h2>Table from Field Date model</h2>
+    <table style="width:100%; border:1px solid black;">
+        <tr style="background-color: black">
+            <th style="color: white">Title</th>
+            <th style="color: white">Date</th>
+        </tr>
+        {% for fielddate in fielddates %}
+        <tr style="font-size: 14px">
+            <td style="text-align: center">{{ fielddate.entity_id }}</td>
+            <td style="text-align: center">{{ fielddate.field_date_value }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+<div>
+    <h2>Table from NodeRevisionFieldCatalogue model</h2>
+    <table style="width:100%; border:1px solid black;">
+        <tr style="background-color: black">
+            <th style="color: white">Bundle</th>
+            <th style="color: white">field_catalogue_target_id</th>
+            <th style="color: white">entity_id</th>
+
+
+        </tr>
+        {% for noderevisionfieldcatalogue in noderevisionfieldcatalogues %}
+        <tr style="font-size: 14px">
+            <td style="text-align: center">{{ noderevisionfieldcatalogue.bundle }}</td>
+            <td style="text-align: center">{{ noderevisionfieldcatalogue.field_catalogue_target_id }}</td>
+            <td style="text-align: center">{{ noderevisionfieldcatalogue.entity_id }}</td>
+
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+-->
+
+
+
+<!--
+<div>
+    <h2>Table from NodeBody model</h2>
+    <table style="width:100%; border:1px solid black;">
+        <tr style="background-color: black">
+            <th style="color: white">Bundle</th>
+            <th style="color: white">Deleted</th>
+            <th style="color: white">Entity Id</th>
+            <th style="color: white">Revision Id</th>
+            <th style="color: white">Langcode</th>
+            <th style="color: white">Delta</th>
+            <th style="color: white">Body Value</th>
+            <th style="color: white">Body Summary</th>
+            <th style="color: white">Body Format</th>
+
+        </tr>
+        {% for nodebody in nodebodys %}
+        <tr style="font-size: 14px">
+            <td style="text-align: center">{{ nodebody.bundle }}</td>
+            <td style="text-align: center">{{ nodebody.deleted }}</td>
+            <td style="text-align: center">{{ nodebody.entity_id }}</td>
+            <td style="text-align: center">{{ nodebody.revision_id }}</td>
+            <td style="text-align: center">{{ nodebody.langcode }}</td>
+            <td style="text-align: center">{{ nodebody.delta }}</td>
+            <td style="text-align: center">{{ nodebody.body_value }}</td>
+            <td style="text-align: center">{{ nodebody.body_summary }}</td>
+            <td style="text-align: center">{{ nodebody.body_format }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+-->
+<br>
+<br>
+<!--
+<div>
+    <h2>Table from NodeFieldTypes model</h2>
+    <table style="width:100%; border:1px solid black; max-height: 600px; overflow: auto; display: inline-block;">
+        <tr style="background-color: black">
+            <th style="color: white">Bundle</th>
+            <th style="color: white">Entity_Id</th>
+            <th style="color: white">revision_id</th>
+            <th style="color: white">field_types_target_id</th>
+
+
+        </tr>
+        {% for nodefieldtype in nodefieldtypes %}
+        <tr style="font-size: 14px">
+            <td style="text-align: center">{{ nodefieldtype.bundle }}</td>
+            <td style="text-align: center">{{ nodefieldtype.entity_id }}</td>
+            <td style="text-align: center">{{ nodefieldtype.revision_id }}</td>
+            <td style="text-align: center">{{ nodefieldtype.field_types_target_id }}</td>
+
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+<!--
+<div>
+    <h2>Table from NodeFieldData model</h2>
+    <table style="width:100%; border:1px solid black; max-height: 600px; overflow: auto; display: inline-block;">
+        <tr style="background-color: black">
+            <th style="color: white">NID</th>
+            <th style="color: white">VID</th>
+            <th style="color: white">TYPE</th>
+            <th style="color: white">LONGCODE</th>
+            <th style="color: white">STATUS</th>
+            <th style="color: white">TITLE</th>
+            <th style="color: white">UID</th>
+            <th style="color: white">CREATED</th>
+            <th style="color: white">CHANGED</th>
+            <th style="color: white">PROMOTE</th>
+            <th style="color: white">STICKY</th>
+            <th style="color: white">Default Langcode</th>
+            <th style="color: white">revision_translation_affected</th>
+
+
+        </tr>
+        {% for nodefielddata in nodefielddatas %}
+        <tr style="font-size: 14px">
+            <td style="text-align: center">{{ nodefielddata.nid }}</td>
+            <td style="text-align: center">{{ nodefielddata.vid }}</td>
+            <td style="text-align: center">{{ nodefielddata.type }}</td>
+            <td style="text-align: center">{{ nodefielddata.longcode }}</td>
+            <td style="text-align: center">{{ nodefielddata.status }}</td>
+            <td style="text-align: center">{{ nodefielddata.title }}</td>
+            <td style="text-align: center">{{ nodefielddata.uid }}</td>
+            <td style="text-align: center">{{ nodefielddata.created }}</td>
+            <td style="text-align: center">{{ nodefielddata.changed }}</td>
+            <td style="text-align: center">{{ nodefielddata.promote }}</td>
+            <td style="text-align: center">{{ nodefielddata.sticky }}</td>
+            <td style="text-align: center">{{ nodefielddata.default_langcode }}</td>
+            <td style="text-align: center">{{ nodefielddata.revision_translation_affected }}</td>
+
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+-->
 
 </body>
 </html>
