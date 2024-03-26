@@ -44,6 +44,10 @@ INSTALLED_APPS = [
     'django_tables2',
     'django_dyn_dt',
     'import_export',
+    'crispy_forms',
+    'rest_framework',
+    'django_filters',
+
 
 
 
