@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 from .models import Alst, AlstTable
-import django_tables2 as tables
+
 
 
 # Create your views here.
