@@ -16,13 +16,13 @@
         <th scope="col" style="font-size: 18px; vertical-align: middle;">catalogue_name</th>
     </tr>
 
-{% for table in tables %}
+{% for alst_record in alst_records %}
     <tbody>
     <tr>
 
-    <th style="vertical-align: middle; border-top: 1px solid black;text-align: center; font-size:11px">{{ table.id }}</th>
-    <th style="vertical-align: middle; border-top: 1px solid black;text-align: center; font-size:11px">{{ table.catalogue_number }}</th>
-    <th style="vertical-align: middle; border-top: 1px solid black;text-align: center; font-size:11px">{{ table.catalogue_name }}</th>
+    <th style="vertical-align: middle; border-top: 1px solid black;text-align: center; font-size:11px">{{ alst_record.id }}</th>
+    <th style="vertical-align: middle; border-top: 1px solid black;text-align: center; font-size:11px">{{ alst_record.catalogue_number }}</th>
+    <th style="vertical-align: middle; border-top: 1px solid black;text-align: center; font-size:11px">{{ alst_record.catalogue_name }}</th>
     </tr>
 
     </tbody>

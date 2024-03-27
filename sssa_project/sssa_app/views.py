@@ -10,10 +10,10 @@ def home (request):
     return render(request, 'sssa_home.html')
 
 def alst_table(request):
-    tables = Alst.objects.all()
+    alst_records = Alst.objects.all()
 
     return render(request, "alst_table.html", {
-        "tables": tables
+        "alst_records": alst_records
     })
 
 def alst_create_record(request):
