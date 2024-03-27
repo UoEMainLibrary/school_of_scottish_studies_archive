@@ -16,11 +16,11 @@ def alst_table(request):
         "tables": tables
     })
 
-def create_record(request):
-    record_form = AlstForm(request.POST or None)
-    if record_form.is_valid():
-        record_form.save()
+def alst_create_record(request):
+    alst_record_form = AlstForm(request.POST or None)
+    if alst_record_form.is_valid():
+        alst_record_form.save()
         return redirect('sssa_home')
 
-    return render(request, 'forms/record_form.html', {'record_form': record_form})
+    return render(request, 'forms/alst_record_form.html', {'alst_record_form': alst_record_form})
 
