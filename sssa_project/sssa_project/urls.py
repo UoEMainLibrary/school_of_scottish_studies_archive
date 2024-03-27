@@ -30,5 +30,6 @@ urlpatterns = [
     path('', include('django_dyn_dt.urls')),
     path('alst_table/', alst_table, name='alst_table'),
     url('alst_create_record/', alst_create_record, name='alst_create_record'),
+    url(r'^alst_details_record/(\d+)/', alst_details_record, name='alst_details_record'),
     path('alst_update_record/<int:id>/', alst_update_record, name='alst_update_record'),
 ]

@@ -16,20 +16,29 @@
         <th scope="col" style="font-size: 18px; vertical-align: middle;">catalogue_name</th>
     </tr>
 
-{% for alst_record in alst_records %}
+    {% for alst_record in alst_records %}
     <tbody>
-    <tr>
-
-    <th style="vertical-align: middle; border-top: 1px solid black;text-align: center; font-size:11px">{{ alst_record.id }}</th>
-    <th style="vertical-align: middle; border-top: 1px solid black;text-align: center; font-size:11px">{{ alst_record.catalogue_number }}</th>
-    <th style="vertical-align: middle; border-top: 1px solid black;text-align: center; font-size:11px">{{ alst_record.catalogue_name }}</th>
+    <tr data-href = "{% url 'alst_details_record' alst_record.id %}">
+        <th style="vertical-align: middle; border-top: 1px solid black;text-align: center; font-size:11px">{{ alst_record.id }}</th>
+        <th style="vertical-align: middle; border-top: 1px solid black;text-align: center; font-size:11px">{{ alst_record.catalogue_number }}</th>
+        <th style="vertical-align: middle; border-top: 1px solid black;text-align: center; font-size:11px">{{ alst_record.catalogue_name }}</th>
     </tr>
-
     </tbody>
     {% endfor %}
 
 
 
 </table>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const rows = document.querySelectorAll("tr[data-href]");
+
+        rows.forEach(row => {
+            row.addEventListener("click", () => {
+                window.location.href = row.dataset.href;
+            });
+        });
+    });
+</script>
 </body>
 </html>

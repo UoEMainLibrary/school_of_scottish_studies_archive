@@ -1,0 +1,63 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <title>Record Form</title>
+</head>
+
+<body>
+<form method="POST">
+ <h2> ALST Record for {{ alst_records.catalogue_number }}</h2>
+    <table>
+
+        <tr>
+            <td colspan="3" style="text-align: center; padding:20px">
+                <span style="color: gray; font-size:15px">Catalogue Number:</span> <span style="font-size: 20px">{{ alst_records.catalogue_number }}</span><br>
+                <br>
+                <span style="color: gray; font-size:15px">Catologue Name:</span> <span style="font-size: 13px">{{ alst_records.catalogue_name  }}</span><br>
+                <br>
+                <span style="color: gray; font-size:15px">Informant Artist:</span> <span style="font-size: 13px">{{ alst_records.fieldworker }} </span><br>
+                <br>
+                <span style="color: gray; font-size:15px">Native Area:</span> <span style="font-size: 13px">{{ alst_records.date }} </span> <br>
+                <br>
+                <span style="color: gray; font-size:15px">Informant Artist:</span> <span style="font-size: 13px">{{ alst_records.informant_artist }} </span> <br>
+                <br>
+                <span style="color: gray; font-size:15px">Native Area County:</span> <span style="font-size: 13px">{{ alst_records.native_area_county }} </span> <br>
+                <br>
+                <span style="color: gray; font-size:15px">Comments:</span> <span style="font-size: 13px">{{ alst_records.comments }} </span> <br>
+                <br>
+                <span style="color: gray; font-size:15px">Place Recorded:</span> <span style="font-size: 13px">{{ alst_records.place_recorded }} </span> <br>
+                <br>
+                <span style="color: gray; font-size:15px">Type of Material:</span> <span style="font-size: 13px">{{ alst_records.type_of_material }} </span> <br>
+                <br>
+                <span style="color: gray; font-size:15px">Summary:</span> <span style="font-size: 13px">{{ alst_records.summary }} </span> <br>
+                <br>
+                <span style="color: gray; font-size:15px">Disc Matrix Number:</span> <span style="font-size: 13px">{{ alst_records.disc_matrix_number }} </span> <br>
+                <br>
+                <span style="color: gray; font-size:15px">Tale Reference:</span> <span style="font-size: 13px">{{ alst_records.tale_reference }} </span> <br>
+                <br>
+                <span style="color: gray; font-size:15px">Title:</span> <span style="font-size: 13px">{{ alst_records.title }} </span> <br>
+                <br>
+                <span style="color: gray; font-size:15px">Reference:</span> <span style="font-size: 13px">{{ alst_records.reference }} </span> <br>
+                <br>
+                <span style="color: gray; font-size:15px">Old Number RL:</span> <span style="font-size: 13px">{{ alst_records.old_number_rl }} </span> <br>
+                <br>
+                <span style="color: gray; font-size:15px">Data Recorded Input:</span> <span style="font-size: 13px">{{ alst_records.data_record_input }} </span> <br>
+                <br>
+                <span style="color: gray; font-size:15px">Data Last Amended:</span> <span style="font-size: 13px">{{ alst_records.data_last_amended }} </span> <br>
+            </td>
+        </tr>
+        <tr>
+
+        </tr>
+
+    </table>
+
+        <a href="{% url 'alst_table' %}" style="color:black">BACK</a> <br>
+
+        <a href="{% url 'alst_update_record' alst_records.id %}">Edit Mode</a>
+
+</form>
+
+</body>
+</html>
