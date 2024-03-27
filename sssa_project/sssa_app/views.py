@@ -20,17 +20,14 @@ def alst_create_record(request):
     alst_record_form = AlstForm(request.POST or None)
     if alst_record_form.is_valid():
         alst_record_form.save()
-        return redirect('sssa_home')
+        return redirect('alst_table')
 
     return render(request, 'forms/alst_record_form.html', {'alst_record_form': alst_record_form})
 
 
 def alst_details_record(request, id):
-    alst_records = Alst.objects.get(id=id)
-    return render(request, 'forms/alst_details.html', {'alst_records': alst_records})
-
-
-
+    alst_record = Alst.objects.get(id=id)
+    return render(request, 'forms/alst_details.html', {'alst_record': alst_record})
 
 
 
@@ -40,6 +37,15 @@ def alst_update_record(request, id):
 
     if alst_record_form.is_valid():
         alst_record_form.save()
-        return redirect('sssa_home')
+        return redirect('alst_table')
 
     return render(request, 'forms/alst_record_form.html', {'alst_record': alst_record, 'alst_record_form': alst_record_form})
+
+def alst_delete_record(request, id):
+    alst_record = Alst.objects.get(id=id)
+
+    if request.method == 'POST':
+        alst_record.delete()
+        return redirect('alst_table')
+
+    return render(request, 'forms/record_delete_confirmation.html', {'alst_record': alst_record})

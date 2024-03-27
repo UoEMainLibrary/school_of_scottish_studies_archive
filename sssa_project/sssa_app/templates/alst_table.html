@@ -7,13 +7,22 @@
 <body>
 
 
-
+<a href="{% url 'alst_create_record' %}" style="color:black">+ ADD NEW</a>
+<br>
+<br><br>
 
 <table>
     <tr>
         <th scope="col" style="font-size: 18px; vertical-align: middle;">id</th>
         <th scope="col" style="font-size: 18px; vertical-align: middle;">catalogue_number</th>
         <th scope="col" style="font-size: 18px; vertical-align: middle;">catalogue_name</th>
+        <th scope="col" style="font-size: 18px; vertical-align: middle;">fieldworker</th>
+        <th scope="col" style="font-size: 18px; vertical-align: middle;">date</th>
+        <th scope="col" style="font-size: 18px; vertical-align: middle;">informant_artist</th>
+        <th scope="col" style="font-size: 18px; vertical-align: middle;">native_area_county</th>
+        <th scope="col" style="font-size: 18px; vertical-align: middle;">comments</th>
+        <th scope="col" style="font-size: 18px; vertical-align: middle;">place_recorded</th>
+        <th scope="col" style="font-size: 18px; vertical-align: middle;">type_of_material</th>
     </tr>
 
     {% for alst_record in alst_records %}
@@ -22,6 +31,13 @@
         <th style="vertical-align: middle; border-top: 1px solid black;text-align: center; font-size:11px">{{ alst_record.id }}</th>
         <th style="vertical-align: middle; border-top: 1px solid black;text-align: center; font-size:11px">{{ alst_record.catalogue_number }}</th>
         <th style="vertical-align: middle; border-top: 1px solid black;text-align: center; font-size:11px">{{ alst_record.catalogue_name }}</th>
+        <th style="vertical-align: middle; border-top: 1px solid black;text-align: center; font-size:11px">{{ alst_record.fieldworker }}</th>
+        <th style="vertical-align: middle; border-top: 1px solid black;text-align: center; font-size:11px">{{ alst_record.date }}</th>
+        <th style="vertical-align: middle; border-top: 1px solid black;text-align: center; font-size:11px">{{ alst_record.informant_artist }}</th>
+        <th style="vertical-align: middle; border-top: 1px solid black;text-align: center; font-size:11px">{{ alst_record.native_area_county }}</th>
+        <th style="vertical-align: middle; border-top: 1px solid black;text-align: center; font-size:11px">{{ alst_record.comments }}</th>
+        <th style="vertical-align: middle; border-top: 1px solid black;text-align: center; font-size:11px">{{ alst_record.place_recorded }}</th>
+        <th style="vertical-align: middle; border-top: 1px solid black;text-align: center; font-size:11px">{{ alst_record.type_of_material }}</th>
     </tr>
     </tbody>
     {% endfor %}
