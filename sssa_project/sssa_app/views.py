@@ -24,3 +24,13 @@ def alst_create_record(request):
 
     return render(request, 'forms/alst_record_form.html', {'alst_record_form': alst_record_form})
 
+
+def alst_update_record(request, id):
+    alst_update_record = Alst.objects.get(id=id)
+    alst_record_form = AlstForm(request.POST or None, instance=alst_update_record)
+
+    if alst_record_form.is_valid():
+        alst_record_form.save()
+        return redirect('sssa_home')
+
+    return render(request, 'forms/alst_record_form.html', {'alst_update_record': alst_update_record, 'alst_record_form': alst_record_form})
