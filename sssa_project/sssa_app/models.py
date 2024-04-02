@@ -6,7 +6,9 @@ import django_tables2 as tables
 # Create your models here.
 
 class Alst(models.Model):
+    type = models.CharField(blank=True, default=None, null=True, max_length=20)
     catalogue_number = models.CharField(blank=True, default=None, null=True, max_length=100)
+    parent = models.CharField(blank=True, default=None, null=True, max_length=100)
     catalogue_name = models.CharField(blank=True, default=None, null=True, max_length=100)
     fieldworker = models.CharField(blank=True, default=None, null=True, max_length=100)
     date = models.CharField(blank=True, default=None, null=True, max_length=100)
@@ -18,6 +20,9 @@ class Alst(models.Model):
     summary = models.CharField(blank=True, default=None, null=True, max_length=250)
     disc_matrix_number = models.CharField(blank=True, default=None, null=True, max_length=100)
     tale_reference = models.CharField(blank=True, default=None, null=True, max_length=100)
+    first_line = models.CharField(blank=True, default=None, null=True, max_length=100)
+    instrument = models.CharField(blank=True, default=None, null=True, max_length=100)
+    camera_operator = models.CharField(blank=True, default=None, null=True, max_length=100)
     title = models.CharField(blank=True, default=None, null=True, max_length=100)
     reference = models.CharField(blank=True, default=None, null=True, max_length=100)
     old_number_rl = models.CharField(blank=True, default=None, null=True, max_length=100)
