@@ -11,9 +11,11 @@ def home (request):
 
 def alst_table(request):
     alst_records = Alst.objects.all() [:5000] #show only 5000 record in the table
+    all_count = Alst.objects.count()
 
     return render(request, "alst_table.html", {
-        "alst_records": alst_records
+        "alst_records": alst_records,
+        "all_count": all_count,
     })
 
 def alst_create_record(request):
