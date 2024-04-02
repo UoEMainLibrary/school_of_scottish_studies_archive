@@ -2,26 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    {% load static %}
+
     <title>Record Form</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/buttons.css' %}" >
 </head>
 {% load crispy_forms_tags %}
+
 <body>
 <form method="POST">
     {% csrf_token %}
-    <table>
-        <h2> ALST Form</h2>
+    <table style = "align-items: center; display: flex; justify-content: center;">
         <tr>
             <td colspan="3" style="text-align: center; padding:20px">
-                <span style="color: gray; font-size:15px">Catalogue Number:</span> <span style="font-size: 20px">{{ alst_record_form.catalogue_number }}</span><br>
+                <span style="font-size: 25px;"><strong>ALST Record for Catalogue Number {{ alst_record_form.catalogue_number }}</strong></span><br>
                 <br>
                 <span style="color: gray; font-size:15px">Catologue Name:</span> <span style="font-size: 13px">{{ alst_record_form.catalogue_name  }}</span><br>
                 <br>
-                <span style="color: gray; font-size:15px">Informant Artist:</span> <span style="font-size: 13px">{{ alst_record_form.fieldworker }} </span><br>
+                <span style="color: gray; font-size:15px">Fieldworker:</span> <span style="font-size: 13px">{{ alst_record_form.fieldworker }} </span><br>
                 <br>
-                <span style="color: gray; font-size:15px">Native Area:</span> <span style="font-size: 13px">{{ alst_record_form.date }} </span> <br>
+                <span style="color: gray; font-size:15px">Date:</span> <span style="font-size: 13px">{{ alst_record_form.date }} </span> <br>
                 <br>
-                <span style="color: gray; font-size:15px">Informant Artist:</span> <span style="font-size: 13px">{{ alst_record_form.informant_artist }} </span> <br>
+
+                <span style="color: gray; ">Informant Artist:</span> <span>{{ alst_record_form.informant_artist }} </span> <br>
                 <br>
                 <span style="color: gray; font-size:15px">Native Area County:</span> <span style="font-size: 13px">{{ alst_record_form.native_area_county }} </span> <br>
                 <br>
@@ -48,12 +51,15 @@
                 <span style="color: gray; font-size:15px">Data Last Amended:</span> <span style="font-size: 13px">{{ alst_record_form.data_last_amended }} </span> <br>
             </td>
         </tr>
-        <tr>
-
-        </tr>
-
     </table>
-    <button type="submit">Submit</button>
+    <span style = "align-items: center; display: flex; justify-content: center;">
+        <button class="button button1" type="submit">Submit</button>
+
+        <button class="button button3">
+            <a style="text-decoration: none; color: white;" href="{% url 'alst_update_record' alst_record.id %}">DELETE</a>
+        </button>
+    </span>
+    
 </form>
 
 </body>

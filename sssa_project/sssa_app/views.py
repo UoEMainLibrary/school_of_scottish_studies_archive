@@ -10,7 +10,7 @@ def home (request):
     return render(request, 'sssa_home.html')
 
 def alst_table(request):
-    alst_records = Alst.objects.all()
+    alst_records = Alst.objects.all() [:5000] #show only 5000 record in the table
 
     return render(request, "alst_table.html", {
         "alst_records": alst_records
