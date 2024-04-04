@@ -30,7 +30,7 @@ class Alst(models.Model):
     data_last_amended = models.CharField(blank=True, default=None, null=True, max_length=100)
 
     def __str__(self):
-        return self.catalogue_number
+        return self.type
 
 
 

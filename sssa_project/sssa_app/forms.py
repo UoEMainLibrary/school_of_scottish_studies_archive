@@ -28,7 +28,7 @@ class AlstForm(forms.ModelForm):
             "catalogue_number": forms.TextInput(
                 attrs={
                     "id": "key_id",
-                    "required": True,
+                    "required": False,
                     "placeholder": "Catalogue Number",
                     "style": "text-align: center; color:black; font-size: 25px",
                 },
@@ -36,7 +36,7 @@ class AlstForm(forms.ModelForm):
             "catalogue_name": forms.TextInput(
                 attrs={
                     "id": "key_id",
-                    "required": True,
+                    "required": False,
                     "placeholder": "Catalogue Name",
                     "style": "text-align: left; color:black; font-size: 25px",
                 },
@@ -44,7 +44,7 @@ class AlstForm(forms.ModelForm):
             "fieldworker": forms.TextInput(
                 attrs={
                     "id": "key_id",
-                    "required": True,
+                    "required": False,
                     "placeholder": "Fieldworker",
                     "style": "text-align: center; color:black; font-size: 25px",
                 },
@@ -52,7 +52,7 @@ class AlstForm(forms.ModelForm):
             "date": forms.TextInput(
                 attrs={
                     "id": "key_id",
-                    "required": True,
+                    "required": False,
                     "placeholder": "Date",
                     "style": "text-align: center; color:black; font-size: 25px",
                 },
@@ -60,7 +60,7 @@ class AlstForm(forms.ModelForm):
             "informant_artist": forms.TextInput(
                 attrs={
                     "id": "key_id",
-                    "required": True,
+                    "required": False,
                     "placeholder": "Informant Artist",
                     "style": "text-align: left; color:black; font-size: 25px;",
                 },
@@ -68,7 +68,7 @@ class AlstForm(forms.ModelForm):
             "native_area_county": forms.TextInput(
                 attrs={
                     "id": "key_id",
-                    "required": True,
+                    "required": False,
                     "placeholder": "Native Area County",
                     "style": "text-align: left; color:black; font-size: 25px;",
                 },
@@ -76,7 +76,7 @@ class AlstForm(forms.ModelForm):
             "comments": forms.TextInput(
                 attrs={
                     "id": "key_id",
-                    "required": True,
+                    "required": False,
                     "placeholder": "Comments",
                     "style": "text-align: left; color:black; font-size: 25px;",
                 },
@@ -84,7 +84,7 @@ class AlstForm(forms.ModelForm):
             "place_recorded": forms.TextInput(
                 attrs={
                     "id": "key_id",
-                    "required": True,
+                    "required": False,
                     "placeholder": "Place Recorded",
                     "style": "text-align: left; color:black; font-size: 25px;",
                 },
@@ -92,7 +92,7 @@ class AlstForm(forms.ModelForm):
             "type_of_material": forms.TextInput(
                 attrs={
                     "id": "key_id",
-                    "required": True,
+                    "required": False,
                     "placeholder": "Type of Material",
                     "style": "text-align: left; color:black; font-size: 25px;",
                 },
@@ -100,7 +100,7 @@ class AlstForm(forms.ModelForm):
             "summary": forms.TextInput(
                 attrs={
                     "id": "key_id",
-                    "required": True,
+                    "required": False,
                     "placeholder": "Summary",
                     "style": "text-align: left; color:black; font-size: 25px;",
                 },
@@ -108,7 +108,7 @@ class AlstForm(forms.ModelForm):
             "disc_matrix_number": forms.TextInput(
                 attrs={
                     "id": "key_id",
-                    "required": True,
+                    "required": False,
                     "placeholder": "Disc Matrix Number",
                     "style": "text-align: left; color:black; font-size: 25px;",
                 },
@@ -116,7 +116,7 @@ class AlstForm(forms.ModelForm):
             "tale_reference": forms.TextInput(
                 attrs={
                     "id": "key_id",
-                    "required": True,
+                    "required": False,
                     "placeholder": "Tale Reference",
                     "style": "text-align: left; color:black; font-size: 25px;",
                 },
