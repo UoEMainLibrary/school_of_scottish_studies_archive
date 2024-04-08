@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Alst, AlstTable
 from .forms import *
+from django.db.models import Q
 
 
 
@@ -12,10 +13,14 @@ def home (request):
 def alst_table(request):
     alst_records = Alst.objects.all() [:5000] #show only 5000 record in the table
     all_count = Alst.objects.count()
+    alst_count = Alst.objects.filter( Q(type__exact= "ALST")).count()
+    mndx_count = Alst.objects.filter(Q(type__exact="MNDX")).count()
 
     return render(request, "alst_table.html", {
         "alst_records": alst_records,
         "all_count": all_count,
+        "alst_count": alst_count,
+        "mndx_count": mndx_count,
     })
 
 def alst_create_record(request):

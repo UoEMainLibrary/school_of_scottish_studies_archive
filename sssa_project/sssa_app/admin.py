@@ -26,3 +26,4 @@ class AlstAdmin(ImportExportModelAdmin):
         'data_record_input',
         'data_last_amended',
     ]
+
