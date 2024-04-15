@@ -29,6 +29,10 @@ class Alst(models.Model):
     data_record_input = models.CharField(blank=True, default=None, null=True, max_length=100)
     data_last_amended = models.CharField(blank=True, default=None, null=True, max_length=100)
 
+    class Meta:
+        managed = False
+        db_table = "sssa_jason_db"
+
     def __str__(self):
         return self.type
 

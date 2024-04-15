@@ -11,7 +11,7 @@ def home (request):
     return render(request, 'sssa_home.html')
 
 def alst_table(request):
-    alst_records = Alst.objects.all() [:5000] #show only 5000 record in the table
+    alst_records = Alst.objects.all() [:10000] #show only 5000 record in the table
     all_count = Alst.objects.count()
     alst_count = Alst.objects.filter( Q(type__exact= "ALST")).count()
     mndx_count = Alst.objects.filter(Q(type__exact="MNDX")).count()
