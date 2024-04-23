@@ -14,7 +14,7 @@ def login_user(request):
             login(request, user)
             return redirect('sssa_home')
         else:
-            messages.success(request, "This is error")
+            messages.success(request, ("Sorry, wrong username or password. Please try again"))
             return redirect('login')
 
     else:
