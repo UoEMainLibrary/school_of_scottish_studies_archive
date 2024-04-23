@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>table </title>
+</head>
+<body>
+
+
+<a href="{% url 'alst_create_record' %}" style="color:black">+ ADD NEW</a>
+<br>
+<br>
+<p style="color: red; margin: 0px"> <strong>Count: {{ all_count }}</strong></p>
+<p style="color: red; margin: 0px"> <strong>ALST tapes count: {{ alst_count }}</strong></p>
+<p style="color: red; margin: 0px"> <strong>MNDX records count: {{ mndx_count }}</strong></p>
+<br>
+<table id="myTable">
+    <tr class="header" style="position: sticky; top: 0;">
+        <th scope="col" style="font-size: 18px; vertical-align: middle;">id <br>
+            <!-- Filter for id -->
+            <label for="myInput0" style="font-size: 10px"></label>
+            <br>
+            <input
+                    style="font-size: 15px; width: 80%"
+                    type="text"
+                    id="myInput0"
+                    onkeyup="filterId()"
+                    title="Type in a name">
+            <!-- Filter for id column end-->
+        </th>
+        <th scope="col" style="font-size: 18px; vertical-align: middle;">type <br>
+            <!-- Filter for type -->
+            <label for="myInput1" style="font-size: 10px"></label>
+            <br>
+            <input
+                    style="font-size: 15px; width: 80%"
+                    type="text"
+                    id="myInput1"
+                    onkeyup="filterType()"
+                    title="Type in a name">
+            <!-- Filter for Common Name column end-->
+        </th>
+        <th scope="col" style="font-size: 18px; vertical-align: middle;">catalogue_number<br>
+            <!-- Filter for catalogue_number -->
+            <label for="myInput2" style="font-size: 10px"></label>
+            <br>
+            <input
+                    style="font-size: 15px; width: 80%"
+                    type="text"
+                    id="myInput2"
+                    onkeyup="filterCatalogueNumber()"
+                    title="Type in a name">
+            <!-- Filter for catalogue_number column end-->
+        </th>
+        <th scope="col" style="font-size: 18px; vertical-align: middle;">parent <br>
+            <!-- Filter for parent -->
+            <label for="myInput3" style="font-size: 10px"></label>
+            <br>
+            <input
+                    style="font-size: 15px; width: 80%"
+                    type="text"
+                    id="myInput3"
+                    onkeyup="filterParent()"
+                    title="Type in a name">
+            <!-- Filter for parent column end-->
+
+        </th>
+        <th scope="col" style="font-size: 18px; vertical-align: middle;">catalogue_name <br>
+            <!-- Filter for catalogue_name -->
+            <label for="myInput4" style="font-size: 10px"></label>
+            <br>
+            <input
+                    style="font-size: 15px; width: 80%"
+                    type="text"
+                    id="myInput4"
+                    onkeyup="filterCatalogueName()"
+                    title="Type in a name">
+            <!-- Filter for catalogue_name column end-->
+        </th>
+
+
+
+        <th scope="col" style="font-size: 18px; vertical-align: middle;">native_area_county<br>
+            <!-- Filter for native_area_county-->
+            <label for="myInput5" style="font-size: 10px"></label>
+            <br>
+            <input
+                    style="font-size: 15px; width: 80%"
+                    type="text"
+                    id="myInput5"
+                    onkeyup="filterNativeAreaCounty()"
+                    title="Type in a name">
+            <!-- Filter for native_area_county column end-->
+        </th>
+
+        <th scope="col" style="font-size: 18px; vertical-align: middle;">type_of_material <br>
+            <!-- Filter for type_of_material-->
+            <label for="myInput6" style="font-size: 10px"></label>
+            <br>
+            <input
+                    style="font-size: 15px; width: 80%"
+                    type="text"
+                    id="myInput6"
+                    onkeyup="filterTypeOfMaterial()"
+                    title="Type in a name">
+            <!-- Filter for type_of_material column end-->
+
+        </th>
+    </tr>
+
+    {% for alst_record in alst_records %}
+    <tbody>
+    <tr data-href = "{% url 'alst_details_record' alst_record.id %}">
+        <th style="vertical-align: middle; border-top: 1px solid black;text-align: center; font-size:11px">{{ alst_record.id }}</th>
+        <th style="vertical-align: middle; border-top: 1px solid black;text-align: center; font-size:11px">{{ alst_record.type }}</th>
+        <th style="vertical-align: middle; border-top: 1px solid black;text-align: center; font-size:11px">{{ alst_record.catalogue_number }}</th>
+        <th style="vertical-align: middle; border-top: 1px solid black;text-align: center; font-size:11px">{{ alst_record.parent }}</th>
+        <th style="vertical-align: middle; border-top: 1px solid black;text-align: center; font-size:11px">{{ alst_record.catalogue_name }}</th>
+        <th style="vertical-align: middle; border-top: 1px solid black;text-align: center; font-size:11px">{{ alst_record.native_area_county }}</th>
+        <th style="vertical-align: middle; border-top: 1px solid black;text-align: center; font-size:11px">{{ alst_record.type_of_material }}</th>
+    </tr>
+    </tbody>
+    {% endfor %}
+
+
+
+</table>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const rows = document.querySelectorAll("tr[data-href]");
+
+        rows.forEach(row => {
+            row.addEventListener("click", () => {
+                window.location.href = row.dataset.href;
+            });
+        });
+    });
+
+
+    const filterId = () => {
+     const columns = [
+        { name: 'id', index: 0, isFilter: true },
+        { name: 'type', index: 1, isFilter: false },
+        { name: 'catalogue_number', index: 2, isFilter: false },
+        { name: 'parent', index: 3, isFilter: false },
+        ]
+      const filterColumns = columns.filter(c => c.isFilter).map(c => c.index)
+      const trs = document.querySelectorAll(`#myTable tr:not(.header)`)
+      const filter = document.querySelector('#myInput0').value
+      const regex = new RegExp(escape(filter), 'i')
+      const isFoundInTds = td => regex.test(td.innerHTML)
+      const isFound = childrenArr => childrenArr.some(isFoundInTds)
+      const setTrStyleDisplay = ({ style, children }) => {
+        style.display = isFound([
+          ...filterColumns.map(c => children[c]) // <-- filter Columns
+        ]) ? '' : 'none'
+      }
+
+      trs.forEach(setTrStyleDisplay)
+      }
+
+
+
+    const filterType = () => {
+     const columns = [
+        { name: 'id', index: 0, isFilter: false },
+        { name: 'type', index: 1, isFilter: true },
+        { name: 'catalogue_number', index: 2, isFilter: false },
+        { name: 'parent', index: 3, isFilter: false },
+        ]
+      const filterColumns = columns.filter(c => c.isFilter).map(c => c.index)
+      const trs = document.querySelectorAll(`#myTable tr:not(.header)`)
+      const filter = document.querySelector('#myInput1').value
+      const regex = new RegExp(escape(filter), 'i')
+      const isFoundInTds = td => regex.test(td.innerHTML)
+      const isFound = childrenArr => childrenArr.some(isFoundInTds)
+      const setTrStyleDisplay = ({ style, children }) => {
+        style.display = isFound([
+          ...filterColumns.map(c => children[c]) // <-- filter Columns
+        ]) ? '' : 'none'
+      }
+
+      trs.forEach(setTrStyleDisplay)
+      }
+
+
+    const filterCatalogueNumber = () => {
+     const columns = [
+        { name: 'id', index: 0, isFilter: false },
+        { name: 'type', index: 1, isFilter: false },
+        { name: 'catalogue_number', index: 2, isFilter: true },
+        { name: 'parent', index: 3, isFilter: false },
+        ]
+      const filterColumns = columns.filter(c => c.isFilter).map(c => c.index)
+      const trs = document.querySelectorAll(`#myTable tr:not(.header)`)
+      const filter = document.querySelector('#myInput2').value
+      const regex = new RegExp(escape(filter), 'i')
+      const isFoundInTds = td => regex.test(td.innerHTML)
+      const isFound = childrenArr => childrenArr.some(isFoundInTds)
+      const setTrStyleDisplay = ({ style, children }) => {
+        style.display = isFound([
+          ...filterColumns.map(c => children[c]) // <-- filter Columns
+        ]) ? '' : 'none'
+      }
+
+      trs.forEach(setTrStyleDisplay)
+      }
+
+
+
+    const filterParent = () => {
+     const columns = [
+        { name: 'id', index: 0, isFilter: false },
+        { name: 'type', index: 1, isFilter: false },
+        { name: 'catalogue_number', index: 2, isFilter: false },
+        { name: 'parent', index: 3, isFilter: true },
+        ]
+      const filterColumns = columns.filter(c => c.isFilter).map(c => c.index)
+      const trs = document.querySelectorAll(`#myTable tr:not(.header)`)
+      const filter = document.querySelector('#myInput3').value
+      const regex = new RegExp(escape(filter), 'i')
+      const isFoundInTds = td => regex.test(td.innerHTML)
+      const isFound = childrenArr => childrenArr.some(isFoundInTds)
+      const setTrStyleDisplay = ({ style, children }) => {
+        style.display = isFound([
+          ...filterColumns.map(c => children[c]) // <-- filter Columns
+        ]) ? '' : 'none'
+      }
+
+      trs.forEach(setTrStyleDisplay)
+      }
+
+    const filterCatalogueName = () => {
+     const columns = [
+        { name: 'id', index: 0, isFilter: false },
+        { name: 'type', index: 1, isFilter: false },
+        { name: 'catalogue_number', index: 2, isFilter: false },
+        { name: 'parent', index: 3, isFilter: false },
+        { name: 'parent', index: 4, isFilter: true },
+        ]
+      const filterColumns = columns.filter(c => c.isFilter).map(c => c.index)
+      const trs = document.querySelectorAll(`#myTable tr:not(.header)`)
+      const filter = document.querySelector('#myInput4').value
+      const regex = new RegExp(escape(filter), 'i')
+      const isFoundInTds = td => regex.test(td.innerHTML)
+      const isFound = childrenArr => childrenArr.some(isFoundInTds)
+      const setTrStyleDisplay = ({ style, children }) => {
+        style.display = isFound([
+          ...filterColumns.map(c => children[c]) // <-- filter Columns
+        ]) ? '' : 'none'
+      }
+
+      trs.forEach(setTrStyleDisplay)
+      }
+
+    const filterNativeAreaCounty = () => {
+     const columns = [
+        { name: 'id', index: 0, isFilter: false },
+        { name: 'type', index: 1, isFilter: false },
+        { name: 'catalogue_number', index: 2, isFilter: false },
+        { name: 'parent', index: 3, isFilter: false },
+        { name: 'catalogue_name', index: 4, isFilter: false },
+        { name: 'native_area_county', index: 5, isFilter: true },
+        ]
+      const filterColumns = columns.filter(c => c.isFilter).map(c => c.index)
+      const trs = document.querySelectorAll(`#myTable tr:not(.header)`)
+      const filter = document.querySelector('#myInput5').value
+      const regex = new RegExp(escape(filter), 'i')
+      const isFoundInTds = td => regex.test(td.innerHTML)
+      const isFound = childrenArr => childrenArr.some(isFoundInTds)
+      const setTrStyleDisplay = ({ style, children }) => {
+        style.display = isFound([
+          ...filterColumns.map(c => children[c]) // <-- filter Columns
+        ]) ? '' : 'none'
+      }
+
+      trs.forEach(setTrStyleDisplay)
+      }
+
+
+    const filterTypeOfMaterial = () => {
+     const columns = [
+        { name: 'id', index: 0, isFilter: false },
+        { name: 'type', index: 1, isFilter: false },
+        { name: 'catalogue_number', index: 2, isFilter: false },
+        { name: 'parent', index: 3, isFilter: false },
+        { name: 'catalogue_name', index: 4, isFilter: false },
+        { name: 'native_area_county', index: 5, isFilter: false },
+        { name: 'type_of_material', index: 6, isFilter: true },
+        ]
+      const filterColumns = columns.filter(c => c.isFilter).map(c => c.index)
+      const trs = document.querySelectorAll(`#myTable tr:not(.header)`)
+      const filter = document.querySelector('#myInput6').value
+      const regex = new RegExp(escape(filter), 'i')
+      const isFoundInTds = td => regex.test(td.innerHTML)
+      const isFound = childrenArr => childrenArr.some(isFoundInTds)
+      const setTrStyleDisplay = ({ style, children }) => {
+        style.display = isFound([
+          ...filterColumns.map(c => children[c]) // <-- filter Columns
+        ]) ? '' : 'none'
+      }
+
+      trs.forEach(setTrStyleDisplay)
+      }
+</script>
+</body>
+</html>

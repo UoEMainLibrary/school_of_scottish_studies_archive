@@ -2,10 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>SSA Home</title>
+    <title>SSSA Home</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/menu_style.css' %}" >
 </head>
 <body>
-<h4>This is home Page</h4>
+<div class="topnav">
+  <a href="{% url 'alst_table' %}">ALST Table</a>
+  <a href="#news">Empty</a>
+
+  <a href="#about" class="split">Empty</a>
+</div>
+
+
+
+<h1>School of Scottish Studies Archive</h1>
+http://localhost:8001/alst_table/<br>
+http://localhost:8001/datatb/alst/ <br>
+http://localhost:8001/admin/<br>
+http://localhost:8001/members/login_user/ <br>
+<br>
+
+    <a href="{% url 'alst_create_record' %}" style="color:black">+ ADD NEW</a>
+
 
 
 </body>
