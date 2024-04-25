@@ -32,6 +32,28 @@ def alst_table(request):
         "mndx_count": mndx_count,
     })
 
+def main_table(request):
+    alst_records = Alst.objects.all() #[:1000] #show only 5000 record in the table
+
+    #Set up Pagination
+    p = Paginator(Alst.objects.all(),  5000)
+    page = request.GET.get('page')
+    alst_records_paginator = p.get_page(page)
+
+
+    all_count = Alst.objects.count()
+    alst_count = Alst.objects.filter( Q(type__exact= "ALST")).count()
+    mndx_count = Alst.objects.filter(Q(type__exact="MNDX")).count()
+
+    return render(request, "main_table.html", {
+        "alst_records": alst_records,
+        "alst_records_paginator": alst_records_paginator,
+        "all_count": all_count,
+        "alst_count": alst_count,
+        "mndx_count": mndx_count,
+    })
+
+
 def alst_create_record(request):
     alst_record_form = AlstForm(request.POST or None)
     if alst_record_form.is_valid():
