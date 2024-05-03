@@ -9,6 +9,12 @@
 
 <a href="{% url 'alst_create_record' %}" style="color:black">+ ADD NEW</a>
 <br>
+
+<form method="GET" >
+    {{ form.as_p }}
+    <input type="submit" value="Submit">
+</form>
+
 <br>
 <p style="color: red; margin: 0px"> <strong>Count: {{ all_count }}</strong></p>
 <p style="color: red; margin: 0px"> <strong>ALST tapes count: {{ alst_count }}</strong></p>
@@ -25,7 +31,7 @@
         <th scope="col" style="font-size: 18px; vertical-align: middle;">type_of_material</th>
     </tr>
 
-    {% for alst_record in alst_records_paginator %}
+    {% for alst_record in records %}
     <tbody>
     <tr data-href = "{% url 'alst_details_record' alst_record.id %}">
         <th style="vertical-align: middle; border-top: 1px solid black;text-align: center; font-size:11px">{{ alst_record.id }}</th>

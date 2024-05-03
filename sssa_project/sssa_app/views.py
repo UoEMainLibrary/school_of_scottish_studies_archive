@@ -3,6 +3,7 @@ from .models import Alst, AlstTable
 from .forms import *
 from django.db.models import Q
 from django.core.paginator import Paginator
+from .forms import *
 
 
 
@@ -33,25 +34,13 @@ def alst_table(request):
     })
 
 def main_table(request):
-    alst_records = Alst.objects.all() #[:1000] #show only 5000 record in the table
+    catalogue_number = request.GET.get('catalogue_number')
+    records = Alst.objects.all()
+    if catalogue_number:
+        records = catalogue_number.filter(catalogue_number__icontains=catalogue_number)
+    context = {'form': RecordFilterForm(), 'records': Alst.objects.all() [:100]}
 
-    #Set up Pagination
-    p = Paginator(Alst.objects.all(),  5000)
-    page = request.GET.get('page')
-    alst_records_paginator = p.get_page(page)
-
-
-    all_count = Alst.objects.count()
-    alst_count = Alst.objects.filter( Q(type__exact= "ALST")).count()
-    mndx_count = Alst.objects.filter(Q(type__exact="MNDX")).count()
-
-    return render(request, "main_table.html", {
-        "alst_records": alst_records,
-        "alst_records_paginator": alst_records_paginator,
-        "all_count": all_count,
-        "alst_count": alst_count,
-        "mndx_count": mndx_count,
-    })
+    return render(request, "main_table.html", context)
 
 
 def alst_create_record(request):

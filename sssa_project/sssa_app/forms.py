@@ -1,6 +1,12 @@
 from .models import Alst
 from django import forms
 from crispy_forms.helper import FormHelper
+
+
+class RecordFilterForm(forms.Form):
+    catalogue_number = forms.CharField()
+
+
 class AlstForm(forms.ModelForm):
     class Meta:
         model = Alst
