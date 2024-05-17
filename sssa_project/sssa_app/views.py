@@ -1,21 +1,19 @@
 from django.shortcuts import render, redirect
 from .models import Alst, AlstTable
-from .forms import *
+#from .forms import *
 from django.db.models import Q
 from django.core.paginator import Paginator
+from .filters import AlstFilter
 
 
 
 # Create your views here.
 def index (request):
-    catalogue_number = request.GET.get('catalogue_number')
-    items = Alst.objects.all()
-    if catalogue_number:
-        items = items.filter(catalogue_number__icontains=catalogue_number)
+    alst_filter = AlstFilter(request.GET, queryset=Alst.objects.all())
 
     context = {
-        'form': AlstNameFilterForm(),
-        'alst': items
+        'form': alst_filter.form,
+        'alst': alst_filter.qs
     }
     return render(request, 'index.html', context)
 
