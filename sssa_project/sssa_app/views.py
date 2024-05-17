@@ -7,6 +7,18 @@ from django.core.paginator import Paginator
 
 
 # Create your views here.
+def index (request):
+    catalogue_number = request.GET.get('catalogue_number')
+    items = Alst.objects.all()
+    if catalogue_number:
+        items = items.filter(catalogue_number__icontains=catalogue_number)
+
+    context = {
+        'form': AlstNameFilterForm(),
+        'alst': items
+    }
+    return render(request, 'index.html', context)
+
 
 def home (request):
     return render(request, 'sssa_home.html')
