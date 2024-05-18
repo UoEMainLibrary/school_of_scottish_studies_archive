@@ -126,11 +126,6 @@ class AlstForm(forms.ModelForm):
 
         }
 
-
-
-
-
-
     def __init__(self, *args, **kwargs):
         super(AlstForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper()
