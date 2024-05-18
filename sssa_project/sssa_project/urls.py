@@ -28,7 +28,6 @@ urlpatterns = [
     path('members/', include('django.contrib.auth.urls')),
     path('members/', include('members.urls')),
     path('', include('django_dyn_dt.urls')),
-    path('alst_table/', alst_table, name='alst_table'),
     path('index/', index, name='index'),
     url('alst_create_record/', alst_create_record, name='alst_create_record'),
     url(r'^alst_details_record/(\d+)/', alst_details_record, name='alst_details_record'),
