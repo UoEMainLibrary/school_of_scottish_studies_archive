@@ -1,42 +1,32 @@
 from django.shortcuts import render, redirect
 from .models import Alst, AlstTable
 from .forms import *
-from django.db.models import Q
-from django.core.paginator import Paginator
+from .filters import AlstFilter
+
 
 
 
 # Create your views here.
+def index (request):
+
+    alst_filter = AlstFilter(request.GET, queryset=Alst.objects.all())
+    context = {
+        'form': alst_filter.form,
+        'alst_records': alst_filter.qs,
+
+    }
+    return render(request, 'index.html', context)
+
 
 def home (request):
     return render(request, 'sssa_home.html')
 
-def alst_table(request):
-    alst_records = Alst.objects.all() #[:1000] #show only 5000 record in the table
-
-    #Set up Pagination
-    p = Paginator(Alst.objects.all(),  5000)
-    page = request.GET.get('page')
-    alst_records_paginator = p.get_page(page)
-
-
-    all_count = Alst.objects.count()
-    alst_count = Alst.objects.filter( Q(type__exact= "ALST")).count()
-    mndx_count = Alst.objects.filter(Q(type__exact="MNDX")).count()
-
-    return render(request, "alst_table.html", {
-        "alst_records": alst_records,
-        "alst_records_paginator": alst_records_paginator,
-        "all_count": all_count,
-        "alst_count": alst_count,
-        "mndx_count": mndx_count,
-    })
 
 def alst_create_record(request):
     alst_record_form = AlstForm(request.POST or None)
     if alst_record_form.is_valid():
         alst_record_form.save()
-        return redirect('alst_table')
+        return redirect('sssa_home')
 
     return render(request, 'forms/alst_record_form.html', {'alst_record_form': alst_record_form})
 
