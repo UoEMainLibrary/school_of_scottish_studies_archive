@@ -8,11 +8,12 @@ from .filters import AlstFilter
 
 # Create your views here.
 def index (request):
-    alst_filter = AlstFilter(request.GET, queryset=Alst.objects.all())
 
+    alst_filter = AlstFilter(request.GET, queryset=Alst.objects.all())
     context = {
         'form': alst_filter.form,
-        'alst': alst_filter.qs
+        'alst_records': alst_filter.qs,
+
     }
     return render(request, 'index.html', context)
 

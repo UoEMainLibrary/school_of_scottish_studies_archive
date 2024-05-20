@@ -27,7 +27,6 @@ urlpatterns = [
     url(r'^$', home, name='sssa_home'),
     path('members/', include('django.contrib.auth.urls')),
     path('members/', include('members.urls')),
-    path('', include('django_dyn_dt.urls')),
     path('index/', index, name='index'),
     url('alst_create_record/', alst_create_record, name='alst_create_record'),
     url(r'^alst_details_record/(\d+)/', alst_details_record, name='alst_details_record'),

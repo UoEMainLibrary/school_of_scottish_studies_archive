@@ -20,12 +20,12 @@
     </tr>
     </thead>
     <tbody>
-    {% for item in alst %}
+    {% for alst_record in alst_records %}
     <tr>
-        <td style="vertical-align: middle; text-align: center; font-size:14px ">{{item.id}}</td>
-        <td style="vertical-align: middle; text-align: center; font-size:14px ">{{item.catalogue_number}}</td>
-        <td style="vertical-align: middle; text-align: center; font-size:14px ">{{item.type}}</td>
-        <td style="vertical-align: middle; text-align: center; font-size:14px ">{{item.type_of_material}}</td>
+        <td style="vertical-align: middle; text-align: center; font-size:14px ">{{alst_record.id}}</td>
+        <td style="vertical-align: middle; text-align: center; font-size:14px ">{{alst_record.catalogue_number}}</td>
+        <td style="vertical-align: middle; text-align: center; font-size:14px ">{{alst_record.type}}</td>
+        <td style="vertical-align: middle; text-align: center; font-size:14px ">{{alst_record.type_of_material}}</td>
     </tr>
     {% endfor %}
     </tbody>
