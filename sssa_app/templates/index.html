@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static '/css/index_table_style.css' %}" >
+</head>
+<body>
+    <form method="GET" action="{% url 'index' %}">
+        {{ form.as_p }}
+        <input type="submit" value="Submit" class="btn btn-primary" />
+    </form>
+    <br>
+
+<table class="table">
+    <thead>
+
+    </thead>
+    <tbody>
+    {% for alst_record in alst_records %}
+    <tr>
+        <div>
+            <td>
+                <p style="display: inline; font-size: 13px; color: #48506C">ID Nr: </p><p style="display: inline">{{alst_record.id}}</p> <br>
+                <p style="display: inline; font-size: 13px; color: #48506C">Catalogue Nr: </p><p style="display: inline">{{alst_record.catalogue_number}}</p> <br>
+            </td>
+
+            <td style="vertical-align: middle; text-align: center; font-size:14px ">{{alst_record.type}}</td>
+            <td style="vertical-align: middle; text-align: left; font-size:14px ">{{alst_record.type_of_material}}</td>
+            <td><input type="submit" value="View" class="btn btn-primary" /></td>
+        </div>
+    </tr>
+    {% endfor %}
+
+    </tbody>
+
+
+</table>
+
+
+</body>
+</html>
