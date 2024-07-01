@@ -14,11 +14,8 @@
     <br>
 
 <table class="table">
-    <thead>
-
-    </thead>
     <tbody>
-    {% for alst_record in alst_records %}
+    {% for alst_record in alst_records|slice:":100" %}
     <tr>
         <div>
             <td>
