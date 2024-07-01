@@ -15,15 +15,19 @@
 
 <table class="table">
     <tbody>
-    {% for alst_record in alst_records|slice:":100" %}
+    {% for alst_record in alst_records|slice:":1000" %}
     <tr>
         <div>
             <td>
                 <p style="display: inline; font-size: 13px; color: #48506C">ID Nr: </p><p style="display: inline">{{alst_record.id}}</p> <br>
+                <p style="display: inline; font-size: 13px; color: #48506C">Type: </p><p style="display: inline">{{alst_record.type}}</p> <br>
+                <p style="display: inline; font-size: 13px; color: #48506C">Catalogue Name: </p><p style="display: inline">{{alst_record.catalogue_name}}</p> <br>
                 <p style="display: inline; font-size: 13px; color: #48506C">Catalogue Nr: </p><p style="display: inline">{{alst_record.catalogue_number}}</p> <br>
+                <p style="display: inline; font-size: 13px; color: #48506C">Parent: </p><p style="display: inline">{{alst_record.parent}}</p> <br>
+                <p style="display: inline; font-size: 13px; color: #48506C">Disc Matrix Nr.: </p><p style="display: inline">{{alst_record.disc_matrix_number}}</p> <br>
             </td>
 
-            <td style="vertical-align: middle; text-align: center; font-size:14px ">{{alst_record.type}}</td>
+            <td style="vertical-align: middle; text-align: center; font-size:14px ">{{alst_record.title}}</td>
             <td style="vertical-align: middle; text-align: left; font-size:14px ">{{alst_record.type_of_material}}</td>
             <td>
                 <td width="25%" style="color: #00f7ff; text-decoration: none;"><a href="{% url 'alst_details_record' alst_record.id %}">
