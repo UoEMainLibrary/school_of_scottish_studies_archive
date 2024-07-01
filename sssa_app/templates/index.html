@@ -25,7 +25,11 @@
 
             <td style="vertical-align: middle; text-align: center; font-size:14px ">{{alst_record.type}}</td>
             <td style="vertical-align: middle; text-align: left; font-size:14px ">{{alst_record.type_of_material}}</td>
-            <td><input type="submit" value="View" class="btn btn-primary" /></td>
+            <td>
+                <td width="25%" style="color: #00f7ff; text-decoration: none;"><a href="{% url 'alst_details_record' alst_record.id %}">
+                        &#8594;{{ alst_record.catalogue_number }}</a>
+                    </td>
+            </td>
         </div>
     </tr>
     {% endfor %}
