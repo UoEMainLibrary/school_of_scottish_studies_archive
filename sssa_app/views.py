@@ -34,14 +34,14 @@ def alst_create_record(request):
 
 def alst_details_record(request, id):
     alst_all_records=Alst.objects.all()
-    #related_mndx_records = Alst.objects.filter(
-        #Q(type__name__exact="MNDX")
-    #)
+
+    
     alst_record = Alst.objects.get(id=id)
+    related_records = Alst.objects.filter(parent = alst_record.catalogue_number).exclude(id=id)
     return render(request, 'forms/alst_details.html', {
         'alst_record': alst_record,
         'alst_all_records': alst_all_records,
-        #'related_mndx_records': related_mndx_records,
+        'related_records': related_records,
 
     })
 

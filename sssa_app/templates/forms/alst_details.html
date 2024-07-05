@@ -21,6 +21,8 @@
                             <br>
                             <span style="color: gray; font-size:15px">Catologue Name:</span> <span style="font-size: 20px">{{ alst_record.catalogue_name  }}</span><br>
                             <br>
+                            <span style="color: gray; font-size:15px">Parent:</span> <span style="font-size: 20px">{{ alst_record.parent  }}</span><br>
+                            <br>
                             <span style="color: gray; font-size:15px">Type:</span> <span style="font-size: 20px">{{ alst_record.type  }}</span><br>
                             <br>
                             <span style="color: gray; font-size:15px">ID Number:</span> <span style="font-size: 20px">{{ alst_record.id  }}</span><br>
@@ -73,16 +75,14 @@
 
             <td style="width:10%">
                 <table >
-                    {% for record in alst_all_records|slice:":30" %}
+                    {% for record in related_records|slice:":30" %}
 
-                            <tr>
-                                <td>
-                                     {{record.catalogue_number}}
-                                </td>
-                                <td>
-                                    {{record.parent}}
-                                </td>
-                            </tr>
+                    <tr>
+                        <td>
+                            {{record.catalogue_number}}
+                        </td>
+                    </tr>
+
                     {% endfor %}
                 </table>
             </td>
