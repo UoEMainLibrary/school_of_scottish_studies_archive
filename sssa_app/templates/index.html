@@ -8,27 +8,106 @@
 </head>
 <body>
     <form method="GET" action="{% url 'index' %}">
-        {{ form.as_p }}
+
+                    <table style="border-collapse: collapse;">
+                        <tr>
+                            <td>
+                                ID(exact):
+                            </td>
+                            <td>
+                                {{ form.id_exact }}
+                            </td>
+                            <td>
+                                ID(contains):
+                            </td>
+                            <td>
+                                {{ form.id_contains }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Type(exact):
+                            </td>
+                            <td>
+                                {{ form.type_exact }}
+                            </td>
+                            <td>
+                                Type(contains):
+                            </td>
+                            <td>
+                                {{ form.type_contains }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Catalogue Nr(exact):
+                            </td>
+                            <td>
+                                {{ form.catalogue_number_exact }}
+                            </td>
+                            <td>
+                                Catalogue Nr(contains):
+                            </td>
+                            <td>
+                                {{ form.catalogue_number_contains }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Parent (exact):
+                            </td>
+                            <td>
+                                {{ form.parent_exact }}
+                            </td>
+                            <td>
+                                Parent (contains):
+                            </td>
+                            <td>
+                                {{ form.parent_contains }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Type of Material (exact):
+                            </td>
+                            <td>
+                                {{ form.type_of_material_exact }}
+                            </td>
+                            <td>
+                                Type of Material (contains):
+                            </td>
+                            <td>
+                                {{ form.type_of_material_contains }}
+                            </td>
+                        </tr>
+                    </table>
+
         <input type="submit" value="Submit" class="btn btn-primary" />
     </form>
     <br>
 
 <table class="table">
-    <thead>
-
-    </thead>
     <tbody>
-    {% for alst_record in alst_records %}
+    {% for alst_record in alst_records|slice:":2000" %}
     <tr>
         <div>
             <td>
                 <p style="display: inline; font-size: 13px; color: #48506C">ID Nr: </p><p style="display: inline">{{alst_record.id}}</p> <br>
+                <p style="display: inline; font-size: 13px; color: #48506C">Type: </p><p style="display: inline">{{alst_record.type}}</p> <br>
+                <p style="display: inline; font-size: 13px; color: #48506C">Catalogue Name: </p><p style="display: inline">{{alst_record.catalogue_name}}</p> <br>
                 <p style="display: inline; font-size: 13px; color: #48506C">Catalogue Nr: </p><p style="display: inline">{{alst_record.catalogue_number}}</p> <br>
+                <p style="display: inline; font-size: 13px; color: #48506C">Parent: </p><p style="display: inline">{{alst_record.parent}}</p> <br>
+                <p style="display: inline; font-size: 13px; color: #48506C">Disc Matrix Nr.: </p><p style="display: inline">{{alst_record.disc_matrix_number}}</p> <br>
             </td>
 
-            <td style="vertical-align: middle; text-align: center; font-size:14px ">{{alst_record.type}}</td>
+            <td style="vertical-align: middle; text-align: center; font-size:14px ">{{alst_record.title}}</td>
             <td style="vertical-align: middle; text-align: left; font-size:14px ">{{alst_record.type_of_material}}</td>
-            <td><input type="submit" value="View" class="btn btn-primary" /></td>
+            <td style="vertical-align: middle; text-align: left; font-size:14px ">{{alst_record.catalogue_number_copy}}</td>
+            <td>
+                <td width="25%" style="color: #00f7ff; text-decoration: none;"><a href="{% url 'alst_details_record' alst_record.id %}">
+                        &#8594;{{ alst_record.catalogue_number }}</a>
+                    </td>
+            </td>
         </div>
     </tr>
     {% endfor %}

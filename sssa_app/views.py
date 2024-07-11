@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .models import Alst, AlstTable
 from .forms import *
 from .filters import AlstFilter
+from django.db.models import Q
 
 
 
@@ -32,8 +33,15 @@ def alst_create_record(request):
 
 
 def alst_details_record(request, id):
+    alst_all_records=Alst.objects.all()
     alst_record = Alst.objects.get(id=id)
-    return render(request, 'forms/alst_details.html', {'alst_record': alst_record})
+    related_records = Alst.objects.filter(parent = alst_record.catalogue_number).exclude(id=id)
+    return render(request, 'forms/alst_details.html', {
+        'alst_record': alst_record,
+        'alst_all_records': alst_all_records,
+        'related_records': related_records,
+
+    })
 
 
 
@@ -43,7 +51,7 @@ def alst_update_record(request, id):
 
     if alst_record_form.is_valid():
         alst_record_form.save()
-        return redirect('alst_table')
+        return redirect('index')
 
     return render(request, 'forms/alst_record_form.html', {'alst_record': alst_record, 'alst_record_form': alst_record_form})
 
