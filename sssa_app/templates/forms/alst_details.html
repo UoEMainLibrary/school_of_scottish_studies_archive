@@ -9,14 +9,14 @@
 <body>
 <br>
 <form method="POST">
-    {{ request.path }}
+
     {% csrf_token %}
     <table>
         <tr>
             <td style="width: 50%">
                 <table style = "align-items: center; display: flex; justify-content: center;">
                     <tr>
-                        <td colspan="3" style="text-align: center; padding:20px">
+                        <td colspan="3" style="text-align: left; padding:20px">
                             <span style="font-size: 25px;"><strong>ALST Record for Catalogue Number {{ alst_record.catalogue_number }}</strong></span><br>
                             <br>
                             <span style="color: gray; font-size:15px">Catologue Name:</span> <span style="font-size: 20px">{{ alst_record.catalogue_name  }}</span><br>
@@ -75,12 +75,11 @@
 
             <td style="width:10%">
                 <table >
-                    {% for record in related_records|slice:":30" %}
+                    {% for record in related_records %}
 
                     <tr>
-                        <td>
-                            {{record.catalogue_number}}
-                        </td>
+                        <td><a href="{% url 'alst_details_record' record.id %}" style="text-decoration: none;" target="_blank" >{{record.catalogue_number}}</a></td>
+                        <td> {{record.type_of_material}} </td>
                     </tr>
 
                     {% endfor %}

@@ -16,6 +16,7 @@ class AlstForm(forms.ModelForm):
         fields = [
             'catalogue_number',
             'catalogue_name',
+            'parent',
             'fieldworker',
             'date',
             'informant_artist',
@@ -38,6 +39,14 @@ class AlstForm(forms.ModelForm):
                     "id": "key_id",
                     "required": False,
                     "placeholder": "Catalogue Number",
+                    "style": "text-align: center; color:black; font-size: 25px",
+                },
+            ),
+            "parent": forms.TextInput(
+                attrs={
+                    "id": "key_id",
+                    "required": False,
+                    "placeholder": "Parent",
                     "style": "text-align: center; color:black; font-size: 25px",
                 },
             ),

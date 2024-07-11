@@ -8,14 +8,87 @@
 </head>
 <body>
     <form method="GET" action="{% url 'index' %}">
-        {{ form.as_p }}
+
+                    <table style="border-collapse: collapse;">
+                        <tr>
+                            <td>
+                                ID(exact):
+                            </td>
+                            <td>
+                                {{ form.id_exact }}
+                            </td>
+                            <td>
+                                ID(contains):
+                            </td>
+                            <td>
+                                {{ form.id_contains }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Type(exact):
+                            </td>
+                            <td>
+                                {{ form.type_exact }}
+                            </td>
+                            <td>
+                                Type(contains):
+                            </td>
+                            <td>
+                                {{ form.type_contains }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Catalogue Nr(exact):
+                            </td>
+                            <td>
+                                {{ form.catalogue_number_exact }}
+                            </td>
+                            <td>
+                                Catalogue Nr(contains):
+                            </td>
+                            <td>
+                                {{ form.catalogue_number_contains }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Parent (exact):
+                            </td>
+                            <td>
+                                {{ form.parent_exact }}
+                            </td>
+                            <td>
+                                Parent (contains):
+                            </td>
+                            <td>
+                                {{ form.parent_contains }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Type of Material (exact):
+                            </td>
+                            <td>
+                                {{ form.type_of_material_exact }}
+                            </td>
+                            <td>
+                                Type of Material (contains):
+                            </td>
+                            <td>
+                                {{ form.type_of_material_contains }}
+                            </td>
+                        </tr>
+                    </table>
+
         <input type="submit" value="Submit" class="btn btn-primary" />
     </form>
     <br>
 
 <table class="table">
     <tbody>
-    {% for alst_record in alst_records|slice:":1000" %}
+    {% for alst_record in alst_records|slice:":2000" %}
     <tr>
         <div>
             <td>

@@ -34,8 +34,6 @@ def alst_create_record(request):
 
 def alst_details_record(request, id):
     alst_all_records=Alst.objects.all()
-
-    
     alst_record = Alst.objects.get(id=id)
     related_records = Alst.objects.filter(parent = alst_record.catalogue_number).exclude(id=id)
     return render(request, 'forms/alst_details.html', {
@@ -53,7 +51,7 @@ def alst_update_record(request, id):
 
     if alst_record_form.is_valid():
         alst_record_form.save()
-        return redirect('alst_table')
+        return redirect('index')
 
     return render(request, 'forms/alst_record_form.html', {'alst_record': alst_record, 'alst_record_form': alst_record_form})
 
