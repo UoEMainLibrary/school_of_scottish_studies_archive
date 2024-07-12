@@ -2,14 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Index</title>
+    <title>Main Archive</title>
     {% load static %}
     <link rel="stylesheet" href="{% static '/css/index_table_style.css' %}" >
+    <link rel="stylesheet" href="{% static 'css/menu_style.css' %}" >
+    <link rel="stylesheet" href="{% static 'css/buttons.css' %}" >
+
 </head>
 <body>
+<div class="topnav">
+    <a href="{% url 'sssa_home' %}">Home</a>
+  <a href="#news">Empty</a>
+  <a href="#news">Empty</a>
+  <a href="#news">Empty</a>
+  <a href="#about" class="split">Empty</a>
+</div>
     <form method="GET" action="{% url 'index' %}">
 
+
                     <table style="border-collapse: collapse;">
+                        <h2>Search:</h2>
                         <tr>
                             <td>
                                 ID(exact):
@@ -81,8 +93,14 @@
                             </td>
                         </tr>
                     </table>
-
-        <input type="submit" value="Submit" class="btn btn-primary" />
+        <div style="text-align: center">
+            <button class="button button1">
+                <input type="submit" value="Submit" class="btn btn-primary" />
+            </button>
+            <button class="button button1">
+                <input type="reset" value="Reset" class="btn btn-primary">
+            </button>
+        </div>
     </form>
     <br>
 
