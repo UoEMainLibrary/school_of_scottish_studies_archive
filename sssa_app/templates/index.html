@@ -7,100 +7,101 @@
     <link rel="stylesheet" href="{% static '/css/index_table_style.css' %}" >
     <link rel="stylesheet" href="{% static 'css/menu_style.css' %}" >
     <link rel="stylesheet" href="{% static 'css/buttons.css' %}" >
-
 </head>
 <body>
 <div class="topnav">
-    <a href="{% url 'sssa_home' %}">Home</a>
-  <a href="#news">Empty</a>
-  <a href="#news">Empty</a>
-  <a href="#news">Empty</a>
-  <a href="#about" class="split">Empty</a>
+    <a href="{% url 'sssa_home' %}"><--Home</a>
+    <a href="#about" class="split">Empty</a>
 </div>
+<br>
     <form method="GET" action="{% url 'index' %}">
-
-
-                    <table style="border-collapse: collapse;">
-                        <h2>Search:</h2>
-                        <tr>
-                            <td>
-                                ID(exact):
-                            </td>
-                            <td>
-                                {{ form.id_exact }}
-                            </td>
-                            <td>
-                                ID(contains):
-                            </td>
-                            <td>
-                                {{ form.id_contains }}
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Type(exact):
-                            </td>
-                            <td>
-                                {{ form.type_exact }}
-                            </td>
-                            <td>
-                                Type(contains):
-                            </td>
-                            <td>
-                                {{ form.type_contains }}
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Catalogue Nr(exact):
-                            </td>
-                            <td>
-                                {{ form.catalogue_number_exact }}
-                            </td>
-                            <td>
-                                Catalogue Nr(contains):
-                            </td>
-                            <td>
-                                {{ form.catalogue_number_contains }}
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Parent (exact):
-                            </td>
-                            <td>
-                                {{ form.parent_exact }}
-                            </td>
-                            <td>
-                                Parent (contains):
-                            </td>
-                            <td>
-                                {{ form.parent_contains }}
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Type of Material (exact):
-                            </td>
-                            <td>
-                                {{ form.type_of_material_exact }}
-                            </td>
-                            <td>
-                                Type of Material (contains):
-                            </td>
-                            <td>
-                                {{ form.type_of_material_contains }}
-                            </td>
-                        </tr>
-                    </table>
-        <div style="text-align: center">
-            <button class="button button1">
-                <input type="submit" value="Submit" class="btn btn-primary" />
-            </button>
-            <button class="button button1">
-                <input type="reset" value="Reset" class="btn btn-primary">
-            </button>
-        </div>
+        <table style="border-collapse: collapse; border: 1px solid black;">
+            <tr>
+                <td colspan="4" style="text-align: center; font-size:20px">
+                   &#x1F50D; SEARCH:
+                </td>
+            </tr>
+            <tr style="background-color:#95D1D7">
+                <td>
+                    ID(exact):
+                </td>
+                <td>
+                    {{ form.id_exact }}
+                </td>
+                <td>
+                    ID(contains):
+                </td>
+                <td>
+                    {{ form.id_contains }}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Type(exact):
+                </td>
+                <td>
+                    {{ form.type_exact }}
+                </td>
+                <td>
+                    Type(contains):
+                </td>
+                <td>
+                    {{ form.type_contains }}
+                </td>
+            </tr>
+            <tr style="background-color:#95D1D7">
+                <td>
+                    Catalogue Nr(exact):
+                </td>
+                <td>
+                    {{ form.catalogue_number_exact }}
+                </td>
+                <td>
+                    Catalogue Nr(contains):
+                </td>
+                <td>
+                    {{ form.catalogue_number_contains }}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Parent (exact):
+                </td>
+                <td>
+                    {{ form.parent_exact }}
+                </td>
+                <td>
+                    Parent (contains):
+                </td>
+                <td>
+                    {{ form.parent_contains }}
+                </td>
+            </tr>
+            <tr style="background-color:#95D1D7">
+                <td>
+                    Type of Material (exact):
+                </td>
+                <td>
+                    {{ form.type_of_material_exact }}
+                </td>
+                <td>
+                    Type of Material (contains):
+                </td>
+                <td>
+                    {{ form.type_of_material_contains }}
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" style="text-align: center">
+                    <button class="button button4" style="border: 1px solid black;">
+                        <input type="submit" value="&#x1F50D; SEARCH" class="btn btn-primary" />
+                    </button>
+                    <button class="button button4" style="border: 1px solid black;">
+                        <input type="reset" value="RESET" class="btn btn-primary">
+                    </button>
+                </td>
+            </tr>
+        </table>
     </form>
     <br>
 
@@ -122,9 +123,9 @@
             <td style="vertical-align: middle; text-align: left; font-size:14px ">{{alst_record.type_of_material}}</td>
             <td style="vertical-align: middle; text-align: left; font-size:14px ">{{alst_record.catalogue_number_copy}}</td>
             <td>
-                <td width="25%" style="color: #00f7ff; text-decoration: none;"><a href="{% url 'alst_details_record' alst_record.id %}">
-                        &#8594;{{ alst_record.catalogue_number }}</a>
-                    </td>
+            <td width="25%" style="color: #00f7ff; text-decoration: none;"><a href="{% url 'alst_details_record' alst_record.id %}">
+            &#8594;{{ alst_record.catalogue_number }}</a>
+        </td>
             </td>
         </div>
     </tr>

@@ -5,11 +5,9 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/buttons.css' %}" >
 </head>
-
 <body>
 <br>
 <form method="POST">
-
     {% csrf_token %}
     <table>
         <tr>
@@ -71,23 +69,18 @@
                     </button>
                 </span>
             </td>
-
-
             <td style="width:10%">
                 <table >
                     {% for record in related_records %}
-
                     <tr>
                         <td><a href="{% url 'alst_details_record' record.id %}" style="text-decoration: none;" target="_blank" >{{record.catalogue_number}}</a></td>
                         <td> {{record.type_of_material}} </td>
                     </tr>
-
                     {% endfor %}
                 </table>
             </td>
         </tr>
     </table>
 </form>
-
 </body>
 </html>
