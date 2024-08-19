@@ -29,7 +29,7 @@ class Alst(models.Model):
     old_number_rl = models.TextField(blank=True, null=True)
     data_record_input = models.TextField(blank=True, null=True)
     data_last_amended = models.TextField(blank=True, null=True)
-    
+
 
     class Meta:
         managed = False
@@ -37,6 +37,8 @@ class Alst(models.Model):
 
     def __str__(self):
         return self.type
+
+
 
 
 

@@ -3,18 +3,16 @@ from .models import Alst, AlstTable
 from .forms import *
 from .filters import AlstFilter
 from django.db.models import Q
-
-
+from django.db.models import F
+from .models import *
 
 
 # Create your views here.
 def index (request):
-
     alst_filter = AlstFilter(request.GET, queryset=Alst.objects.all())
     context = {
         'form': alst_filter.form,
         'alst_records': alst_filter.qs,
-
     }
     return render(request, 'index.html', context)
 
