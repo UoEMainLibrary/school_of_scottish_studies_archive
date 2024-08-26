@@ -39,6 +39,13 @@
                             <br>
                             <span style="color: gray; font-size:15px">Type of Material:</span> <span style="font-size: 20px">{{ alst_record.type_of_material }} </span> <br>
                             <br>
+                            <span style="color: gray; font-size:15px">Type of Material split:</span>
+                            <span style="font-size: 20px">
+                                {% for word in alst_record.extract_word_matereial %}
+                                <a href="{{ word }}" target="_blank">{{ word }}</a>
+                                {% endfor %}
+                            </span> <br>
+                            <br>
                             <span style="color: gray; font-size:15px">Summary:</span> <span style="font-size: 20px">{{ alst_record.summary }} </span> <br>
                             <br>
                             <span style="color: gray; font-size:15px">Disc Matrix Number:</span> <span style="font-size: 20px">{{ alst_record.disc_matrix_number }} </span> <br>
