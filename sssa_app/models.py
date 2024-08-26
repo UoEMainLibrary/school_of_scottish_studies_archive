@@ -38,6 +38,21 @@ class Alst(models.Model):
     def __str__(self):
         return self.type
 
+    @property
+    def type_of_material_split(self):
+        type_of_material_str = str(self.type_of_material).replace(",", " ").split()
+        linked_words = []
+        for word in type_of_material_str:
+            # Format each word as an anchor tag with the word itself as the link text and the href
+            linked_word = f'<a href="{word}">{word}</a>'
+            linked_words.append(linked_word)
+        linked_string = ' '.join(linked_words)
+
+        return linked_string
+
+    def extract_word_matereial(self):
+        word = self.type_of_material.replace(", ", "  ").split()
+        return word
 
 
 
@@ -45,3 +60,4 @@ class Alst(models.Model):
 class AlstTable(tables.Table):
     class Meta:
         model: Alst
+

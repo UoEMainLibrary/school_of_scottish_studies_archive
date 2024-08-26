@@ -5,14 +5,18 @@ from .filters import AlstFilter
 from django.db.models import Q
 from django.db.models import F
 from .models import *
+from django.shortcuts import render, get_object_or_404
 
 
 # Create your views here.
 def index (request):
+
     alst_filter = AlstFilter(request.GET, queryset=Alst.objects.all())
+
     context = {
         'form': alst_filter.form,
         'alst_records': alst_filter.qs,
+        'type_of_material_split': Alst.type_of_material_split,
     }
     return render(request, 'index.html', context)
 
@@ -31,6 +35,7 @@ def alst_create_record(request):
 
 
 def alst_details_record(request, id):
+    urls = Alst.extract_word_matereial
     alst_all_records=Alst.objects.all()
     alst_record = Alst.objects.get(id=id)
     related_records = Alst.objects.filter(parent = alst_record.catalogue_number).exclude(id=id)
@@ -38,7 +43,7 @@ def alst_details_record(request, id):
         'alst_record': alst_record,
         'alst_all_records': alst_all_records,
         'related_records': related_records,
-
+        'urls': urls,
     })
 
 
