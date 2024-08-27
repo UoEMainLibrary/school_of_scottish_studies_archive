@@ -123,7 +123,7 @@
             <td style="vertical-align: middle; text-align: center; font-size:14px ">{{alst_record.title}}</td>
             <td style="vertical-align: middle; text-align: left; font-size:14px ">
                 {% for word in alst_record.extract_word_matereial %}
-                <a href="{{ word }}" target="_blank">{{ word }}</a>
+                <a href="{% url 'search_type_material' %}" target="_blank">{{ word }}</a>
                 {% endfor %}
             </td>
             <td style="vertical-align: middle; text-align: left; font-size:14px ">{{alst_record.catalogue_number_copy}}</td>

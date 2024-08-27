@@ -66,3 +66,7 @@ def alst_delete_record(request, id):
         return redirect('alst_table')
 
     return render(request, 'forms/record_delete_confirmation.html', {'alst_record': alst_record})
+
+def search_type_material (request, query):
+    results = Alst.objects.filter(type_of_material__icontains=query)
+    return render(request, 'search_type_material.html', {'results': results, 'query': query})
