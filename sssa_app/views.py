@@ -16,7 +16,7 @@ def index (request):
     context = {
         'form': alst_filter.form,
         'alst_records': alst_filter.qs,
-        'type_of_material_split': Alst.type_of_material_split,
+
     }
     return render(request, 'index.html', context)
 
