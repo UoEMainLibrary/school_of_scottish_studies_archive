@@ -12,10 +12,16 @@ from django.shortcuts import render, get_object_or_404
 def index (request):
 
     alst_filter = AlstFilter(request.GET, queryset=Alst.objects.all())
+    # Get the filtered queryset
+    alst_records = alst_filter.qs
+
+    # Count how many records are in the filtered queryset
+    record_count = alst_records.count()
 
     context = {
         'form': alst_filter.form,
         'alst_records': alst_filter.qs,
+        'record_count': record_count,  # Count of the filtered records
 
     }
     return render(request, 'index.html', context)
