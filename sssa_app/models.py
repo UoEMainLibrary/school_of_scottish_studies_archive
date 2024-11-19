@@ -29,6 +29,7 @@ class Alst(models.Model):
     old_number_rl = models.TextField(blank=True, null=True)
     data_record_input = models.TextField(blank=True, null=True)
     data_last_amended = models.TextField(blank=True, null=True)
+    restricted = models.TextField(blank=True, null=True)
 
 
     class Meta:
