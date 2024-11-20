@@ -8,15 +8,27 @@
 </head>
 <body>
 <div class="topnav">
+    {% if user.is_authenticated %}
     <a href="{% url 'index' %}">Main Archive</a>
-  <a href="#news">Empty</a>
-  <a href="#news">Empty</a>
-  <a href="#news">Empty</a>
-  <a href="#about" class="split">Empty</a>
+    {% endif %}
+    <a href="#news">Empty</a>
+    <a href="#news">Empty</a>
+    <a href="#news">Empty</a>
+    {% if user.is_authenticated %}
+    <a href="{% url 'logout' %}" class="split">Logout</a>
+    {% else %}
+    <a href="{% url 'register' %}" class="split">Register</a>
+    <a href="{% url 'login' %}" class="split">Login</a>
+    {% endif %}
 </div>
 
 
 <h1>School of Scottish Studies Archive</h1>
+{% if user.is_authenticated %}
+<h2> Welcome back {{ user }}.</h2>
+{% else %}
+    Do something
+    {% endif %}
 http://localhost:8001/admin/<br>
 http://localhost:8001/members/login_user/ <br>
 <br>
