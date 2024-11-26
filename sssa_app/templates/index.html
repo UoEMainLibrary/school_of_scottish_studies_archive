@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{% static 'css/menu_style.css' %}" >
     <link rel="stylesheet" href="{% static 'css/buttons.css' %}" >
     <link rel="stylesheet" href="{% static 'css/search_form_style.css' %}" >
+    <link rel="stylesheet" href="{% static 'css/table_style_1.css' %}" >
 </head>
 <body>
 <div class="topnav">
@@ -27,7 +28,7 @@
     <tr>
         <td style="width: 40%">
             <div id="contact-form"><div>
-                <h1>Search Archives:</h1>
+                <h1 style="color: white">Search Archives:</h1>
             </div>
                 <br>
                 <form method="GET" action="{% url 'index' %}">
@@ -92,14 +93,35 @@
                 </form>
             </div>
         </td>
-        <td>
+        <td style="vertical-align: top;">
 
+            <div >
+                <table class="table1">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Type</th>
+                        <th>Catalogue Name</th>
+                        <th>Catalogue Number</th>
+                        <th>Summary</th>
+                        <th>Comments</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for alst_record in alst_records|slice:":12" %}
+                    <tr>
+                        <td>{{alst_record.id}}</td>
+                        <td>{{alst_record.type}}</td>
+                        <td>{{alst_record.catalogue_name}}</td>
+                        <td>{{alst_record.catalogue_number}}</td>
+                        <td>{{alst_record.summary}}</td>
+                        <td>{{alst_record.commends}}</td>
+                      </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
 
-
-
-
-
-            asdfasdfsad
         </td>
     </tr>
 </table>
