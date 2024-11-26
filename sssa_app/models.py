@@ -29,26 +29,13 @@ class Alst(models.Model):
     old_number_rl = models.TextField(blank=True, null=True)
     data_record_input = models.TextField(blank=True, null=True)
     data_last_amended = models.TextField(blank=True, null=True)
+    restricted = models.TextField(blank=True, null=True)
 
 
     class Meta:
         managed = False
         db_table = "sssa_jason_db"
 
-    def __str__(self):
-        return self.type
-
-    @property
-    def type_of_material_split(self):
-        type_of_material_str = str(self.type_of_material).replace(",", " ").split()
-        linked_words = []
-        for word in type_of_material_str:
-            # Format each word as an anchor tag with the word itself as the link text and the href
-            linked_word = f'<a href="{word}">{word}</a>'
-            linked_words.append(linked_word)
-        linked_string = ' '.join(linked_words)
-
-        return linked_string
 
     def extract_word_matereial(self):
         word = self.type_of_material.replace(", ", "  ").split()

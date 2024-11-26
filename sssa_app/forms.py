@@ -32,6 +32,7 @@ class AlstForm(forms.ModelForm):
             'old_number_rl',
             'data_record_input',
             'data_last_amended',
+            'restricted',
             ]
         widgets = {
             "catalogue_number": forms.TextInput(
@@ -131,6 +132,14 @@ class AlstForm(forms.ModelForm):
                 },
             ),
             "tale_reference": forms.TextInput(
+                attrs={
+                    "id": "key_id",
+                    "required": False,
+                    "placeholder": "Tale Reference",
+                    "style": "text-align: left; color:black; font-size: 25px;",
+                },
+            ),
+            "restricted": forms.TextInput(
                 attrs={
                     "id": "key_id",
                     "required": False,

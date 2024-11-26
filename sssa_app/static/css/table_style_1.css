@@ -1,0 +1,27 @@
+.table1 {
+    vertical-align: top;
+    font-weight: 100;
+    font-size: 11px;
+    border-collapse: collapse;
+    margin: 0px;
+
+
+}
+
+.table1 th{
+    padding-left: 1rem;
+    background-color:rgba(72,72,72,0.9);
+    color: white;
+}
+
+.table1 td{
+    padding: 7px;
+
+
+}
+
+
+
+
+
+

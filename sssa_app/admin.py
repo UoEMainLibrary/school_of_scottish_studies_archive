@@ -25,5 +25,7 @@ class AlstAdmin(ImportExportModelAdmin):
         'old_number_rl',
         'data_record_input',
         'data_last_amended',
+        'restricted',
+
     ]
 
