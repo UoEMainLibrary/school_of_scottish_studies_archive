@@ -7,103 +7,110 @@
     <link rel="stylesheet" href="{% static '/css/index_table_style.css' %}" >
     <link rel="stylesheet" href="{% static 'css/menu_style.css' %}" >
     <link rel="stylesheet" href="{% static 'css/buttons.css' %}" >
+    <link rel="stylesheet" href="{% static 'css/search_form_style.css' %}" >
 </head>
 <body>
 <div class="topnav">
-    <a href="{% url 'sssa_home' %}"><--Home</a>
-    <a href="#about" class="split">Empty</a>
+    {% if user.is_authenticated %}
+    <span style="vertical-align: middle; color: white; font-size: 13px; padding-left: 1rem;">
+        Welcome back {{ user }}
+    </span>
+    <span>
+        <a href="{% url 'logout' %}" class="split">Logout</a>
+        {% else %}
+        <a href="{% url 'register' %}" class="split">Register</a>
+        <a href="{% url 'login' %}" class="split">Login</a>
+        {% endif %}
+    </span>
 </div>
-<br>
-    <form method="GET" action="{% url 'index' %}">
-        <table style="border-collapse: collapse; border: 1px solid black;">
-            <tr>
-                <td colspan="4" style="text-align: center; font-size:20px">
-                   &#x1F50D; SEARCH:
-                </td>
-            </tr>
-            <tr style="background-color:#95D1D7">
-                <td>
-                    ID(exact):
-                </td>
-                <td>
-                    {{ form.id_exact }}
-                </td>
-                <td>
-                    ID(contains):
-                </td>
-                <td>
-                    {{ form.id_contains }}
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Type(exact):
-                </td>
-                <td>
-                    {{ form.type_exact }}
-                </td>
-                <td>
-                    Type(contains):
-                </td>
-                <td>
-                    {{ form.type_contains }}
-                </td>
-            </tr>
-            <tr style="background-color:#95D1D7">
-                <td>
-                    Catalogue Nr(exact):
-                </td>
-                <td>
-                    {{ form.catalogue_number_exact }}
-                </td>
-                <td>
-                    Catalogue Nr(contains):
-                </td>
-                <td>
-                    {{ form.catalogue_number_contains }}
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Parent (exact):
-                </td>
-                <td>
-                    {{ form.parent_exact }}
-                </td>
-                <td>
-                    Parent (contains):
-                </td>
-                <td>
-                    {{ form.parent_contains }}
-                </td>
-            </tr>
-            <tr style="background-color:#95D1D7">
-                <td>
-                    Type of Material (exact):
-                </td>
-                <td>
-                    {{ form.type_of_material_exact }}
-                </td>
-                <td>
-                    Type of Material (contains):
-                </td>
-                <td>
-                    {{ form.type_of_material_contains }}
-                </td>
-            </tr>
-            <tr>
-                <td colspan="4" style="text-align: center">
-                    <button class="button button4" style="border: 1px solid black;">
-                        <input type="submit" value="&#x1F50D; SEARCH" class="btn btn-primary" />
-                    </button>
-                    <button class="button button4" style="border: 1px solid black;">
-                        <input type="reset" value="RESET" class="btn btn-primary">
-                    </button>
-                </td>
-            </tr>
-        </table>
-    </form>
-    <br>
+<table>
+    <tr>
+        <td style="width: 40%">
+            <div id="contact-form"><div>
+                <h1>Search Archives:</h1>
+            </div>
+                <br>
+                <form method="GET" action="{% url 'index' %}">
+                    <div style="display:inline">
+                        <div style="float: left; width: 50%;">
+                            <label>
+                                <span class="required">ID:</span><br>
+                                {{ form.id_exact }}
+                            </label>
+                        </div>
+                        <div style="float: left; width: 50%;">
+                            <label>
+                                <span class="required">Type:</span><br>
+                                {{ form.type_exact }}
+                            </label>
+                        </div>
+                    </div>
+
+                    <div style="display:inline">
+                        <div style="float: left; width: 50%;">
+                            <label style="">
+                                <span class="required">Catalogue Number (exact):</span>
+                                {{ form.catalogue_number_exact }}
+                            </label>
+                        </div>
+                        <div style="float: left; width: 50%;">
+                            <label>
+                                <span class="required">Catalogue Number (contains):</span>
+                                {{ form.catalogue_number_contains }}
+                            </label>
+                        </div>
+                    </div>
+                    <div style="display:inline">
+                        <div style="float: left; width: 50%;">
+                            <label>
+                                <span class="required">Parent (exact):</span><br>
+                                {{ form.parent_exact }}
+                            </label>
+                        </div>
+                        <div style="float: left; width: 50%;">
+                            <label>
+                                <span class="required">Parent (contains):</span>
+                                {{ form.parent_contains }}
+                            </label>
+                        </div>
+                    </div>
+                    <div style="display:inline">
+                        <div style="float: left; width: 50%;">
+                            <label style="">
+                                <span class="required">Type of Material (exact):</span>
+                                {{ form.type_of_material_exact }}
+                            </label>
+                        </div>
+                        <div style="float: left; width: 50%;">
+                            <label>
+                                <span class="required">Type of Material (contains):</span>
+                                {{ form.type_of_material_contains }}
+                            </label>
+                        </div>
+                    </div>
+                    <button name="submit" type="submit" id="submit" >Search</button>
+                </form>
+            </div>
+        </td>
+        <td>
+
+
+
+
+
+
+            asdfasdfsad
+        </td>
+    </tr>
+</table>
+
+
+
+
+
+
+
+
     <!-- Display the count of records -->
     <h2 style="text-align:center">Showing: {{ record_count }} records</h2>
 
