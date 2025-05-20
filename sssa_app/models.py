@@ -6,7 +6,7 @@ import django_tables2 as tables
 # Create your models here.
 
 class Alst(models.Model):
-    id = models.IntegerField(primary_key=True, blank=True, null=False)
+    id = models.AutoField(primary_key=True, blank=False)
     type = models.TextField(blank=True, null=True)
     catalogue_number = models.TextField(blank=True, null=True)
     parent = models.TextField(blank=True, null=True)
@@ -34,7 +34,7 @@ class Alst(models.Model):
 
     class Meta:
         managed = False
-        db_table = "sssa_jason_db"
+        db_table = "last_csv_file"
 
 
     def extract_word_matereial(self):
