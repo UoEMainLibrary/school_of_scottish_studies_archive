@@ -90,7 +90,7 @@ WSGI_APPLICATION = 'sssa_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'sssa_database_from_json',
+        'NAME': 'sssa_2',
         'USER': 'pat',
         'PASSWORD': 'inspired1980',
         'HOST': 'localhost',

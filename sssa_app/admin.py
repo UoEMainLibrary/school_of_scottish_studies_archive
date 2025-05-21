@@ -10,7 +10,8 @@ class AlstAdmin(ImportExportModelAdmin):
     list_display = [
         'id',
         'catalogue_number',
-        'catalogue_name',
+        'collection',
+        'collection_ref',
         'fieldworker',
         'date',
         'informant_artist',
@@ -24,8 +25,6 @@ class AlstAdmin(ImportExportModelAdmin):
         'title',
         'reference',
         'old_number_rl',
-        'data_record_input',
-        'data_last_amended',
         'restricted',
 
     ]

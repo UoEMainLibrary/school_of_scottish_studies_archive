@@ -9,8 +9,9 @@ class Alst(models.Model):
     id = models.AutoField(primary_key=True, blank=False)
     type = models.TextField(blank=True, null=True)
     catalogue_number = models.TextField(blank=True, null=True)
+    collection = models.TextField(blank=True, null=True)
+    collection_ref = models.TextField(blank=True, null=True)
     parent = models.TextField(blank=True, null=True)
-    catalogue_name = models.TextField(blank=True, null=True)
     fieldworker = models.TextField(blank=True, null=True)
     date = models.TextField(blank=True, null=True)
     informant_artist = models.TextField(blank=True, null=True)
@@ -27,14 +28,12 @@ class Alst(models.Model):
     title = models.TextField(blank=True, null=True)
     reference = models.TextField(blank=True, null=True)
     old_number_rl = models.TextField(blank=True, null=True)
-    data_record_input = models.TextField(blank=True, null=True)
-    data_last_amended = models.TextField(blank=True, null=True)
     restricted = models.TextField(blank=True, null=True)
 
 
     class Meta:
-        managed = False
-        db_table = "last_csv_file"
+        managed = True
+        db_table = "sssa_table_1"
 
 
     def extract_word_matereial(self):
