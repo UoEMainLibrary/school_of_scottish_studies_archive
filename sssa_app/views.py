@@ -8,9 +8,10 @@ from .models import *
 from django.shortcuts import render, get_object_or_404
 
 
+
+
 # Create your views here.
 def index (request):
-
     alst_filter = AlstFilter(request.GET, queryset=Alst.objects.all())
     # Get the filtered queryset
     alst_records = alst_filter.qs
