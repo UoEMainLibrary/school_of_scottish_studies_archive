@@ -7,10 +7,12 @@ For more information on this file, see
 https://docs.djangoproject.com/en/4.2/howto/deployment/wsgi/
 """
 
-import os
+import os, sys
+
+sys.path.append('/apps/www/sssa')
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'sssa_project.sssa_project.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'sssa_project.settings')
 
 application = get_wsgi_application()
