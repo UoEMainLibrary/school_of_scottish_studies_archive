@@ -102,7 +102,7 @@ WSGI_APPLICATION = 'sssa_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'sssa_3',
+        'NAME': get_secret('DB_NAME'),
         'USER': get_secret('DB_USER_NAME'),
         'PASSWORD': get_secret('DB_PASSWORD'),
         'HOST': 'localhost',
@@ -114,6 +114,7 @@ DATABASES = {
 
 DB_USER_NAME = get_secret('DB_USER_NAME')
 DB_PASSWORD = get_secret('DB_PASSWORD')
+DB_NAME = get_secret('DB_NAME')
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
