@@ -73,3 +73,14 @@ def alst_delete_record(request, id):
         return redirect('alst_table')
 
     return render(request, 'forms/record_delete_confirmation.html', {'alst_record': alst_record})
+
+
+def filtered_items(request, word):
+    # This filters items where the 'material' field contains the word (case-insensitive)
+    items = Alst.objects.filter(type_of_material__icontains=word)
+    count_items = Alst.objects.filter(type_of_material__icontains=word).count
+    return render(request, 'filtered_items.html', {
+        'items': items,
+        'word': word,
+        'count_items': count_items,
+    })
