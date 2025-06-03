@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!-- templates/filtered_items.html -->
+
+<h2>Search result for records that have the word: "{{ word }}" -- {{ count_items }} records</h2>
+
+<ul>
+  {% for item in items %}
+    <li>{{item.type}} - {{ item.catalogue_number }} — {{ item.type_of_material }}</li>
+  {% empty %}
+    <li>No items found containing "{{ word }}"</li>
+  {% endfor %}
+</ul>
+
+</body>
+</html>
