@@ -179,5 +179,5 @@ class SssaJasonDb(models.Model):
     catalogue_number_copy = models.TextField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'sssa_jason_db'
+        managed = True
+        db_table = 'sssa_table_1'
