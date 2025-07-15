@@ -50,6 +50,19 @@ class Alst(models.Model):
         word = self.type_of_material.replace(", ", "  ").split()
         return word
 
+    @property
+    def is_hidden(self):
+        if self.restricted == 'YES':
+            return True
+        if self.parent:
+            try:
+                parent_obj = Alst.objects.get(catalogue_number=self.parent)
+                return parent_obj.restricted == 'YES'
+            except Alst.DoesNotExist:
+                return False
+        return False
+
+
 
 
 
