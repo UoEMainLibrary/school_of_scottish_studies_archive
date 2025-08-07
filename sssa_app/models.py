@@ -6,6 +6,10 @@ import django_tables2 as tables
 # Create your models here.
 
 class Alst(models.Model):
+    RESTRICTED_CHOICES = [
+        ('YES', 'Yes'),
+        ('NO', 'No'),
+    ]
     id = models.AutoField(primary_key=True, blank=False)
     type = models.TextField(blank=True, null=True)
     catalogue_number = models.TextField(blank=True, null=True)
@@ -28,7 +32,13 @@ class Alst(models.Model):
     title = models.TextField(blank=True, null=True)
     reference = models.TextField(blank=True, null=True)
     old_number_rl = models.TextField(blank=True, null=True)
-    restricted = models.TextField(blank=True, null=True)
+    restricted = models.CharField(
+        max_length=20,
+        choices=RESTRICTED_CHOICES,
+        blank=True,
+        null=True,
+        default='NO'
+    )
 
 
     class Meta:
@@ -39,6 +49,19 @@ class Alst(models.Model):
     def extract_word_matereial(self):
         word = self.type_of_material.replace(", ", "  ").split()
         return word
+
+    @property
+    def is_hidden(self):
+        if self.restricted == 'YES':
+            return True
+        if self.parent:
+            try:
+                parent_obj = Alst.objects.get(catalogue_number=self.parent)
+                return parent_obj.restricted == 'YES'
+            except Alst.DoesNotExist:
+                return False
+        return False
+
 
 
 

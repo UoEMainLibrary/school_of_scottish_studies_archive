@@ -31,6 +31,17 @@ def index (request):
 def home (request):
     return render(request, 'sssa_home.html')
 
+def search_view (request):
+    query = request.GET.get('q', '')
+    results = []
+
+    if query:
+        results = Alst.objects.filter(catalogue_number__icontains=query)  # adjust field/filter as needed
+
+    return render(request, 'search_view.html', {
+        'results': results,
+        'query': query,
+    })
 
 def alst_create_record(request):
     alst_record_form = AlstForm(request.POST or None)

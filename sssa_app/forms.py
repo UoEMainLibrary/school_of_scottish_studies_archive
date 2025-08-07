@@ -136,16 +136,7 @@ class AlstForm(forms.ModelForm):
                     "style": "text-align: left; color:black; font-size: 25px;",
                 },
             ),
-            "restricted": forms.TextInput(
-                attrs={
-                    "id": "key_id",
-                    "required": False,
-                    "placeholder": "Tale Reference",
-                    "style": "text-align: left; color:black; font-size: 25px;",
-                },
-            ),
-
-
+            'restricted': forms.Select(attrs={'class': 'form-control'}),
 
         }
 

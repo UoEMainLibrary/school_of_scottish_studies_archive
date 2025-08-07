@@ -28,6 +28,7 @@ urlpatterns = [
     path('members/', include('django.contrib.auth.urls')),
     path('members/', include('members.urls')),
     path('index/', index, name='index'),
+    path('search_view/', search_view, name='search_view'),
     url('alst_create_record/', alst_create_record, name='alst_create_record'),
     url(r'^alst_details_record/(\d+)/', alst_details_record, name='alst_details_record'),
     path('alst_update_record/<int:id>/', alst_update_record, name='alst_update_record'),
