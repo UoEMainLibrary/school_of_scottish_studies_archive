@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search</title>
+</head>
+<body>
+
+
+<form method="get" action="">
+    <input type="text" name="q" placeholder="Search..." value="{{ query }}">
+    <button type="submit">Search</button>
+</form>
+
+{% if query %}
+    <p>Found {{ results|length }} result{{ results|pluralize }} for "{{ query }}":</p>
+    <ul>
+        {% for item in results %}
+            <li>{{ item.catalogue_number }}</li> <!-- Adjust field as needed -->
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No search performed yet.</p>
+{% endif %}
+
+</body>
+</html>
