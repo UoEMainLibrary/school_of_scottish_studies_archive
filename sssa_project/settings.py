@@ -39,7 +39,7 @@ SECRET_KEY = 'django-insecure-cbjouxj-sjktaes^2g=8*urf#rar*%^r7e_(_&_64pv!+mc589
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.localhost', '127.0.0.1', '[::1]', 'lac-sssa-test1.is.ed.ac.uk', 'test.sssa-search.is.ed.ac.uk']
+ALLOWED_HOSTS = ['.localhost', '127.0.0.1', '[::1]', 'lac-sssa-test1.is.ed.ac.uk', 'test.sssa-search.is.ed.ac.uk', 'lac-sssa-live1.is.ed.ac.uk', 'sssa-search.is.ed.ac.uk']
 
 
 # Application definition
