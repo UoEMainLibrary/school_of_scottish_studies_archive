@@ -36,8 +36,13 @@ def search_view (request):
     results = []
 
     if query:
-        results = Alst.objects.filter(catalogue_number__icontains=query)  # adjust field/filter as needed
-
+        results = Alst.objects.filter(
+            Q(catalogue_number__icontains=query) |
+            Q(type_of_material__icontains=query) |
+            Q(parent__icontains=query) |
+            Q(summary__icontains=query) |
+            Q(informant_artist__icontains=query)
+        )
     return render(request, 'search_view.html', {
         'results': results,
         'query': query,

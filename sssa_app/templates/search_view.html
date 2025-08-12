@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Search</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/table_style_1.css' %}" >
 </head>
 <body>
 
@@ -11,17 +13,44 @@
     <input type="text" name="q" placeholder="Search..." value="{{ query }}">
     <button type="submit">Search</button>
 </form>
+<br>
 
-{% if query %}
+<form method="get">
+    <label>Multi-word search:</label>
+    <input type="text" name="q_multi" value="{{ query_multi }}">
+    <button type="submit">Search</button>
+</form>
+    {% if query %}
     <p>Found {{ results|length }} result{{ results|pluralize }} for "{{ query }}":</p>
-    <ul>
+    <table class="table1">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Type</th>
+            <th>Catalogue Number</th>
+            <th>Parent</th>
+            <th>Summary</th>
+            <th>Informant Artist</th>
+            <th>Comments</th>
+        </tr>
+        </thead>
+        <tbody>
         {% for item in results %}
-            <li>{{ item.catalogue_number }}</li> <!-- Adjust field as needed -->
+        <tr>
+            <td>{{item.id}}</td>
+            <td>{{item.type}}</td>
+            <td>{{item.catalogue_number}}</td>
+            <td>{{item.parent}}</td>
+            <td>{{item.summary}}</td>
+            <td>{{item.informant_artist}}</td>
+            <td>{{item.comments}}</td>
+        </tr>
         {% endfor %}
-    </ul>
-{% else %}
+        </tbody>
+    </table>
+    {% else %}
     <p>No search performed yet.</p>
-{% endif %}
+    {% endif %}
 
 </body>
 </html>
