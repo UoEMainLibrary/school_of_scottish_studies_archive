@@ -32,7 +32,7 @@
         <tbody>
         {% for item in results %}
 
-        <tr data-href = "{% url 'alst_details_record' item.id %}">
+        <tr data-href = "{% url 'alst_details_record' item.id %}?{{ request.GET.urlencode }}">
 
             <td>{{item.type}}</td>
             <td>{{item.title}}</td>
@@ -50,12 +50,10 @@
                 {% if item.restricted and item.restricted == "none" %}
                 No
                 {% else %}
-                Yes
+                {{item.restricted}}
                 {% endif %}
             </td>
-
         </tr>
-
         {% endfor %}
         </tbody>
     </table>

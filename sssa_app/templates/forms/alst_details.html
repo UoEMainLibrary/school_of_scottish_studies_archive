@@ -68,7 +68,10 @@
                 </table>
                 <span style = "align-items: center; display: flex; justify-content: center;">
                     <button class="button button1">
-                        <a style="text-decoration: none; color: white;" href="{% url 'sssa_home' %}">OK</a>
+                        <a style="text-decoration: none; color: white;"
+                        href="{% url 'search_view' %}?{{ request.GET.urlencode }}">
+                        OK
+                        </a>
                     </button>
                     <button class="button button2">
                         <a style="text-decoration: none; color: white;" href="{% url 'alst_update_record' alst_record.id %}">EDIT</a>

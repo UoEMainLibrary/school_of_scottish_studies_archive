@@ -52,7 +52,7 @@ def alst_create_record(request):
     alst_record_form = AlstForm(request.POST or None)
     if alst_record_form.is_valid():
         alst_record_form.save()
-        return redirect('sssa_home')
+        return redirect('search_view')
 
     return render(request, 'forms/alst_record_form.html', {'alst_record_form': alst_record_form})
 
@@ -77,7 +77,7 @@ def alst_update_record(request, id):
 
     if alst_record_form.is_valid():
         alst_record_form.save()
-        return redirect('index')
+        return redirect('search_view')
 
     return render(request, 'forms/alst_record_form.html', {'alst_record': alst_record, 'alst_record_form': alst_record_form})
 
