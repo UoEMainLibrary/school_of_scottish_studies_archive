@@ -5,9 +5,9 @@
     <title>Search</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/table_style_1.css' %}" >
+    <link rel="stylesheet" href="{% static 'css/sub_pages_style.css' %}" >
 </head>
 <body>
-
 
 <form method="get" action="">
     <input type="text" name="q" placeholder="Search..." value="{{ query }}">
@@ -22,28 +22,38 @@
 </form>
     {% if query %}
     <p>Found {{ results|length }} result{{ results|pluralize }} for "{{ query }}":</p>
-    <table class="table1">
+    <table class="table2">
         <thead>
         <tr>
-            <th>ID</th>
+
             <th>Type</th>
+            <th>Title</th>
             <th>Catalogue Number</th>
             <th>Parent</th>
             <th>Summary</th>
             <th>Informant Artist</th>
             <th>Comments</th>
+            <th>Restricted</th>
         </tr>
         </thead>
         <tbody>
         {% for item in results %}
         <tr>
-            <td>{{item.id}}</td>
+
             <td>{{item.type}}</td>
+            <td>{{item.title}}</td>
             <td>{{item.catalogue_number}}</td>
-            <td>{{item.parent}}</td>
+            <td>{% if item.parent == "N/A" %}{% else %}{{ item.parent }}{% endif %}</td>
             <td>{{item.summary}}</td>
             <td>{{item.informant_artist}}</td>
             <td>{{item.comments}}</td>
+            <td>
+                {% if item.restricted and item.restricted == "none" %}
+                No
+                {% else %}
+                Yes
+                {% endif %}
+            </td>
         </tr>
         {% endfor %}
         </tbody>
