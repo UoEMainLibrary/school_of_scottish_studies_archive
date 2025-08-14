@@ -36,3 +36,10 @@ body {
 .table2 tbody tr:hover {
   background-color: #eaf5f2;  /* highlight row on hover */
 }
+.table2 tr[data-href] {
+    cursor: pointer;
+}
+.table2 tr[data-href]:hover {
+    background-color: gray;
+    color: white;
+}
