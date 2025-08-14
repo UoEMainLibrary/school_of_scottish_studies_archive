@@ -14,18 +14,11 @@
     <button type="submit">Search</button>
 </form>
 <br>
-
-<form method="get">
-    <label>Multi-word search:</label>
-    <input type="text" name="q_multi" value="{{ query_multi }}">
-    <button type="submit">Search</button>
-</form>
     {% if query %}
     <p>Found {{ results|length }} result{{ results|pluralize }} for "{{ query }}":</p>
     <table class="table2">
         <thead>
         <tr>
-
             <th>Type</th>
             <th>Title</th>
             <th>Catalogue Number</th>
@@ -38,13 +31,19 @@
         </thead>
         <tbody>
         {% for item in results %}
-        <tr>
+
+        <tr data-href = "{% url 'alst_details_record' item.id %}">
 
             <td>{{item.type}}</td>
             <td>{{item.title}}</td>
             <td>{{item.catalogue_number}}</td>
             <td>{% if item.parent == "N/A" %}{% else %}{{ item.parent }}{% endif %}</td>
-            <td>{{item.summary}}</td>
+            <td>
+                {% if item.summary and item.summary == "none" %}
+                {% else %}
+                {{item.summary}}
+                {% endif %}
+            </td>
             <td>{{item.informant_artist}}</td>
             <td>{{item.comments}}</td>
             <td>
@@ -54,7 +53,9 @@
                 Yes
                 {% endif %}
             </td>
+
         </tr>
+
         {% endfor %}
         </tbody>
     </table>
@@ -64,3 +65,13 @@
 
 </body>
 </html>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    document.querySelectorAll("tr[data-href]").forEach(row => {
+        row.addEventListener("click", function() {
+            window.location = this.dataset.href;
+        });
+    });
+});
+</script>
