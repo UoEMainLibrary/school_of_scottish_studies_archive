@@ -1,0 +1,38 @@
+body {
+
+
+}
+
+.table2 {
+      width: 100%;
+      border-collapse: collapse;   /* remove double borders */
+      margin: 25px 0;
+      font-size: 16px;
+      font-family: Arial, sans-serif;
+      min-width: 800px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.table2 thead tr {
+  background-color: #009879;  /* header color */
+  color: #ffffff;             /* header text color */
+  text-align: left;
+}
+
+.table2 th,
+.table2 td {
+  padding: 10px 13px;
+  border: 1px solid #ddd;     /* subtle border */
+}
+
+.table2 tbody tr {
+  border-bottom: 1px solid #ddd;
+}
+
+.table2 tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;  /* zebra striping */
+}
+
+.table2 tbody tr:hover {
+  background-color: #eaf5f2;  /* highlight row on hover */
+}
