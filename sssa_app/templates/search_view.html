@@ -10,7 +10,20 @@
 <body>
 
 <form method="get" action="">
-    <input type="text" name="q" placeholder="Search..." value="{{ query }}">
+<h3 style="display:inline; margin-right:10px;">Main word for search:</h3>
+<input type="text" name="q" placeholder="Search..." value="{{ query }}"><br>
+    <hr>
+    <h3>...and add a filter to your searches to narrow down the results:</h3>
+    <select name="type_filter">
+        <option value="">-- Select Type --</option>
+        <option value="ALST" {% if type_filter == "ALST" %}selected{% endif %}>ALST</option>
+        <option value="MNDX" {% if type_filter == "MNDX" %}selected{% endif %}>MNDX</option>
+    </select>
+    <input type="text" name="title_filter" placeholder="Filter by Title..." value="{{ title_filter }}">
+    <input type="text" name="informant_filter" placeholder="Filter by Informant Artist..." value="{{ informant_filter }}">
+    <hr>
+
+
     <button type="submit">Search</button>
 </form>
 <br>

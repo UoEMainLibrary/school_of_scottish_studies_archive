@@ -7,127 +7,145 @@
     <link rel="stylesheet" href="{% static 'css/menu_style.css' %}" >
     <link rel="stylesheet" href="{% static 'css/page_style.css' %}" >
     <link rel="stylesheet" href="{% static 'css/footer.css' %}" >
+    <link rel="stylesheet" href="{% static 'css/menu.css' %}" >
 </head>
 <body>
-<div class="topnav">
-    {% if user.is_authenticated %}
-    <span style="vertical-align: middle; color: white; font-size: 13px; padding-left: 1rem;">
-        Welcome back {{ user }}
-    </span>
-    <span>
-        <a href="{% url 'logout' %}" class="split">Logout</a>
-        {% else %}
-        <a href="{% url 'register' %}" class="split">Register</a>
-        <a href="{% url 'login' %}" class="split">Login</a>
-        {% endif %}
-    </span>
-</div>
-<div class="header">
-  <h1>Header</h1>
-</div>
-{% if user.is_authenticated %}
-<br/>
-<div class="row">
-    <div class="col-3 menu">
-        <ul>
-            <li><a href="{% url 'index' %}" style="text-decoration: none; color: white">Main Archive</a></li>
-            <li><a href="{% url 'search_view' %}" style="text-decoration: none; color: white">Search View</a></li>
-            <li>Empty</li>
-            <li>Empty</li>
-        </ul>
+<div class="div_head">
+    <div class="topnav">
+        <div class="logo">
+        <a href="{% url 'sssa_home' %}">
+            <img src="{% static 'images/logo.png' %}" alt="Logo">
+        </a>
     </div>
+
+    </div>
+    <div class="header">
+      <!--<h1>Header</h1>-->
+    </div>
+    {% if user.is_authenticated %}
+    <nav style="height: 10%;">
+        <ul>
+            <li><a href="{% url 'sssa_home' %}">About</a></li>
+            <li><a href="{% url 'search_view' %}">Search</a></li>
+            <li><a href="{% url 'search_view' %}">Collections</a></li>
+            <li><a href="{% url 'search_view' %}">People and Place</a></li>
+            <li><a href="{% url 'search_view' %}">Subjects</a></li>
+            <li><a href="{% url 'search_view' %}">Listen to a recording</a></li>
+            <li style="vertical-align: right"><a href="{% url 'logout' %}">Logout</a></li>
+        </ul>
+    </nav>
     {% else %}
-    <p>Please login</p>
+    <nav style="height: 10%;">
+        <ul>
+            <li><a href="{% url 'sssa_home' %}">About</a></li>
+            <li><a href="{% url 'search_view' %}">Collections</a></li>
+            <li><a href="{% url 'search_view' %}">People and Place</a></li>
+            <li><a href="{% url 'search_view' %}">Subjects</a></li>
+            <li><a href="{% url 'search_view' %}">Listen to a recording</a></li>
+            <li class="auth-links">
+            <a href="{% url 'register' %}">Register</a>
+            <a href="{% url 'login' %}">Login</a>
+        </li>
+        </ul>
+    </nav>
     {% endif %}
+</div>
+
+
+
+
+<div class="div_body">
     <br>
     <h1 style="font-family: Crimson Text, serif; ">School of Scottish Studies Archive</h1>
     <p>
-        The School of Scottish Studies was established in 1951, at the University of Edinburgh, to collect, preserve,
-        research, and publish material relating to the cultural traditions and folklore of Scotland.
+        The School of Scottish Studies was established in 1951, at the University of Edinburgh, to gather, preserve, research,
+        and publish material relating to the cultural traditions and folklore of Scotland. The extensive collections, include a
+        sound archive comprising some 33,000 recordings, a photographic archive containing thousands of images from the 1930s
+        onwards, a small film and video collection and a manuscript archive. Collecting has focused on Scottish life, folklore and
+        the traditional arts. Material comes from communities throughout Scotland and its diaspora. The main languages of Scotland
+        - Gaelic, Scots and English - are all represented including many dialects that are no longer used.<br>
+        <br>
+        This database contains basic information on some of the main sound collections in the School of Scottish Studies Archives.
+        The fieldwork undertaken by students, lecturers and associates of the School of Scottish Studies is listed along with
+        various donated collections. Field recordings forming part of these collections have been digitised and are generally
+        available to listen to by request on our remote streamer (subject to any copyright or GDPR restrictions) but commercial/published
+        or broadcast items have not been digitised. Please note that many of the donated collections and more recent field
+        recordings are not yet listed, so please ask the SSSA team if you are looking for something in particular.
     </p>
-    <p>
-        The extensive collections, including ethnological fieldwork undertaken by staff and students over the past seventy
-        years, include a sound archive comprising some 33,000 recordings, a photographic archive containing thousands of
-        images from the 1930s onwards, a small film and video collection and a manuscript archive.
-        Collecting has focused on Scottish life, folklore and the traditional arts.  Material comes from communities
-        throughout Scotland and its diaspora. The main languages of Scotland - Gaelic, Scots and English - are all
-        represented including many dialects that are now extinct.<br>
-        Donations include related material from other countries, for example, the John Levy Collection, recordings
-        of traditional music from Asia and beyond.
-    </p>
-    <br>
 </div>
-<br/>
-<br/>
-<br/>
-<br/>
+<br>
+<br>
+<br>
 
-<footer>
-  <div class="footer-subsite-content">
-    <div class="container-footer">
-      <div class="row">
-          <div class="col-sm-6 col-md-8">
-            <div class="branding-baton-holder">
-              <img class="branding-baton" src="https://lac-edwebtools.is.ed.ac.uk/edweb/library-branding-baton.png" height="100">
+
+<div class="div-footer">
+    <footer>
+      <div class="footer-subsite-content">
+        <div class="container-footer">
+          <div class="row">
+              <div class="col-sm-6 col-md-8">
+                <div class="branding-baton-holder">
+                  <img class="branding-baton" src="https://lac-edwebtools.is.ed.ac.uk/edweb/library-branding-baton.png" height="100">
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-4">
+                <a href="https://library.ed.ac.uk/library-help" class="btn btn-brand btn-sm" title="Contact Us">
+                  Contact us <i class="bi bi-chevron-right"></i>
+                </a>
+              </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-discover">
+        <h3 class="footer-discover-heading">
+          The University of Edinburgh
+        </h3>
+      </div>
+        <div class="footer">
+        <div class="container-footer">
+          <div class="row">
+            <div class="col-md-4">
+              <ul class="list-unstyled">
+                <li><a href="https://www.ed.ac.uk/about/website/website-terms-conditions">Terms &amp; conditions</a></li>
+                <li><a href="https://edin.ac/privacy-information">Privacy &amp; cookies</a></li>
+                <li><a href="https://www.ed.ac.uk/university-secretary-group/complaint-handling-procedure">Complaints procedure</a></li>
+                <li><a href="https://www.ed.ac.uk/sustainability/what-we-do/supply-chains/initiatives/modern-slavery/statement">Modern slavery</a></li>
+              </ul>
+            </div>
+            <div class="col-md-4">
+              <ul class="list-unstyled">
+                <li><a href="https://archives.collections.ed.ac.uk/static/html/accessibility_statement.html">Accessibility Statement</a></li>
+                <li><a href="https://www.ed.ac.uk/about/website/freedom-information">Freedom of information publication scheme</a></li>
+                <li><a href="https://www.ed.ac.uk/data-protection">Data protection / Records Management</a></li>
+              </ul>
+            </div>
+            <div class="col-md-4 col-6 justify-content-end">
+              <a href="https://www.ed.ac.uk/about/mission-governance/affiliations">
+                <img class="img-fluid" alt="University affiliations" src="https://library.ed.ac.uk/themes/upstream/wpp_theme/images/footer-affiliations.png">
+              </a>
             </div>
           </div>
-          <div class="col-sm-6 col-md-4">
-            <a href="https://library.ed.ac.uk/library-help" class="btn btn-brand btn-sm" title="Contact Us">
-              Contact us <i class="bi bi-chevron-right"></i>
-            </a>
+          <div class="row">
+            <div class="col-md-4 order-md-2">
+              <p class="float-end">
+                <a class="btn btn-brand btn-sm" href="https://www.myed.ed.ac.uk/">
+                  MyEd login <i class="bi bi-chevron-right"></i>
+                </a>
+              </p>
+            </div>
+            <div class="col-md-8 order-md-1">
+              <p>
+                The University of Edinburgh is a charitable body, registered in Scotland, with registration number SC005336, VAT Registration Number GB&nbsp;592&nbsp;9507&nbsp;00, and is acknowledged by the UK authorities as a "<a href="https://www.gov.uk/guidance/recognised-uk-degrees">Recognised body</a>" which has been granted degree awarding powers.
+              </p>
+            </div>
           </div>
-      </div>
-    </div>
-  </div>
-  <div class="footer-discover">
-    <h3 class="footer-discover-heading">
-      The University of Edinburgh
-    </h3>
-  </div>
-    <div class="footer">
-    <div class="container-footer">
-      <div class="row">
-        <div class="col-md-4">
-          <ul class="list-unstyled">
-            <li><a href="https://www.ed.ac.uk/about/website/website-terms-conditions">Terms &amp; conditions</a></li>
-            <li><a href="https://edin.ac/privacy-information">Privacy &amp; cookies</a></li>
-            <li><a href="https://www.ed.ac.uk/university-secretary-group/complaint-handling-procedure">Complaints procedure</a></li>
-            <li><a href="https://www.ed.ac.uk/sustainability/what-we-do/supply-chains/initiatives/modern-slavery/statement">Modern slavery</a></li>
-          </ul>
-        </div>
-        <div class="col-md-4">
-          <ul class="list-unstyled">
-            <li><a href="https://archives.collections.ed.ac.uk/static/html/accessibility_statement.html">Accessibility Statement</a></li>
-            <li><a href="https://www.ed.ac.uk/about/website/freedom-information">Freedom of information publication scheme</a></li>
-            <li><a href="https://www.ed.ac.uk/data-protection">Data protection / Records Management</a></li>
-          </ul>
-        </div>
-        <div class="col-md-4 col-6 justify-content-end">
-          <a href="https://www.ed.ac.uk/about/mission-governance/affiliations">
-            <img class="img-fluid" alt="University affiliations" src="https://library.ed.ac.uk/themes/upstream/wpp_theme/images/footer-affiliations.png">
-          </a>
         </div>
       </div>
-      <div class="row">
-        <div class="col-md-4 order-md-2">
-          <p class="float-end">
-            <a class="btn btn-brand btn-sm" href="https://www.myed.ed.ac.uk/">
-              MyEd login <i class="bi bi-chevron-right"></i>
-            </a>
-          </p>
-        </div>
-        <div class="col-md-8 order-md-1">
-          <p>
-            The University of Edinburgh is a charitable body, registered in Scotland, with registration number SC005336, VAT Registration Number GB&nbsp;592&nbsp;9507&nbsp;00, and is acknowledged by the UK authorities as a "<a href="https://www.gov.uk/guidance/recognised-uk-degrees">Recognised body</a>" which has been granted degree awarding powers.
-          </p>
-        </div>
+      <div class="container-footer-copyright">
+        Unless explicitly stated otherwise, all material is copyright © The University of Edinburgh 2025.
       </div>
-    </div>
-  </div>
-  <div class="container-footer-copyright">
-    Unless explicitly stated otherwise, all material is copyright © The University of Edinburgh 2025.
-  </div>
-</footer>
+    </footer>
+</div>
 
 
 
