@@ -12,23 +12,18 @@
 <body>
 <div class="div_head">
     <div class="topnav">
-        {% if user.is_authenticated %}
-        <span style="vertical-align: middle; color: white; font-size: 13px; padding-left: 1rem;">
-            Welcome back {{ user }}
-        </span>
-        <span>
-            <a href="{% url 'logout' %}" class="split">Logout</a>
-            {% else %}
-            <a href="{% url 'register' %}" class="split">Register</a>
-            <a href="{% url 'login' %}" class="split">Login</a>
-            {% endif %}
-        </span>
+        <div class="logo">
+        <a href="{% url 'sssa_home' %}">
+            <img src="{% static 'images/logo.png' %}" alt="Logo">
+        </a>
+    </div>
+
     </div>
     <div class="header">
-      <h1>Header</h1>
+      <!--<h1>Header</h1>-->
     </div>
     {% if user.is_authenticated %}
-    <nav>
+    <nav style="height: 10%;">
         <ul>
             <li><a href="{% url 'sssa_home' %}">About</a></li>
             <li><a href="{% url 'search_view' %}">Search</a></li>
@@ -36,16 +31,21 @@
             <li><a href="{% url 'search_view' %}">People and Place</a></li>
             <li><a href="{% url 'search_view' %}">Subjects</a></li>
             <li><a href="{% url 'search_view' %}">Listen to a recording</a></li>
+            <li style="vertical-align: right"><a href="{% url 'logout' %}">Logout</a></li>
         </ul>
     </nav>
     {% else %}
-    <nav>
+    <nav style="height: 10%;">
         <ul>
             <li><a href="{% url 'sssa_home' %}">About</a></li>
             <li><a href="{% url 'search_view' %}">Collections</a></li>
             <li><a href="{% url 'search_view' %}">People and Place</a></li>
             <li><a href="{% url 'search_view' %}">Subjects</a></li>
             <li><a href="{% url 'search_view' %}">Listen to a recording</a></li>
+            <li class="auth-links">
+            <a href="{% url 'register' %}">Register</a>
+            <a href="{% url 'login' %}">Login</a>
+        </li>
         </ul>
     </nav>
     {% endif %}

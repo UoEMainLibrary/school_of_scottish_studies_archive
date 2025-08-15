@@ -1,7 +1,16 @@
 /* Create a top navigation bar with a black background color  */
 .topnav {
-  background-color: #690051;
+  background-color: white;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+
+  padding: 0.0rem 0.5rem;
+
+}
+.topnav .logo img {
+    height: 80px;  /* adjust logo size */
+    width: auto;
 }
 
 /* Style the links inside the navigation bar */
