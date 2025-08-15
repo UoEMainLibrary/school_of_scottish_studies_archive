@@ -1,0 +1,25 @@
+/* Basic horizontal menu styling */
+.div_head nav {
+    background-color: #690051;
+    padding: 0.5rem 1rem;
+}
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1rem;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        nav ul li a:hover {
+            background-color: #555;
+        }
