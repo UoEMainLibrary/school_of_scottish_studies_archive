@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SSSA Collectionts</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/menu_style.css' %}" >
+    <link rel="stylesheet" href="{% static 'css/page_style.css' %}" >
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}" >
+    <link rel="stylesheet" href="{% static 'css/menu.css' %}" >
+</head>
+<body>
+<div class="div_head">
+    <div class="topnav">
+        <div class="logo">
+        <a href="{% url 'sssa_home' %}">
+            <img src="{% static 'images/logo.png' %}" alt="Logo">
+        </a>
+    </div>
+
+    </div>
+    <div class="header-collections">
+      <!--<h1>Header</h1>-->
+    </div>
+    {% if user.is_authenticated %}
+    <nav style="height: 10%;">
+        <ul>
+            <li><a href="{% url 'sssa_home' %}">About</a></li>
+            <li><a href="{% url 'search_view' %}">Search</a></li>
+            <li><a href="{% url 'collections' %}">Collections</a></li>
+            <li><a href="{% url 'search_view' %}">People and Place</a></li>
+            <li><a href="{% url 'search_view' %}">Subjects</a></li>
+            <li><a href="{% url 'search_view' %}">Listen to a recording</a></li>
+            <li style="vertical-align: right"><a href="{% url 'logout' %}">Logout</a></li>
+        </ul>
+    </nav>
+    {% else %}
+    <nav style="height: 10%;">
+        <ul>
+            <li><a href="{% url 'sssa_home' %}">About</a></li>
+            <li><a href="{% url 'collections' %}">Collections</a></li>
+            <li><a href="{% url 'search_view' %}">People and Place</a></li>
+            <li><a href="{% url 'search_view' %}">Subjects</a></li>
+            <li><a href="{% url 'search_view' %}">Listen to a recording</a></li>
+            <li class="auth-links">
+            <a href="{% url 'register' %}">Register</a>
+            <a href="{% url 'login' %}">Login</a>
+        </li>
+        </ul>
+    </nav>
+    {% endif %}
+</div>
+<div class="div_body">
+    <br>
+    <h1 style="font-family: Crimson Text, serif; ">School of Scottish Studies Collections</h1>
+    <p>
+        SSS Core Collections<br>
+        The core collections include audio recordings and some video. The main fieldwork collection comprises recordings made by staff,
+        students and associates of the School of Scottish Studies. There are also recordings of seminars and radio broadcasts
+        (SA/M) and a collection of commercial discs and publications. Different formats have been used including open reel, minidisc,
+        DAT, born digital (SA), cassette (SC) disc (SD) and video (VA). Student projects are also listed including those studying Scottish
+        Ethnology who undertook fieldwork as part of their course and donated projects. There is a separate listing of theses which
+        is not yet available online. <br>
+        <br>
+        The SSS Collection contains material gathered as part of its remit to collect and create an archive of oral tradition. This mainly comprises
+        field recordings of songs, tales, folklore, local history, biography and descriptions of cultural life but also includes edited material -
+        seminars, broadcasts, and publications. Audio recordings from the Scottish Place-name Survey and the Linguistic Survey of Scotland (Gaelic and Scots)
+        which worked alongside the School are also included.<br>
+        <br>
+        School of Scottish Studies series: <br>
+        Prefixes for SSSA Reference Number: SA/SF/SM/SX/SC/SD/VA/PROJ/CIM PN/LSS/GLS/<br>
+        <br>
+
+        Most of the recordings are listed on a ‘whole tape’ basis. Track listings are also available for some of the SA series
+        of fieldwork recordings (MNDX DB) <br>
+        <br>
+        Place-name Survey <br>
+        Audio recordings made as part of the Place-Name Survey of Scotland<br>
+        <br>
+        Linguistic Survey of Scotland<br>
+        Audio recordings were made as made as part of the Linguistic Survey of Scotland. There are two streams Gaelic (GLS)
+        and Scots (LSS). Some track listings are available for the Scots recordings. <br>
+        <br>
+    </p>
+        <h1 style="font-family: Crimson Text, serif; ">Donated Collections</h1>
+    <p>
+        Donated collections comprise a variety of recordings including oral history projects from various parts of Scotland,
+        projects by individual researchers, individual music collections, recordings from folk clubs and sessions and some
+        broadcast material.Prefixes for other collections: PC/GM/Levy (discs)/WF/EADisc/EAtape/ GL/SLH/IM/DOHP/DHW/KIC/L/
+        If you do not find what you are looking for here, please ask staff for assistance.<br>
+        <br>
+        <br>
+        Gus MacDonald Collection (GM)<br>
+        Music Hall 78s donated by Gus MacDonald<br>
+        <br>
+        Frank Bruce Collection (FB) <br>
+        Music hall 78s, particularly comedy, donated by Frank Bruce<br>
+        <br>
+        William Henderson Collection (WH)<br>
+        78 discs of Scottish music and song, particularly dance music<br>
+        <br>
+        John Levy Collection (JL/Disc)<br>
+        Commercial recordings and some BBC programmes of traditional and folk music from around the world, though mainly Asia, collected by John Lev <br>
+        <br>
+        Will Forrett Collection (WF)<br>
+        Commercial recordings (LPs, 78s, ’45s) of folk and traditional music, mainly Scottish, collected by Will Forrett<br>
+        <br>
+        Edgar Ashton Collection<br>
+        Commercial recordings (LPs, 78s, ’45s) mainly folk and traditional music (EA/Disc)<br>
+        Recordings made in folk clubs, at sessions and off-air broadcasts (EA/Tape)<br>
+        <br>
+        Peter Cooke Collection<br>
+        Fieldwork recordings of music and song from India (PC/IN) and Uganda (PC/UG). Track listings are available for these (MNDX DB).<br>
+        <br>
+        Ken Sykora Collection<br>
+        Interviews undertaken for BBC Radio Scotland programme Eaters Digest (KS)<br>
+        <br>
+        Ian MacDougall Collection<br>
+        Reminiscences of conscientious objectors, Spanish Civil War veterans, miners, the General Strike (IM)<br>
+        <br>
+        Scottish Labour History Society<br>
+        Recordings of working people’s oral history in South East Scotland made as part of an MSC project 1983-5.<br>
+        <br>
+        Dundee Oral History Project<br>
+        Recordings from the Dundee Oral History Project (not digitised) (DOHP)<br>
+        <br>
+        Dundee History Workshop<br>
+        Recordings made as part of an MSC project in 1985 supervised by Graham Smith (not digitised) (DHW)<br>
+        <br>
+        Kirkmaiden Information Centre<br>
+        Recordings made by as part of Kirkmaiden oral history project (KIC)<br>
+        <br>
+        Luing Oral History Project<br>
+        Recordings made in Luing (L)<br>
+        <br>
+        Pete Smith Collection<br>
+        Recordings made in Cellardyke, Fife by Pete Smith (PS)<br>
+        <br>
+        RKS Macaulay Collection<br>
+        Interviews undertaken with schoolchildren as part of a study of Glasgow dialects (RKSM)<br>
+        <br>
+        Glengarnock Oral History Project<br>
+        Interviews with steel workers as part of an MSC project sponsored by the British Steel Corporation looking at life and work in a steel-working district (GL)<br>
+        <br>
+
+    </p>
+
+</div>
+
+</body>
+</html>
