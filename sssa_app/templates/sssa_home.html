@@ -27,10 +27,10 @@
         <ul>
             <li><a href="{% url 'sssa_home' %}">About</a></li>
             <li><a href="{% url 'search_view' %}">Search</a></li>
-            <li><a href="{% url 'search_view' %}">Collections</a></li>
-            <li><a href="{% url 'search_view' %}">People and Place</a></li>
-            <li><a href="{% url 'search_view' %}">Subjects</a></li>
-            <li><a href="{% url 'search_view' %}">Listen to a recording</a></li>
+            <li><a href="{% url 'collections' %}">Collections</a></li>
+            <li><a href="{% url 'people_and_place' %}">People and Place</a></li>
+            <li><a href="{% url 'subjects' %}">Subjects</a></li>
+            <li><a href="{% url 'listen_recordings' %}">Listen to a recording</a></li>
             <li style="vertical-align: right"><a href="{% url 'logout' %}">Logout</a></li>
         </ul>
     </nav>
@@ -38,10 +38,10 @@
     <nav style="height: 10%;">
         <ul>
             <li><a href="{% url 'sssa_home' %}">About</a></li>
-            <li><a href="{% url 'search_view' %}">Collections</a></li>
-            <li><a href="{% url 'search_view' %}">People and Place</a></li>
-            <li><a href="{% url 'search_view' %}">Subjects</a></li>
-            <li><a href="{% url 'search_view' %}">Listen to a recording</a></li>
+            <li><a href="{% url 'collections' %}">Collections</a></li>
+            <li><a href="{% url 'people_and_place' %}">People and Place</a></li>
+            <li><a href="{% url 'subjects' %}">Subjects</a></li>
+            <li><a href="{% url 'listen_recordings' %}">Listen to a recording</a></li>
             <li class="auth-links">
             <a href="{% url 'register' %}">Register</a>
             <a href="{% url 'login' %}">Login</a>

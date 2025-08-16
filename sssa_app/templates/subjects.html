@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Subjects</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/menu_style.css' %}" >
+    <link rel="stylesheet" href="{% static 'css/page_style.css' %}" >
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}" >
+    <link rel="stylesheet" href="{% static 'css/menu.css' %}" >
+</head>
+<body>
+<div class="div_head">
+    <div class="topnav">
+        <div class="logo">
+        <a href="{% url 'sssa_home' %}">
+            <img src="{% static 'images/logo.png' %}" alt="Logo">
+        </a>
+    </div>
+
+    </div>
+    <div class="header-subjects">
+      <!--<h1>Header</h1>-->
+    </div>
+    {% if user.is_authenticated %}
+    <nav style="height: 10%;">
+        <ul>
+            <li><a href="{% url 'sssa_home' %}">About</a></li>
+            <li><a href="{% url 'search_view' %}">Search</a></li>
+            <li><a href="{% url 'collections' %}">Collections</a></li>
+            <li><a href="{% url 'people_and_place' %}">People and Place</a></li>
+            <li><a href="{% url 'subjects' %}">Subjects</a></li>
+            <li><a href="{% url 'listen_recordings' %}">Listen to a recording</a></li>
+            <li style="vertical-align: right"><a href="{% url 'logout' %}">Logout</a></li>
+        </ul>
+    </nav>
+    {% else %}
+    <nav style="height: 10%;">
+        <ul>
+            <li><a href="{% url 'sssa_home' %}">About</a></li>
+            <li><a href="{% url 'collections' %}">Collections</a></li>
+            <li><a href="{% url 'people_and_place' %}">People and Place</a></li>
+            <li><a href="{% url 'subjects' %}">Subjects</a></li>
+            <li><a href="{% url 'listen_recordings' %}">Listen to a recording</a></li>
+            <li class="auth-links">
+            <a href="{% url 'register' %}">Register</a>
+            <a href="{% url 'login' %}">Login</a>
+        </li>
+        </ul>
+    </nav>
+    {% endif %}
+</div>
+<div class="div_body">
+    <br>
+    <h1 style="font-family: Crimson Text, serif; ">Subject/Content of recording</h1>
+    <p>
+        Searches on the subject matter of the recordings are normally most successful when using the Subject Keywords box.
+        This facilitates a drop-down list when you insert the keyword. More than one keyword can be searched eg song Gaelic.
+        Searches can also be made in the summary field though please note that apart from individual tracks and the SC (cassette series)
+        there is no summary available for fieldwork recordings.<br>
+        <br>
+        Within the subject field you can search on language, genre, subject.<br>
+        <br>
+        1. Language used on the recording:<br>
+        - Gaelic<br>
+        - Scots: Please note that this often includes Scots, Scottish English and English in the SA series <br>
+        - Other languages named as appropriate <br>
+        - In many cases no language is specified (meaning that English or Scots is used) <br>
+        <br>
+        2. A broad categorisation of the type of information or genre: <br>
+        - belief <br>
+        - biography <br>
+        - charm <br>
+        - cure <br>
+        - custom <br>
+        - game <br>
+        - genealogy <br>
+        - language (discussion of dialect, language use etc) <br>
+        - music <br>
+        - place-name <br>
+        - poem <br>
+        - prayer <br>
+        - proverb <br>
+        - recitation: formal, from printed source <br>
+        - rhyme <br>
+        - sayings <br>
+        - sermon <br>
+        - song <br>
+        - tale: includes stories, legends, anecdotes <br>
+        - tradition:  oral history, description, information on ‘way of life’, material culture etc – not covered by any of the other genres outlined here.<br>
+        - verse <br>
+        <br>
+        3. Keyword categorisation according to subject e.g. fishing, food, crofting, waulking, farming, house construction, storytelling, cultivation etc.<br>
+        Searchable terms will appear underneath the box as you type.<br>
+        Compound terms are, as yet, unjoined so if searching for New Year, please put in New and Year as separate terms.<br>
+        <br>
+        There are a couple of index classifications that have been used – the Aarne Thomson Tale Classification (AT) has been entered into the Subject
+        Keyword field (though is not a complete listing) and also appears for individual tracks under Tale Ref.
+        There is a separate field for the Classification Index Reference. This generally only applies to individual tracks in the SA category.
+        <br>
+        If you have the title for an individual song, tale, commercial recording you can search in the Title field. Where
+        fieldwork items are concerned it is often better to search using a distinctive word rather than using the whole title
+        as there is variation in titles used, particularly for songs.<br>
+        <br>
+    </p>
+
+</div>
+
+</body>
+</html>

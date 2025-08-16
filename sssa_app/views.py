@@ -31,6 +31,17 @@ def index (request):
 def home (request):
     return render(request, 'sssa_home.html')
 
+def collections (request):
+    return render(request, 'collections.html')
+def people_and_place (request):
+    return render(request, 'people_and_place.html')
+
+def subjects (request):
+    return render(request, 'subjects.html')
+
+def listen_recordings (request):
+    return render(request, 'listen_recordings.html')
+
 def search_view(request):
     query = request.GET.get('q', '')
     type_filter = request.GET.get('type_filter', '')

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SSSA Listen to Recordings</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/menu_style.css' %}" >
+    <link rel="stylesheet" href="{% static 'css/page_style.css' %}" >
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}" >
+    <link rel="stylesheet" href="{% static 'css/menu.css' %}" >
+
+</head>
+<body>
+<div class="div_head">
+    <div class="topnav">
+        <div class="logo">
+        <a href="{% url 'sssa_home' %}">
+            <img src="{% static 'images/logo.png' %}" alt="Logo">
+        </a>
+    </div>
+
+    </div>
+    <div class="header-listen-recordings">
+      <!--<h1>Header</h1>-->
+    </div>
+    {% if user.is_authenticated %}
+    <nav style="height: 10%;">
+        <ul>
+            <li><a href="{% url 'sssa_home' %}">About</a></li>
+            <li><a href="{% url 'search_view' %}">Search</a></li>
+            <li><a href="{% url 'collections' %}">Collections</a></li>
+            <li><a href="{% url 'people_and_place' %}">People and Place</a></li>
+            <li><a href="{% url 'subjects' %}">Subjects</a></li>
+            <li><a href="{% url 'listen_recordings' %}">Listen to a recording</a></li>
+            <li style="vertical-align: right"><a href="{% url 'logout' %}">Logout</a></li>
+        </ul>
+    </nav>
+    {% else %}
+    <nav style="height: 10%;">
+        <ul>
+            <li><a href="{% url 'sssa_home' %}">About</a></li>
+            <li><a href="{% url 'collections' %}">Collections</a></li>
+            <li><a href="{% url 'people_and_place' %}">People and Place</a></li>
+            <li><a href="{% url 'subjects' %}">Subjects</a></li>
+            <li><a href="{% url 'listen_recordings' %}">Listen to a recording</a></li>
+            <li class="auth-links">
+            <a href="{% url 'register' %}">Register</a>
+            <a href="{% url 'login' %}">Login</a>
+        </li>
+        </ul>
+    </nav>
+    {% endif %}
+</div>
+<div class="div_body">
+    <br>
+    <h1 style="font-family: Crimson Text, serif; ">School of Scottish Studies Archive</h1>
+    <p>
+        What has been digitised? <br>
+        How to order a recording? <br>
+        Restrictions on use <br>
+        Copyright <br>
+        GDPR<br>
+
+    </p>
+</div>
+
+</body>
+</html>
