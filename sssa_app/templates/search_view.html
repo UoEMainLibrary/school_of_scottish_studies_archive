@@ -47,7 +47,7 @@
 
 <div class="div_body" style="margin-left: 5%; margin-right:5%">
 
-<form method="get" action="">
+<form class="search_form" method="get" action="">
 <h3 style="display:inline; margin-right:10px;">Main word for search:</h3>
 <input type="text" name="q" placeholder="Search..." value="{{ query }}"><br>
     <hr>
@@ -58,13 +58,15 @@
         <option value="MNDX" {% if type_filter == "MNDX" %}selected{% endif %}>MNDX</option>
     </select>
     <input type="text" name="title_filter" placeholder="Filter by Title..." value="{{ title_filter }}">
+    <input type="text" name="typematerial_filter" placeholder="Filter by Type of material..." value="{{ typematerial_filter }}">
+    <input type="text" name="summary_filter" placeholder="Filter by Summary..." value="{{ summary_filter }}">
     <input type="text" name="informant_filter" placeholder="Filter by Informant Artist..." value="{{ informant_filter }}">
+    <input type="text" name="comments_filter" placeholder="Filter by Comments..." value="{{ comments_filter }}">
     <hr>
-
-
     <button type="submit">Search</button>
 </form>
-<br>
+
+    <br>
     {% if query %}
     <p>Found {{ results|length }} result{{ results|pluralize }} for "{{ query }}":</p>
     <table class="table2">
@@ -74,6 +76,7 @@
             <th>Title</th>
             <th>Catalogue Number</th>
             <th>Parent</th>
+            <th>Type of material</th>
             <th>Summary</th>
             <th>Informant Artist</th>
             <th>Comments</th>
@@ -89,6 +92,7 @@
             <td>{{item.title}}</td>
             <td>{{item.catalogue_number}}</td>
             <td>{% if item.parent == "N/A" %}{% else %}{{ item.parent }}{% endif %}</td>
+            <td>{{item.type_of_material}}</td>
             <td>
                 {% if item.summary and item.summary == "none" %}
                 {% else %}
