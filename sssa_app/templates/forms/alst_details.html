@@ -73,12 +73,14 @@
                         OK
                         </a>
                     </button>
+                    {% if user.is_authenticated and user.is_superuser%}
                     <button class="button button2">
                         <a style="text-decoration: none; color: white;" href="{% url 'alst_update_record' alst_record.id %}">EDIT</a>
                     </button>
                     <button class="button button3">
                         <a style="text-decoration: none; color: white;" href="{% url 'alst_delete_record' alst_record.id %}">DELETE</a>
                     </button>
+                    {% endif %}
                 </span>
             </td>
             <td style="width:10%">
