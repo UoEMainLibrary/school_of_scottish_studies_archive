@@ -5,8 +5,13 @@ body{
     margin: 0px;
 }
 
-.div_head {
+p{
+    font-family: 'Source Sans Pro';
+    font-size: 1.2rem;
+}
 
+h1{
+    font-family: 'Source Sans Pro';
 }
 
 .div_body{
@@ -79,6 +84,18 @@ html {
 }
 
 .header-listen-recordings {
+    background-image: url("/static/images/listen-records-header.jpg"); /* change to your image path */
+    background-size: cover;   /* makes the photo cover the whole div */
+    background-position: center; /* keeps it centered */
+    height: 350px;            /* adjust height as you want */
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    color: white;             /* text color */
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.6); /* makes text readable */
+}
+
+.header-search-view {
     background-image: url("/static/images/listen-records-header.jpg"); /* change to your image path */
     background-size: cover;   /* makes the photo cover the whole div */
     background-position: center; /* keeps it centered */

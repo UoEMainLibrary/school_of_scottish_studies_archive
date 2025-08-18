@@ -46,33 +46,53 @@ def search_view(request):
     query = request.GET.get('q', '')
     type_filter = request.GET.get('type_filter', '')
     title_filter = request.GET.get('title_filter', '')
+    typematerial_filter = request.GET.get('typematerial_filter', '')
+    summary_filter = request.GET.get('summary_filter', '')
     informant_filter = request.GET.get('informant_filter', '')
+    comments_filter = request.GET.get('comments_filter', '')
+
+
     results = Alst.objects.all()
 
     if query:
         results = results.filter(
 
+            Q(type__icontains=query) |
+            Q(title__icontains=query) |
             Q(catalogue_number__icontains=query) |
-            Q(type_of_material__icontains=query) |
             Q(parent__icontains=query) |
+            Q(type_of_material__icontains=query) |
             Q(summary__icontains=query) |
             Q(informant_artist__icontains=query) |
-            Q(title__icontains=query)
+            Q(comments__icontains=query)
+
         )
 
     if type_filter:
         results = results.filter(type__iexact=type_filter)
     if title_filter:
         results = results.filter(title__icontains=title_filter)
+    if typematerial_filter:
+        results = results.filter(type_of_material__icontains=typematerial_filter)
+    if summary_filter:
+        results = results.filter(summary__icontains=summary_filter)
     if informant_filter:
         results = results.filter(informant_artist__icontains=informant_filter)
+    if comments_filter:
+        results = results.filter(comments__icontains=comments_filter)
+
+
 
     return render(request, 'search_view.html', {
         'results': results,
         'query': query,
         'type_filter': type_filter,
         'title_filter': title_filter,
-        'informant_filter': informant_filter
+        'typematerial_filter': typematerial_filter,
+        'summary_filter': summary_filter,
+        'informant_filter': informant_filter,
+        'comments_filter': comments_filter
+
     })
 
 def alst_create_record(request):
