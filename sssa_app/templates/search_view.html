@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{% static 'css/sub_pages_style.css' %}" >
     <link rel="stylesheet" href="{% static 'css/footer.css' %}" >
     <link rel="stylesheet" href="{% static 'css/menu.css' %}" >
+    <link rel="stylesheet" href="{% static 'css/search_form.css' %}" >
 </head>
 <body>
 <div class="div_head">
@@ -48,22 +49,26 @@
 <div class="div_body" style="margin-left: 5%; margin-right:5%">
 
 <form class="search_form" method="get" action="">
-<h3 style="display:inline; margin-right:10px;">Main word for search:</h3>
-<input type="text" name="q" placeholder="Search..." value="{{ query }}"><br>
-    <hr>
-    <h3>...and add a filter to your searches to narrow down the results:</h3>
+  <h3 style="display:inline; margin-right:10px;">Main word for search:</h3>
+  <input type="text" name="q" placeholder="Search..." value="{{ query }}">
+  <hr>
+  <h3>...and add a filter to your searches to narrow down the results:</h3>
+
+  <div class="filters">
     <select name="type_filter">
-        <option value="">-- Select Type --</option>
-        <option value="ALST" {% if type_filter == "ALST" %}selected{% endif %}>ALST</option>
-        <option value="MNDX" {% if type_filter == "MNDX" %}selected{% endif %}>MNDX</option>
+      <option value="">-- Select Type --</option>
+      <option value="ALST" {% if type_filter == "ALST" %}selected{% endif %}>ALST</option>
+      <option value="MNDX" {% if type_filter == "MNDX" %}selected{% endif %}>MNDX</option>
     </select>
     <input type="text" name="title_filter" placeholder="Filter by Title..." value="{{ title_filter }}">
     <input type="text" name="typematerial_filter" placeholder="Filter by Type of material..." value="{{ typematerial_filter }}">
     <input type="text" name="summary_filter" placeholder="Filter by Summary..." value="{{ summary_filter }}">
     <input type="text" name="informant_filter" placeholder="Filter by Informant Artist..." value="{{ informant_filter }}">
     <input type="text" name="comments_filter" placeholder="Filter by Comments..." value="{{ comments_filter }}">
-    <hr>
-    <button type="submit">Search</button>
+  </div>
+
+  <hr>
+  <button type="submit">Search</button>
 </form>
 
     <br>

@@ -5,8 +5,13 @@ body{
     margin: 0px;
 }
 
-.div_head {
+p{
+    font-family: 'Source Sans Pro';
+    font-size: 1.2rem;
+}
 
+h1{
+    font-family: 'Source Sans Pro';
 }
 
 .div_body{
