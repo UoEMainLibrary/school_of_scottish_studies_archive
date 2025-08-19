@@ -3,10 +3,10 @@ from django import forms
 from crispy_forms.helper import FormHelper
 from django import forms
 
+
+
 class AlstNameFilterForm(forms.Form):
     catalogue_number = forms.CharField()
-
-
 
 
 class AlstForm(forms.ModelForm):
@@ -15,7 +15,11 @@ class AlstForm(forms.ModelForm):
 
         fields = [
             'catalogue_number',
+            'collection',
+            'collection_ref',
             'parent',
+            'first_line',
+            'type_of_material',
             'fieldworker',
             'date',
             'informant_artist',
@@ -28,23 +32,66 @@ class AlstForm(forms.ModelForm):
             'tale_reference',
             'title',
             'reference',
+            'instrument',
+            'camera_operator',
             'old_number_rl',
             'restricted',
-            ]
+        ]
         widgets = {
             "catalogue_number": forms.TextInput(
                 attrs={
                     "id": "key_id",
                     "required": False,
                     "placeholder": "Catalogue Number",
+                    "class": "record-input",  # add a reusable class
+                },
+            ),
+            "collection": forms.TextInput(
+                attrs={
+                    "id": "key_id",
+                    "required": False,
+                    "placeholder": "Collection",
                     "style": "text-align: center; color:black; font-size: 25px",
                 },
             ),
+            "collection_ref": forms.TextInput(
+                attrs={
+                    "id": "key_id",
+                    "required": False,
+                    "placeholder": "Collection Ref",
+                    "style": "text-align: center; color:black; font-size: 25px",
+                },
+            ),
+            "camera_operator": forms.TextInput(
+                attrs={
+                    "id": "key_id",
+                    "required": False,
+                    "placeholder": "Camera Operator",
+                    "style": "text-align: center; color:black; font-size: 25px",
+                },
+            ),
+            "first_line": forms.TextInput(
+                attrs={
+                    "id": "key_id",
+                    "required": False,
+                    "placeholder": "First Line",
+                    "style": "text-align: center; color:black; font-size: 25px",
+                },
+            ),
+
             "parent": forms.TextInput(
                 attrs={
                     "id": "key_id",
                     "required": False,
                     "placeholder": "Parent",
+                    "style": "text-align: center; color:black; font-size: 25px",
+                },
+            ),
+            "instrument": forms.TextInput(
+                attrs={
+                    "id": "key_id",
+                    "required": False,
+                    "placeholder": "Instrument",
                     "style": "text-align: center; color:black; font-size: 25px",
                 },
             ),
@@ -136,14 +183,12 @@ class AlstForm(forms.ModelForm):
                     "style": "text-align: left; color:black; font-size: 25px;",
                 },
             ),
-            'restricted': forms.Select(attrs={'class': 'form-control'}),
+            'restricted': forms.Select(attrs={
+                'class': 'form-control',
+                "style": "text-align: left; color:black; font-size: 25px;"
+            }),
 
         }
-
-
-
-
-
 
     def __init__(self, *args, **kwargs):
         super(AlstForm, self).__init__(*args, **kwargs)
