@@ -56,15 +56,18 @@
 
   <div class="filters">
     <select name="type_filter">
-      <option value="">-- Select Type --</option>
+      <option value="">-- Select Database --</option>
       <option value="ALST" {% if type_filter == "ALST" %}selected{% endif %}>ALST</option>
       <option value="MNDX" {% if type_filter == "MNDX" %}selected{% endif %}>MNDX</option>
     </select>
+    <input type="text" name="collection_filter" placeholder="Filter by Collection..." value="{{ collection_filter }}">
+    <input type="text" name="informant_artist_filter" placeholder="Filter by Contributor..." value="{{ informant_artist_filter }}">
+    <input type="text" name="native_area_county_filter" placeholder="Filter by Native Area..." value="{{ native_area_county_filter }}">
+    <input type="text" name="fieldworker_filter" placeholder="Filter by Fieldworker..." value="{{ fieldworker_filter }}">
+    <input type="text" name="type_of_material_filter" placeholder="Filter by Subject Keywords..." value="{{ type_of_material_filter }}">
     <input type="text" name="title_filter" placeholder="Filter by Title..." value="{{ title_filter }}">
-    <input type="text" name="typematerial_filter" placeholder="Filter by Type of material..." value="{{ typematerial_filter }}">
     <input type="text" name="summary_filter" placeholder="Filter by Summary..." value="{{ summary_filter }}">
-    <input type="text" name="informant_filter" placeholder="Filter by Informant Artist..." value="{{ informant_filter }}">
-    <input type="text" name="comments_filter" placeholder="Filter by Comments..." value="{{ comments_filter }}">
+    <input type="text" name="catalogue_number_filter" placeholder="Filter by Catalouge Nr..." value="{{ catalogue_number_filter }}">
   </div>
 
   <hr>
@@ -77,15 +80,16 @@
     <table class="table2">
         <thead>
         <tr>
-            <th>Type</th>
+            <th>SSSA Ref</th>
+            <th>Collection</th>
+            <th>Collection Ref</th>
+            <th>Contributor</th>
+            <th>Native Area</th>
+            <th>Fieldworker</th>
+            <th>Date</th>
             <th>Title</th>
-            <th>Catalogue Number</th>
-            <th>Parent</th>
-            <th>Type of material</th>
+            <th>Content Keywords</th>
             <th>Summary</th>
-            <th>Informant Artist</th>
-            <th>Comments</th>
-            <th>Restricted</th>
         </tr>
         </thead>
         <tbody>
@@ -93,26 +97,16 @@
 
         <tr data-href = "{% url 'alst_details_record' item.id %}?{{ request.GET.urlencode }}">
 
-            <td>{{item.type}}</td>
-            <td>{{item.title}}</td>
             <td>{{item.catalogue_number}}</td>
-            <td>{% if item.parent == "N/A" %}{% else %}{{ item.parent }}{% endif %}</td>
-            <td>{{item.type_of_material}}</td>
-            <td>
-                {% if item.summary and item.summary == "none" %}
-                {% else %}
-                {{item.summary}}
-                {% endif %}
-            </td>
-            <td>{{item.informant_artist}}</td>
-            <td>{{item.comments}}</td>
-            <td>
-                {% if item.restricted and item.restricted == "none" %}
-                No
-                {% else %}
-                {{item.restricted}}
-                {% endif %}
-            </td>
+            <td>{{item.collection}}</td>
+            <td>{{item.collection_ref}}</td>
+            <td>{% if item.informant_artist == "none" %}{% else %}{{ item.informant_artist }}{% endif %}</td>
+            <td>{% if item.native_area_county == "none" %}{% else %}{{ item.native_area_county }}{% endif %}</td>
+            <td>{% if item.fieldworker == "none" %}{% else %}{{ item.fieldworker }}{% endif %}</td>
+            <td>{% if item.date == "none" %}{% else %}{{ item.date }}{% endif %}</td>
+            <td>{% if item.title == "none" %}{% else %}{{ item.title }}{% endif %}</td>
+            <td>{% if item.type_of_material == "none" %}{% else %}{{ item.type_of_material }}{% endif %}</td>
+            <td>{% if item.summary == "none" %}{% else %}{{ item.summaryl }}{% endif %}</td>
         </tr>
         {% endfor %}
         </tbody>
