@@ -3,98 +3,113 @@
     <meta charset="UTF-8">
     <title>Record Form</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/buttons.css' %}" >
+    <link rel="stylesheet" href="{% static 'css/details_form.css' %}" >
 </head>
 <body>
 <br>
-<form method="POST">
-    {% csrf_token %}
+<form method="POST" class="record-form">
+  {% csrf_token %}
+
+  <div class="record-header">
+    ALST Record for Catalogue Number {{ alst_record.catalogue_number }}
+  </div>
+
+  <div class="record-details">
+    <div>
+      <span class="label">SSSA ref:</span>
+      <span class="value">{{ alst_record.catalogue_number }}</span>
+    </div>
+    <div>
+      <span class="label">Collection:</span>
+      <span class="value">{{ alst_record.collection }}</span>
+    </div>
+    <div>
+      <span class="label">Collection Ref.:</span>
+      <span class="value">{{ alst_record.collection_ref }}</span>
+    </div>
+      <div>
+      <span class="label">Informant:</span>
+      <span class="value">{{ alst_record.informant_artist }}</span>
+    </div>
+    <div>
+      <span class="label">Fieldworker:</span>
+      <span class="value">{{ alst_record.fieldworker }}</span>
+    </div>
+    <div>
+      <span class="label">First line:</span>
+      <span class="value">{{ alst_record.first_line }}</span>
+    </div>
+    <span class="label">Content Keywords:</span>
+      <span class="value">
+        {% for word in alst_record.extract_word_matereial %}
+          <a href="{{ word }}" target="_blank">{{ word }}</a>
+        {% endfor %}
+      </span>
+    <div>
+      <span class="label">Summary:</span>
+      <span class="value">{{ alst_record.summary }}</span>
+    </div>
+
+    <div>
+      <span class="label">Date:</span>
+      <span class="value">{{ alst_record.date }}</span>
+    </div>
+    <div>
+      <span class="label">Place recorded:</span>
+      <span class="value">{{ alst_record.place_recorded }}</span>
+    </div>
+    <div>
+      <span class="label">Tale Reference:</span>
+      <span class="value">{{ alst_record.tale_reference }}</span>
+    </div>
+      <div>
+      <span class="label">Instrument:</span>
+      <span class="value">{{ alst_record.instrument }}</span>
+    </div>
+    <div>
+      <span class="label">Camera operator:</span>
+      <span class="value">{{ alst_record.camera_operator }}</span>
+    </div>
+    <div>
+      <span class="label">Disc/Matrix Nr.:</span>
+      <span class="value">{{ alst_record.disc_matrix_number }}</span>
+    </div>
+    <div>
+      <span class="label">Old Ref Nr.:</span>
+      <span class="value">{{ alst_record.old_number_rl }}</span>
+    </div>
+    <div>
+      <span class="label">Data Last Amended:</span>
+      <span class="value">{{ alst_record.data_last_amended }}</span>
+    </div>
+    <div>
+      <span class="label">Restrictions:</span>
+      <span class="value">{{ alst_record.restricted }}</span>
+    </div>
+  </div>
+
+  <div class="record-actions">
+    <a class="btn ok" href="{% url 'search_view' %}?{{ request.GET.urlencode }}">OK</a>
+
+    {% if user.is_authenticated and user.is_superuser %}
+      <a class="btn edit" href="{% url 'alst_update_record' alst_record.id %}">EDIT</a>
+      <a class="btn delete" href="{% url 'alst_delete_record' alst_record.id %}">DELETE</a>
+    {% endif %}
+  </div>
+
+  <div class="related-records">
+    <h4>Related Records</h4>
     <table>
-        <tr>
-            <td style="width: 50%">
-                <table style = "align-items: center; display: flex; justify-content: center;">
-                    <tr>
-                        <td colspan="3" style="text-align: left; padding:20px">
-                            <span style="font-size: 25px;"><strong>ALST Record for Catalogue Number {{ alst_record.catalogue_number }}</strong></span><br>
-                            <br>
-                            <span style="color: gray; font-size:15px">Catologue Name:</span> <span style="font-size: 20px">{{ alst_record.catalogue_name  }}</span><br>
-                            <br>
-                            <span style="color: gray; font-size:15px">Parent:</span> <span style="font-size: 20px">{{ alst_record.parent  }}</span><br>
-                            <br>
-                            <span style="color: gray; font-size:15px">Type:</span> <span style="font-size: 20px">{{ alst_record.type  }}</span><br>
-                            <br>
-                            <span style="color: gray; font-size:15px">ID Number:</span> <span style="font-size: 20px">{{ alst_record.id  }}</span><br>
-                            <br>
-                            <span style="color: gray; font-size:15px">Informant Artist:</span> <span style="font-size: 20px">{{ alst_record.fieldworker }} </span><br>
-                            <br>
-                            <span style="color: gray; font-size:15px">Native Area:</span> <span style="font-size: 20px">{{ alst_record.date }} </span> <br>
-                            <br>
-                            <span style="color: gray; font-size:15px">Informant Artist:</span> <span style="font-size: 20px">{{ alst_record.informant_artist }} </span> <br>
-                            <br>
-                            <span style="color: gray; font-size:15px">Native Area County:</span> <span style="font-size: 20px">{{ alst_record.native_area_county }} </span> <br>
-                            <br>
-                            <span style="color: gray; font-size:15px">Comments:</span> <span style="font-size: 20px">{{ alst_record.comments }} </span> <br>
-                            <br>
-                            <span style="color: gray; font-size:15px">Place Recorded:</span> <span style="font-size: 20px">{{ alst_record.place_recorded }} </span> <br>
-                            <br>
-                            <span style="color: gray; font-size:15px">Type of Material:</span> <span style="font-size: 20px">{{ alst_record.type_of_material }} </span> <br>
-                            <br>
-                            <span style="color: gray; font-size:15px">Type of Material split:</span>
-                            <span style="font-size: 20px">
-                                {% for word in alst_record.extract_word_matereial %}
-                                <a href="{{ word }}" target="_blank">{{ word }}</a>
-                                {% endfor %}
-                            </span> <br>
-                            <br>
-                            <span style="color: gray; font-size:15px">Summary:</span> <span style="font-size: 20px">{{ alst_record.summary }} </span> <br>
-                            <br>
-                            <span style="color: gray; font-size:15px">Disc Matrix Number:</span> <span style="font-size: 20px">{{ alst_record.disc_matrix_number }} </span> <br>
-                            <br>
-                            <span style="color: gray; font-size:15px">Tale Reference:</span> <span style="font-size: 20px">{{ alst_record.tale_reference }} </span> <br>
-                            <br>
-                            <span style="color: gray; font-size:15px">Title:</span> <span style="font-size: 20px">{{ alst_record.title }} </span> <br>
-                            <br>
-                            <span style="color: gray; font-size:15px">Reference:</span> <span style="font-size: 20px">{{ alst_record.reference }} </span> <br>
-                            <br>
-                            <span style="color: gray; font-size:15px">Old Number RL:</span> <span style="font-size: 20px">{{ alst_record.old_number_rl }} </span> <br>
-                            <br>
-                            <span style="color: gray; font-size:15px">Data Recorded Input:</span> <span style="font-size: 20px">{{ alst_record.data_record_input }} </span> <br>
-                            <br>
-                            <span style="color: gray; font-size:15px">Data Last Amended:</span> <span style="font-size: 20px">{{ alst_record.data_last_amended }} </span> <br>
-                            <br>
-                            <span style="color: gray; font-size:15px">Restrictions:</span> <span style="font-size: 20px">{{ alst_record.restricted }} </span> <br>
-                        </td>
-                    </tr>
-                </table>
-                <span style = "align-items: center; display: flex; justify-content: center;">
-                    <button class="button button1">
-                        <a style="text-decoration: none; color: white;"
-                        href="{% url 'search_view' %}?{{ request.GET.urlencode }}">
-                        OK
-                        </a>
-                    </button>
-                    {% if user.is_authenticated and user.is_superuser%}
-                    <button class="button button2">
-                        <a style="text-decoration: none; color: white;" href="{% url 'alst_update_record' alst_record.id %}">EDIT</a>
-                    </button>
-                    <button class="button button3">
-                        <a style="text-decoration: none; color: white;" href="{% url 'alst_delete_record' alst_record.id %}">DELETE</a>
-                    </button>
-                    {% endif %}
-                </span>
-            </td>
-            <td style="width:10%">
-                <table >
-                    {% for record in related_records %}
-                    <tr>
-                        <td><a href="{% url 'alst_details_record' record.id %}" style="text-decoration: none;" target="_blank" >{{record.catalogue_number}}</a></td>
-                        <td> {{record.type_of_material}} </td>
-                    </tr>
-                    {% endfor %}
-                </table>
-            </td>
-        </tr>
+      {% for record in related_records %}
+      <tr>
+        <td>
+          <a href="{% url 'alst_details_record' record.id %}" target="_blank">{{ record.catalogue_number }}</a>
+        </td>
+        <td>{{ record.type_of_material }}</td>
+      </tr>
+      {% endfor %}
     </table>
+  </div>
 </form>
 </body>
 </html>

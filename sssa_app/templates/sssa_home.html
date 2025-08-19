@@ -50,11 +50,12 @@
     {% endif %}
 </div>
 
-
-
-
 <div class="div_body">
-    <br>
+    {% if user.is_authenticated %}
+    <p>Welcome, {{ user.username }}!</p>
+    {% else %}
+    <p>Welcome, Guest!</p>
+    {% endif %}
     <h1 style="font-family: 'Source Sans Pro', sans-serif; ">School of Scottish Studies Archive</h1>
     <p style="font-family: Source Sans Pro;">
         The School of Scottish Studies was established in 1951, at the University of Edinburgh, to gather, preserve, research,
