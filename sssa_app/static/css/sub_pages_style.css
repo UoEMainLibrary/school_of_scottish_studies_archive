@@ -6,11 +6,11 @@ body {
 .table2 {
       width: 100%;
       border-collapse: collapse;   /* remove double borders */
-      margin: 25px 0;
-      font-size: 16px;
+      margin: 20px 0;
+      font-size: 14px;
       font-family: Arial, sans-serif;
       min-width: 800px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 0 50px rgba(0, 0, 0, 0.4);
 }
 
 .table2 thead tr {

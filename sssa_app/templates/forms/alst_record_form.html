@@ -5,65 +5,94 @@
 
     <title>Record Form</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/buttons.css' %}" >
+    <link rel="stylesheet" href="{% static 'css/details_form.css' %}" >
+    <link rel="stylesheet" href="{% static 'css/record_input.css' %}" >
 </head>
 {% load crispy_forms_tags %}
 
 <body>
-<form method="POST">
-    {% csrf_token %}
-    <table style = "align-items: center; display: flex; justify-content: center;">
-        <tr>
-            <td colspan="3" style="text-align: center; padding:20px">
-                <span style="font-size: 25px;"><strong>ALST Record for Catalogue Number {{ alst_record_form.catalogue_number }}</strong></span><br>
-                <br>
-                <span style="color: gray; font-size:15px">Catologue Name:</span> <span style="font-size: 13px">{{ alst_record_form.catalogue_name  }}</span><br>
-                <br>
-                <span style="color: gray; font-size:15px">Parent:</span> <span style="font-size: 13px">{{ alst_record_form.parent }}</span><br>
-                <br>
-                <span style="color: gray; font-size:15px">Fieldworker:</span> <span style="font-size: 13px">{{ alst_record_form.fieldworker }} </span><br>
-                <br>
-                <span style="color: gray; font-size:15px">Date:</span> <span style="font-size: 13px">{{ alst_record_form.date }} </span> <br>
-                <br>
+<form method="POST" class="record-form">
+  {% csrf_token %}
 
-                <span style="color: gray; ">Informant Artist:</span> <span>{{ alst_record_form.informant_artist }} </span> <br>
-                <br>
-                <span style="color: gray; font-size:15px">Native Area County:</span> <span style="font-size: 13px">{{ alst_record_form.native_area_county }} </span> <br>
-                <br>
-                <span style="color: gray; font-size:15px">Comments:</span> <span style="font-size: 13px">{{ alst_record_form.comments }} </span> <br>
-                <br>
-                <span style="color: gray; font-size:15px">Place Recorded:</span> <span style="font-size: 13px">{{ alst_record_form.place_recorded }} </span> <br>
-                <br>
-                <span style="color: gray; font-size:15px">Type of Material:</span> <span style="font-size: 13px">{{ alst_record_form.type_of_material }} </span> <br>
-                <br>
-                <span style="color: gray; font-size:15px">Summary:</span> <span style="font-size: 13px">{{ alst_record_form.summary }} </span> <br>
-                <br>
-                <span style="color: gray; font-size:15px">Disc Matrix Number:</span> <span style="font-size: 13px">{{ alst_record_form.disc_matrix_number }} </span> <br>
-                <br>
-                <span style="color: gray; font-size:15px">Tale Reference:</span> <span style="font-size: 13px">{{ alst_record_form.tale_reference }} </span> <br>
-                <br>
-                <span style="color: gray; font-size:15px">Title:</span> <span style="font-size: 13px">{{ alst_record_form.title }} </span> <br>
-                <br>
-                <span style="color: gray; font-size:15px">Reference:</span> <span style="font-size: 13px">{{ alst_record_form.reference }} </span> <br>
-                <br>
-                <span style="color: gray; font-size:15px">Old Number RL:</span> <span style="font-size: 13px">{{ alst_record_form.old_number_rl }} </span> <br>
-                <br>
-                <span style="color: gray; font-size:15px">Data Recorded Input:</span> <span style="font-size: 13px">{{ alst_record_form.data_record_input }} </span> <br>
-                <br>
-                <span style="color: gray; font-size:15px">Data Last Amended:</span> <span style="font-size: 13px">{{ alst_record_form.data_last_amended }} </span> <br>
-                <br>
-                <span style="color: gray; font-size:15px">Restricted:</span> <span style="font-size: 13px">{{ alst_record_form.restricted }} </span> <br>
+  <div class="record-header">
+    Edit ALST Record
+  </div>
 
-            </td>
-        </tr>
-    </table>
-    <span style = "align-items: center; display: flex; justify-content: center;">
-        <button class="button button1" type="submit">Submit</button>
+  <div class="record-details">
+    <div>
+      <span class="label">SSSA ref:</span>
+      <span class="value">{{ alst_record_form.catalogue_number }}</span>
+    </div>
+    <div>
+      <span class="label">Collection:</span>
+      <span class="value">{{ alst_record_form.collection }}</span>
+    </div>
+    <div>
+      <span class="label">Collection Ref.:</span>
+      <span class="value">{{ alst_record_form.collection_ref }}</span>
+    </div>
+    <div>
+      <span class="label">Informant:</span>
+      <span class="value">{{ alst_record_form.informant_artist }}</span>
+    </div>
+    <div>
+      <span class="label">Fieldworker:</span>
+      <span class="value">{{ alst_record_form.fieldworker }}</span>
+    </div>
+    <div>
+      <span class="label">First line:</span>
+      <span class="value">{{ alst_record_form.first_line }}</span>
+    </div>
+    <div>
+      <span class="label">Content Keywords:</span>
+      <span class="value">{{ alst_record_form.type_of_material }}</span>
+    </div>
+    <div>
+      <span class="label">Summary:</span>
+      <span class="value">{{ alst_record_form.summary }}</span>
+    </div>
+    <div>
+      <span class="label">Date:</span>
+      <span class="value">{{ alst_record_form.date }}</span>
+    </div>
+    <div>
+      <span class="label">Place recorded:</span>
+      <span class="value">{{ alst_record_form.place_recorded }}</span>
+    </div>
+    <div>
+      <span class="label">Tale Reference:</span>
+      <span class="value">{{ alst_record_form.tale_reference }}</span>
+    </div>
+    <div>
+      <span class="label">Instrument:</span>
+      <span class="value">{{ alst_record_form.instrument }}</span>
+    </div>
+    <div>
+      <span class="label">Camera operator:</span>
+      <span class="value">{{ alst_record_form.camera_operator }}</span>
+    </div>
+    <div>
+      <span class="label">Disc/Matrix Nr.:</span>
+      <span class="value">{{ alst_record_form.disc_matrix_number }}</span>
+    </div>
+    <div>
+      <span class="label">Old Ref Nr.:</span>
+      <span class="value">{{ alst_record_form.old_number_rl }}</span>
+    </div>
+    <div>
+      <span class="label">Data Last Amended:</span>
+      <span class="value">{{ alst_record_form.data_last_amended }}</span>
+    </div>
+    <div>
+      <span class="label">Restrictions:</span>
+      <span class="value">{{ alst_record_form.restricted }}</span>
+    </div>
+  </div>
 
-        <button class="button button1">
-            <a style="text-decoration: none; color: white;" href="{% url 'sssa_home' %}">Cancel</a>
-        </button>
-    </span>
+  <div class="record-actions">
+    <button type="submit" class="btn ok">Save</button>
+    <a class="btn delete" href="{% url 'search_view' %}?{{ request.GET.urlencode }}">Cancel</a>
+  </div>
 </form>
 
 </body>
