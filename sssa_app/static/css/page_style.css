@@ -36,6 +36,7 @@ html {
 }
 
 .header {
+    border-top: 5px solid #690051;
     background-image: url("/static/images/header-photo.jpg"); /* change to your image path */
     background-size: cover;   /* makes the photo cover the whole div */
     background-position: center; /* keeps it centered */
@@ -48,6 +49,7 @@ html {
 }
 
 .header-collections {
+    border-top: 5px solid #690051;
     background-image: url("/static/images/collections-header.png"); /* change to your image path */
     background-size: cover;   /* makes the photo cover the whole div */
     background-position: center; /* keeps it centered */
@@ -60,6 +62,7 @@ html {
 }
 
 .header-people-and-place {
+    border-top: 5px solid #690051;
     background-image: url("/static/images/people-and-place-header-1.png"); /* change to your image path */
     background-size: cover;   /* makes the photo cover the whole div */
     background-position: center; /* keeps it centered */
@@ -72,6 +75,7 @@ html {
 }
 
 .header-subjects {
+    border-top: 5px solid #690051;
     background-image: url("/static/images/subjects-header.png"); /* change to your image path */
     background-size: cover;   /* makes the photo cover the whole div */
     background-position: center; /* keeps it centered */
@@ -84,6 +88,7 @@ html {
 }
 
 .header-listen-recordings {
+    border-top: 5px solid #690051;
     background-image: url("/static/images/listen-records-header.jpg"); /* change to your image path */
     background-size: cover;   /* makes the photo cover the whole div */
     background-position: center; /* keeps it centered */
@@ -96,7 +101,8 @@ html {
 }
 
 .header-search-view {
-    background-image: url("/static/images/listen-records-header.jpg"); /* change to your image path */
+    border-top: 5px solid #690051;
+    background-image: url("/static/images/search_view_header.png"); /* change to your image path */
     background-size: cover;   /* makes the photo cover the whole div */
     background-position: center; /* keeps it centered */
     height: 350px;            /* adjust height as you want */
