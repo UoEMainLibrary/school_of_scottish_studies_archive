@@ -56,15 +56,18 @@
 
   <div class="filters">
     <select name="type_filter">
-      <option value="">-- Select Type --</option>
+      <option value="">-- Select Database --</option>
       <option value="ALST" {% if type_filter == "ALST" %}selected{% endif %}>ALST</option>
       <option value="MNDX" {% if type_filter == "MNDX" %}selected{% endif %}>MNDX</option>
     </select>
+    <input type="text" name="collection_filter" placeholder="Filter by Collection..." value="{{ collection_filter }}">
+    <input type="text" name="informant_artist_filter" placeholder="Filter by Contributor..." value="{{ informant_artist_filter }}">
+    <input type="text" name="native_area_county_filter" placeholder="Filter by Native Area..." value="{{ native_area_county_filter }}">
+    <input type="text" name="fieldworker_filter" placeholder="Filter by Fieldworker..." value="{{ fieldworker_filter }}">
+    <input type="text" name="type_of_material_filter" placeholder="Filter by Subject Keywords..." value="{{ type_of_material_filter }}">
     <input type="text" name="title_filter" placeholder="Filter by Title..." value="{{ title_filter }}">
-    <input type="text" name="typematerial_filter" placeholder="Filter by Type of material..." value="{{ typematerial_filter }}">
     <input type="text" name="summary_filter" placeholder="Filter by Summary..." value="{{ summary_filter }}">
-    <input type="text" name="informant_filter" placeholder="Filter by Informant Artist..." value="{{ informant_filter }}">
-    <input type="text" name="comments_filter" placeholder="Filter by Comments..." value="{{ comments_filter }}">
+    <input type="text" name="catalogue_number_filter" placeholder="Filter by Catalouge Nr..." value="{{ catalogue_number_filter }}">
   </div>
 
   <hr>
