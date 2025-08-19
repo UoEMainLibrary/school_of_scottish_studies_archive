@@ -51,7 +51,7 @@ class AlstForm(forms.ModelForm):
                     "id": "key_id",
                     "required": False,
                     "placeholder": "Collection",
-                    "style": "text-align: center; color:black; font-size: 25px",
+                    "class": "record-input",  # add a reusable class
                 },
             ),
             "collection_ref": forms.TextInput(
@@ -59,7 +59,7 @@ class AlstForm(forms.ModelForm):
                     "id": "key_id",
                     "required": False,
                     "placeholder": "Collection Ref",
-                    "style": "text-align: center; color:black; font-size: 25px",
+                    "class": "record-input",  # add a reusable class
                 },
             ),
             "camera_operator": forms.TextInput(
@@ -67,7 +67,7 @@ class AlstForm(forms.ModelForm):
                     "id": "key_id",
                     "required": False,
                     "placeholder": "Camera Operator",
-                    "style": "text-align: center; color:black; font-size: 25px",
+                    "class": "record-input",  # add a reusable class
                 },
             ),
             "first_line": forms.TextInput(
@@ -75,7 +75,7 @@ class AlstForm(forms.ModelForm):
                     "id": "key_id",
                     "required": False,
                     "placeholder": "First Line",
-                    "style": "text-align: center; color:black; font-size: 25px",
+                    "class": "record-input",  # add a reusable class
                 },
             ),
 
@@ -84,7 +84,7 @@ class AlstForm(forms.ModelForm):
                     "id": "key_id",
                     "required": False,
                     "placeholder": "Parent",
-                    "style": "text-align: center; color:black; font-size: 25px",
+                    "class": "record-input",  # add a reusable class
                 },
             ),
             "instrument": forms.TextInput(
@@ -92,7 +92,7 @@ class AlstForm(forms.ModelForm):
                     "id": "key_id",
                     "required": False,
                     "placeholder": "Instrument",
-                    "style": "text-align: center; color:black; font-size: 25px",
+                    "class": "record-input",  # add a reusable class
                 },
             ),
             "catalogue_name": forms.TextInput(
@@ -100,7 +100,7 @@ class AlstForm(forms.ModelForm):
                     "id": "key_id",
                     "required": False,
                     "placeholder": "Catalogue Name",
-                    "style": "text-align: left; color:black; font-size: 25px",
+                    "class": "record-input",  # add a reusable class
                 },
             ),
             "fieldworker": forms.TextInput(
@@ -108,7 +108,7 @@ class AlstForm(forms.ModelForm):
                     "id": "key_id",
                     "required": False,
                     "placeholder": "Fieldworker",
-                    "style": "text-align: center; color:black; font-size: 25px",
+                    "class": "record-input",  # add a reusable class
                 },
             ),
             "date": forms.TextInput(
@@ -116,7 +116,7 @@ class AlstForm(forms.ModelForm):
                     "id": "key_id",
                     "required": False,
                     "placeholder": "Date",
-                    "style": "text-align: center; color:black; font-size: 25px",
+                    "class": "record-input",  # add a reusable class
                 },
             ),
             "informant_artist": forms.TextInput(
@@ -124,7 +124,7 @@ class AlstForm(forms.ModelForm):
                     "id": "key_id",
                     "required": False,
                     "placeholder": "Informant Artist",
-                    "style": "text-align: left; color:black; font-size: 25px;",
+                    "class": "record-input",  # add a reusable class
                 },
             ),
             "native_area_county": forms.TextInput(
@@ -132,7 +132,7 @@ class AlstForm(forms.ModelForm):
                     "id": "key_id",
                     "required": False,
                     "placeholder": "Native Area County",
-                    "style": "text-align: left; color:black; font-size: 25px;",
+                    "class": "record-input",  # add a reusable class
                 },
             ),
             "comments": forms.TextInput(
@@ -140,7 +140,7 @@ class AlstForm(forms.ModelForm):
                     "id": "key_id",
                     "required": False,
                     "placeholder": "Comments",
-                    "style": "text-align: left; color:black; font-size: 25px;",
+                    "class": "record-input",  # add a reusable class
                 },
             ),
             "place_recorded": forms.TextInput(
@@ -148,7 +148,7 @@ class AlstForm(forms.ModelForm):
                     "id": "key_id",
                     "required": False,
                     "placeholder": "Place Recorded",
-                    "style": "text-align: left; color:black; font-size: 25px;",
+                    "class": "record-input",  # add a reusable class
                 },
             ),
             "type_of_material": forms.TextInput(
@@ -156,7 +156,7 @@ class AlstForm(forms.ModelForm):
                     "id": "key_id",
                     "required": False,
                     "placeholder": "Type of Material",
-                    "style": "text-align: left; color:black; font-size: 25px;",
+                    "class": "record-input",  # add a reusable class
                 },
             ),
             "summary": forms.TextInput(
@@ -164,7 +164,7 @@ class AlstForm(forms.ModelForm):
                     "id": "key_id",
                     "required": False,
                     "placeholder": "Summary",
-                    "style": "text-align: left; color:black; font-size: 25px;",
+                    "class": "record-input",  # add a reusable class
                 },
             ),
             "disc_matrix_number": forms.TextInput(
@@ -172,7 +172,7 @@ class AlstForm(forms.ModelForm):
                     "id": "key_id",
                     "required": False,
                     "placeholder": "Disc Matrix Number",
-                    "style": "text-align: left; color:black; font-size: 25px;",
+                    "class": "record-input",  # add a reusable class
                 },
             ),
             "tale_reference": forms.TextInput(
@@ -180,12 +180,12 @@ class AlstForm(forms.ModelForm):
                     "id": "key_id",
                     "required": False,
                     "placeholder": "Tale Reference",
-                    "style": "text-align: left; color:black; font-size: 25px;",
+                    "class": "record-input",  # add a reusable class
                 },
             ),
             'restricted': forms.Select(attrs={
-                'class': 'form-control',
-                "style": "text-align: left; color:black; font-size: 25px;"
+
+                "class": "record-input",  # add a reusable class
             }),
 
         }

@@ -1,12 +1,11 @@
 /* --------------------------------------------FOOTER------------------------------------ */
 
 .div-footer{
-    margin-left: 10%;
-    margin-right: 10%;
+
 }
 
 footer {
-    width: 60%;
+    width: 100%;
     display: block;
     unicode-bidi: isolate;
 }

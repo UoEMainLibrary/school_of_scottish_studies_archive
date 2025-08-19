@@ -5,7 +5,7 @@
   border-radius: 6px;
   font-size: 16px;
   color: black;
-  text-align: center;
+  text-align: left;
   box-sizing: border-box;   /* ensures padding doesn’t break width */
 }
 
