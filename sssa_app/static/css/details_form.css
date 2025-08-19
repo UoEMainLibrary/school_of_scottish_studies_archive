@@ -1,0 +1,102 @@
+.record-form {
+  width: 100%;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.record-header {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #333;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 0.5rem;
+}
+
+.record-details {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.record-details span.label {
+  display: block;
+  font-size: 0.85rem;
+  color: #777;
+  margin-bottom: 0.3rem;
+}
+
+.record-details span.value {
+  font-size: 1.1rem;
+  color: #222;
+  font-weight: 500;
+}
+
+.record-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.record-actions .btn {
+  padding: 0.7rem 1.5rem;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+  text-decoration: none;
+  color: #fff;
+}
+
+.record-actions .btn.ok {
+  background: #4a90e2;
+}
+.record-actions .btn.ok:hover {
+  background: #357abd;
+}
+
+.record-actions .btn.edit {
+  background: #f39c12;
+}
+.record-actions .btn.edit:hover {
+  background: #d68910;
+}
+
+.record-actions .btn.delete {
+  background: #e74c3c;
+}
+.record-actions .btn.delete:hover {
+  background: #c0392b;
+}
+
+.related-records {
+  margin-top: 2rem;
+  border-top: 1px solid #eee;
+  padding-top: 1rem;
+}
+
+.related-records table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.related-records td {
+  padding: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.related-records a {
+  text-decoration: none;
+  color: #4a90e2;
+  font-weight: 600;
+}
+.related-records a:hover {
+  text-decoration: underline;
+}
