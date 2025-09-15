@@ -5,13 +5,27 @@
     <title>Login</title>
     {% load static %}
     <link rel="stylesheet" href="{% static '/css/login_style.css' %}">
-
-
-
-
 </head>
 <body>
-{% if messages %}
+<div style="margin-left: auto; width:60%; margin-right: auto;">
+    <form action="" method="POST">
+      {% csrf_token %}
+      <div class="container">
+        <h1 style="color: #830065">Login School of Scottish Studies Archive</h1>
+        <p>Please fill in this form to login.</p>
+        <hr>
+        <label style="color: #830065"><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" name="username">
+
+          <label style="color: #830065"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="password">
+
+        <div class="clearfix">
+          <button type="submit">Login</button>
+        </div>
+      </div>
+    </form>
+    {% if messages %}
     {% for message in messages %}
 
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -19,26 +33,6 @@
         </div>
     {% endfor %}
 {% endif %}
-
-
-<div style="margin-left: auto; width:60%; margin-right: auto;">
-    <form action="" method="POST">
-      {% csrf_token %}
-      <div class="container">
-        <h1>Login School of Scottish Studies Archive</h1>
-        <p>Please fill in this form to login.</p>
-        <hr>
-        <label><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" name="username">
-
-          <label><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="password">
-
-        <div class="clearfix">
-          <button type="submit" class="loginbtn">Login</button>
-        </div>
-      </div>
-    </form>
 </div>
 
 
