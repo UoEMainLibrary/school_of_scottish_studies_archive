@@ -116,7 +116,11 @@
             <td>{% if item.fieldworker == "none" %}{% else %}{{ item.fieldworker }}{% endif %}</td>
             <td>{% if item.date == "none" %}{% else %}{{ item.date }}{% endif %}</td>
             <td>{% if item.title == "none" %}{% else %}{{ item.title }}{% endif %}</td>
-            <td>{% if item.type_of_material == "none" %}{% else %}{{ item.type_of_material }}{% endif %}</td>
+            <td>
+                {% for word in item.extract_word_matereial %}
+                <a href="{{ word }}" target="_blank">{{ word }}</a>
+                {% endfor %}
+            </td>
             <td>{% if item.summary == "none" %}{% else %}{{ item.summary }}{% endif %}</td>
         </tr>
         {% endfor %}
@@ -205,8 +209,13 @@
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
+    // Make whole row clickable
     document.querySelectorAll("tr[data-href]").forEach(row => {
-        row.addEventListener("click", function() {
+        row.addEventListener("click", function(e) {
+            // If the user clicked an <a>, don't trigger the row click
+            if (e.target.closest("a")) {
+                return;
+            }
             window.location = this.dataset.href;
         });
     });

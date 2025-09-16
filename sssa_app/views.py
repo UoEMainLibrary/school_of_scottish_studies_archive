@@ -43,85 +43,91 @@ def listen_recordings (request):
     return render(request, 'listen_recordings.html')
 
 def search_view(request):
-    query = request.GET.get('q', '')
-    type_filter = request.GET.get('type_filter', '')
-    collection_filter = request.GET.get('collection_filter', '')
-    collection_ref_filter = request.GET.get('collection_ref_filter', '')
-    informant_artist_filter = request.GET.get('informant_artist_filter', '')
-    native_area_county_filter = request.GET.get('native_area_county_filter', '')
-    fieldworker_filter = request.GET.get('fieldworker_filter', '')
-    type_of_material_filter = request.GET.get('type_of_material_filter', '')
-    title_filter = request.GET.get('title_filter', '')
-    summary_filter = request.GET.get('summary_filter', '')
-    catalogue_number_filter = request.GET.get('catalogue_number_filter', '')
+        query = request.GET.get('q', '')
+        type_filter = request.GET.get('type_filter', '')
+        collection_filter = request.GET.get('collection_filter', '')
+        collection_ref_filter = request.GET.get('collection_ref_filter', '')
+        informant_artist_filter = request.GET.get('informant_artist_filter', '')
+        native_area_county_filter = request.GET.get('native_area_county_filter', '')
+        fieldworker_filter = request.GET.get('fieldworker_filter', '')
+        type_of_material_filter = request.GET.get('type_of_material_filter', '')
+        title_filter = request.GET.get('title_filter', '')
+        summary_filter = request.GET.get('summary_filter', '')
+        catalogue_number_filter = request.GET.get('catalogue_number_filter', '')
 
+        results = Alst.objects.all()
 
-    results = Alst.objects.all()
+        if query:
+            results = results.filter(
+                Q(type__icontains=query) |
+                Q(catalogue_number__icontains=query) |
+                Q(collection__icontains=query) |
+                Q(collection_ref__icontains=query) |
+                Q(parent__icontains=query) |
+                Q(fieldworker__icontains=query) |
+                Q(date__icontains=query) |
+                Q(informant_artist__icontains=query) |
+                Q(native_area_county__icontains=query) |
+                Q(comments__icontains=query) |
+                Q(place_recorded__icontains=query) |
+                Q(type_of_material__icontains=query) |
+                Q(summary__icontains=query) |
+                Q(disc_matrix_number__icontains=query) |
+                Q(tale_reference__icontains=query) |
+                Q(first_line__icontains=query) |
+                Q(instrument__icontains=query) |
+                Q(camera_operator__icontains=query) |
+                Q(title__icontains=query) |
+                Q(reference__icontains=query) |
+                Q(old_number_rl__icontains=query) |
+                Q(restricted__icontains=query)
+            )
 
-    if query:
-        results = results.filter(
+        if type_filter:
+            results = results.filter(type__iexact=type_filter)
+        if collection_filter:
+            results = results.filter(collection__icontains=collection_filter)
+        if collection_ref_filter:
+            results = results.filter(collection_ref__icontains=collection_ref_filter)
 
-            Q(type__icontains=query) |
-            Q(catalogue_number__icontains=query) |
-            Q(collection__icontains=query) |
-            Q(collection_ref__icontains=query) |
-            Q(parent__icontains=query) |
-            Q(fieldworker__icontains=query) |
-            Q(date__icontains=query) |
-            Q(informant_artist__icontains=query) |
-            Q(native_area_county__icontains=query) |
-            Q(comments__icontains=query) |
-            Q(place_recorded__icontains=query) |
-            Q(type_of_material__icontains=query) |
-            Q(summary__icontains=query) |
-            Q(disc_matrix_number__icontains=query) |
-            Q(tale_reference__icontains=query) |
-            Q(first_line__icontains=query) |
-            Q(instrument__icontains=query) |
-            Q(camera_operator__icontains=query) |
-            Q(title__icontains=query) |
-            Q(reference__icontains=query) |
-            Q(old_number_rl__icontains=query) |
-            Q(restricted__icontains=query)
-        )
+        # 👇 Flexible matching for informant_artist
+        if informant_artist_filter:
+            words = informant_artist_filter.split()
+            for word in words:
+                results = results.filter(informant_artist__icontains=word)
 
-    if type_filter:
-        results = results.filter(type__iexact=type_filter)
-    if collection_filter:
-        results = results.filter(collection__icontains=collection_filter)
-    if collection_ref_filter:
-        results = results.filter(collection_ref__icontains=collection_ref_filter)
-    if informant_artist_filter:
-        results = results.filter(informant_artist__icontains=informant_artist_filter)
-    if native_area_county_filter:
-        results = results.filter(native_area_county__icontains=native_area_county_filter)
-    if fieldworker_filter:
-        results = results.filter(fieldworker__icontains=fieldworker_filter)
-    if type_of_material_filter:
-        results = results.filter(type_of_material__icontains=type_of_material_filter)
-    if title_filter:
-        results = results.filter(title__icontains=title_filter)
-    if summary_filter:
-        results = results.filter(summary__icontains=summary_filter)
-    if catalogue_number_filter:
-        results = results.filter(catalogue_number__icontains=catalogue_number_filter)
+        if native_area_county_filter:
+            results = results.filter(native_area_county__icontains=native_area_county_filter)
 
-    return render(request, 'search_view.html', {
-        'results': results,
-        'query': query,
-        'type_filter': type_filter,
-        'collection_filter': collection_filter,
-        'collection_ref_filter': collection_ref_filter,
-        'informant_artist_filter': informant_artist_filter,
-        'native_area_county_filter': native_area_county_filter,
-        'fieldworker_filter': fieldworker_filter,
-        'type_of_material_filter': type_of_material_filter,
-        'title_filter': title_filter,
-        'summary_filter': summary_filter,
-        'catalogue_number_filter': catalogue_number_filter
+        # 👇 Flexible matching for fieldworker
+        if fieldworker_filter:
+            words = fieldworker_filter.split()
+            for word in words:
+                results = results.filter(fieldworker__icontains=word)
 
+        if type_of_material_filter:
+            results = results.filter(type_of_material__icontains=type_of_material_filter)
+        if title_filter:
+            results = results.filter(title__icontains=title_filter)
+        if summary_filter:
+            results = results.filter(summary__icontains=summary_filter)
+        if catalogue_number_filter:
+            results = results.filter(catalogue_number__icontains=catalogue_number_filter)
 
-    })
+        return render(request, 'search_view.html', {
+            'results': results,
+            'query': query,
+            'type_filter': type_filter,
+            'collection_filter': collection_filter,
+            'collection_ref_filter': collection_ref_filter,
+            'informant_artist_filter': informant_artist_filter,
+            'native_area_county_filter': native_area_county_filter,
+            'fieldworker_filter': fieldworker_filter,
+            'type_of_material_filter': type_of_material_filter,
+            'title_filter': title_filter,
+            'summary_filter': summary_filter,
+            'catalogue_number_filter': catalogue_number_filter
+        })
 
 def alst_create_record(request):
     alst_record_form = AlstForm(request.POST or None)

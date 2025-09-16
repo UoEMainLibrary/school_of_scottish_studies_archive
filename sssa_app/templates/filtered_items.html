@@ -2,21 +2,70 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Filtered Items</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/menu_style.css' %}" >
+    <link rel="stylesheet" href="{% static 'css/page_style.css' %}" >
+    <link rel="stylesheet" href="{% static 'css/sub_pages_style.css' %}" >
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}" >
+    <link rel="stylesheet" href="{% static 'css/menu.css' %}" >
+    <link rel="stylesheet" href="{% static 'css/search_form.css' %}" >
+
 </head>
 <body>
 
+<div class="div_head">
+    <div class="topnav">
+        <div class="logo">
+            <a href="{% url 'sssa_home' %}">
+                <img src="{% static 'images/logo.png' %}" alt="Logo">
+            </a>
+        </div>
+    </div>
+    <div class="header-filtered-item">
+      <!--<h1>Header</h1>-->
+    </div>
+    {% if user.is_authenticated %}
+    <nav style="height: 10%; ">
+        <ul>
+            <li><a href="{% url 'sssa_home' %}">About</a></li>
+            <li><a href="{% url 'search_view' %}">Search</a></li>
+            <li><a href="{% url 'collections' %}">Collections</a></li>
+            <li><a href="{% url 'people_and_place' %}">People and Place</a></li>
+            <li><a href="{% url 'subjects' %}">Subjects</a></li>
+            <li><a href="{% url 'listen_recordings' %}">Listen to a recording</a></li>
+            <li style="vertical-align: right"><a href="{% url 'logout' %}">Logout</a></li>
+        </ul>
+    </nav>
+    {% else %}
+    <nav style="height: 10%">
+        <ul>
+            <li><a href="{% url 'sssa_home' %}">About</a></li>
+            <li><a href="{% url 'collections' %}">Collections</a></li>
+            <li><a href="{% url 'people_and_place' %}">People and Place</a></li>
+            <li><a href="{% url 'subjects' %}">Subjects</a></li>
+            <li><a href="{% url 'listen_recordings' %}">Listen to a recording</a></li>
+            <li class="auth-links">
+            <a href="{% url 'register' %}">Register</a>
+            <a href="{% url 'login' %}">Login</a>
+        </li>
+        </ul>
+    </nav>
+    </div>
+    {% endif %}
+
 <!-- templates/filtered_items.html -->
+<div class="div_body">
+    <h2>Search result for records that have the word: "{{ word }}" -- {{ count_items }} records</h2>
 
-<h2>Search result for records that have the word: "{{ word }}" -- {{ count_items }} records</h2>
-
-<ul>
-  {% for item in items %}
-    <li>{{item.type}} - {{ item.catalogue_number }} — {{ item.type_of_material }}</li>
-  {% empty %}
-    <li>No items found containing "{{ word }}"</li>
-  {% endfor %}
-</ul>
+    <ul>
+      {% for item in items %}
+        <li>{{item.type}} - {{ item.catalogue_number }}  -  {{ item.title }}  -  {{ item.type_of_material }}</li>
+      {% empty %}
+        <li>No items found containing "{{ word }}"</li>
+      {% endfor %}
+    </ul>
+</div>
 
 </body>
 </html>
