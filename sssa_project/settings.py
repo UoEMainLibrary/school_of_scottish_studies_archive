@@ -57,11 +57,7 @@ INSTALLED_APPS = [
     'import_export',
     'crispy_forms',
     'rest_framework',
-    'django_filters',
-
-
-
-
+    'django_filters'
 ]
 
 MIDDLEWARE = [
@@ -152,6 +148,12 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# Example using console backend (for dev):
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+# In production, configure SMTP (e.g., Gmail, SendGrid, etc.)
+DEFAULT_FROM_EMAIL = "patryksmacki@googlemail.com"
+ADMIN_EMAIL = "patryksmacki@googlemail.com"
 
 
 

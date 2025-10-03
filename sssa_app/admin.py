@@ -3,6 +3,10 @@ from django.contrib import admin
 
 from .models import Alst
 from import_export.admin import ImportExportModelAdmin
+
+from django.contrib import admin
+from django.contrib.auth.models import User
+from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 # Register your models here.
 
 @admin.register(Alst)
@@ -29,3 +33,12 @@ class AlstAdmin(ImportExportModelAdmin):
 
     ]
 
+class CustomUserAdmin(BaseUserAdmin):
+    # Add 'is_active' to the list display
+    list_display = ('username', 'email', 'first_name', 'last_name', 'is_active', 'is_staff', 'is_superuser')
+    list_filter = ('is_active', 'is_staff', 'is_superuser')
+
+# Unregister the original User admin
+admin.site.unregister(User)
+# Register again with the custom one
+admin.site.register(User, CustomUserAdmin)
